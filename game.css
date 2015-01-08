@@ -1,0 +1,61 @@
+.champions { 
+	width:90px; 
+	height:90px; 
+	float:left;	
+	position:absolute;
+	
+}
+
+#map{
+	background-image:url(assets/map.png);
+	width:856px;
+	height:856px;
+	position:relative;
+}
+
+#champion_blue_top{
+	margin-left:50px;
+	margin-top:80px;
+}
+
+#champion_red_top{
+	margin-left:150px;
+	margin-top:40px;
+}
+
+#champion_blue_jungle{
+	margin-left:170px;
+	margin-top:300px;
+}
+
+#champion_red_jungle{
+	margin-left:600px;
+	margin-top:400px;
+}
+#champion_blue_mid{
+	margin-left:350px;
+	margin-top:420px;
+}
+
+#champion_red_mid{
+	margin-left:440px;
+	margin-top:330px;
+}
+#champion_blue_adc{
+	margin-left:590px;
+	margin-top:650px;
+}
+
+#champion_red_adc{
+	margin-left:680px;
+	margin-top:550px;
+}
+#champion_blue_supp{
+	margin-left:650px;
+	margin-top:720px;
+}
+
+#champion_red_supp{
+	margin-left:750px;
+	margin-top:620px;
+}
