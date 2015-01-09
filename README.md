@@ -1,7 +1,6 @@
 # LoLManager
 Development of amateur application LoL Manager
 
-
 by Gollwu, Zigglick and Sowerdski
 
 Current Tasks :
