@@ -1,17 +1,18 @@
 # LoLManager
-Development of amateur application LoL Manager
+Développement de LoLManager
 
-by Gollwu, Zigglick and Sowerdski
+par Gollwu, Zigglick et Sowerdski (ou plus si affinités)
 
-Current Tasks :
+To Do List :
 
 I Game Engine
-- Debug Character Movement (Gollwu)
-- Make players back to lane when they die and continue laning
-- Jungler movements (Gollwu)
+- Faire back les joueurs et les faire retourner en lane
+- Mouvements Jungler (Gollwu)
 
-II Hosting
-- Hosting of the application
-- Database Conception, Creation and Connectivity
+II Hébergement
+- Hébergement de l'application
+- Conception, Creation et Connectivité de la BDD
 
-
+Avancement :
+09.01.15 Les Junglers se tp de camp en camp, je pense qu'il faut faire une fonction qui prend un player et qui le déplace
+à un point précis pas par pas (comprendre 2px par 2px).

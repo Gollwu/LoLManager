@@ -10,7 +10,8 @@ players.blue = [{
     hp: 100,
     lane: 'top',
     role: 'top',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_top')
 	
@@ -23,7 +24,8 @@ players.blue = [{
     hp: 100,
     lane: 'jungle',
     role: 'jungle',
-    inlane: false,
+	status: 'jungling', 
+	camp: 'BlueSentinelle',	
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_jungle')
 },{
@@ -35,7 +37,8 @@ players.blue = [{
     hp: 100,
     lane: 'mid',
     role: 'mid',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_mid')
 },{
@@ -47,7 +50,8 @@ players.blue = [{
     hp: 100,
     lane: 'bot',
     role: 'adc',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_adc')
 },{
@@ -59,7 +63,8 @@ players.blue = [{
     hp: 100,
     lane: 'bot',
     role: 'support',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_support')
 }];
@@ -74,7 +79,8 @@ players.red = [{
     hp: 100,
     lane: 'top',
     role: 'top',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'red',
 	DOMElement: document.getElementById('champion_red_top')
 },{
@@ -86,7 +92,8 @@ players.red = [{
     hp: 100,
     lane: 'jungle',
     role: 'jungle',
-    inlane: false,
+    status: 'jungling',
+	camp: 'RedSentinelle',
     team: 'red',
 	DOMElement: document.getElementById('champion_red_jungle')
 },{
@@ -98,7 +105,8 @@ players.red = [{
     hp: 100,
     lane: 'mid',
     role: 'mid',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'red',
 	DOMElement: document.getElementById('champion_red_mid')
 },{
@@ -110,7 +118,8 @@ players.red = [{
     hp: 100,
     lane: 'bot',
     role: 'adc',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'red',
 	DOMElement: document.getElementById('champion_red_adc')
 },{
@@ -122,7 +131,8 @@ players.red = [{
     hp: 100,
     lane: 'bot',
     role: 'support',
-    inlane: true,
+    status: 'laning',
+	camp: 'none',
     team: 'red',
 	DOMElement: document.getElementById('champion_red_support')
 }];
