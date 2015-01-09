@@ -1,13 +1,11 @@
 var players = {};
 
-//////////////////////////////// RED TEAM BOUUH
+//////////////////////////////// BLUE TEAM BOUUH
 players.blue = [{
     name: 'wickd',
     laning: 80,
     champion: 'irelia',
-    affinities: {
-        irelia: 99
-    },
+    irelia: 99,
     gold: 0,
     hp: 100,
     lane: 'top',
@@ -20,23 +18,19 @@ players.blue = [{
     name: 'shook',
     laning: 35,
     champion: 'riven',
-    affinities: {
-        riven: 90
-    },
+    riven: 90,
     gold: 0,
     hp: 100,
     lane: 'jungle',
     role: 'jungle',
-    inlane: true,
+    inlane: false,
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_jungle')
 },{
     name: 'froggen',
     laning: 90,
     champion: 'anivia',
-    affinities: {
-        anivia: 100
-    },
+    anivia: 100,
     gold: 0,
     hp: 100,
     lane: 'mid',
@@ -48,9 +42,7 @@ players.blue = [{
     name: 'rekkles',
     laning: 100,
     champion: 'lucian',
-    affinities: {
-        lucian: 85
-    },
+    lucian: 85,
     gold: 0,
     hp: 100,
     lane: 'bot',
@@ -62,9 +54,7 @@ players.blue = [{
     name: 'nyph',
     laning: 75,
     champion: 'thresh',
-    affinities: {
-        lucian: 80
-    },
+	thresh: 80,
     gold: 0,
     hp: 100,
     lane: 'bot',
@@ -79,9 +69,7 @@ players.red = [{
     name: 'gollwu',
     laning: 50,
     champion: 'trundle',
-    affinities: {
-        trundle: 79
-    },
+    trundle: 79,
     gold: 0,
     hp: 100,
     lane: 'top',
@@ -93,9 +81,7 @@ players.red = [{
     name: 'nerevar',
     laning: 25,
     champion: 'fiddlesticks',
-    affinities: {
-        fiddlesticks: 65
-    },
+    fiddlesticks: 65,
     gold: 0,
     hp: 100,
     lane: 'jungle',
@@ -107,41 +93,36 @@ players.red = [{
     name: 'overplow',
     laning: 51,
     champion: 'kogmaw',
-    affinities: {
-        kogmaw: 80
-    },
+    kogmaw: 80,
     gold: 0,
     hp: 100,
     lane: 'mid',
     role: 'mid',
-    inlane: false,
+    inlane: true,
     team: 'red',
 	DOMElement: document.getElementById('champion_red_mid')
 },{
     name: 'hycariss',
     laning: 85,
     champion: 'vayne',
-    affinities: {
-        vayne: 65
-    },
+	vayne: 65,
     gold: 0,
     hp: 100,
     lane: 'bot',
     role: 'adc',
-    inlane: false,
+    inlane: true,
     team: 'red',
 	DOMElement: document.getElementById('champion_red_adc')
 },{
     name: 'sowerdski',
     laning: 10,
     champion: 'taric',
-    affinities: {s
-    },
+	taric:0,
     gold: 0,
     hp: 100,
     lane: 'bot',
     role: 'support',
-    inlane: false,
+    inlane: true,
     team: 'red',
 	DOMElement: document.getElementById('champion_red_support')
 }];

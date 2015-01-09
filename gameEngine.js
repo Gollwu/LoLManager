@@ -3,7 +3,7 @@
 var turn = 1;
 
 function doTurn(){	    
-	alert("doturn");
+	//alert("doturn");
 	for (var i in players.blue){
 		if (players.blue[i].inlane){
 			//Farming
@@ -18,14 +18,15 @@ function doTurn(){
 		}	
     }
 	 
-    for(var i in players.blue) s{
-         for(var j in players.red) {
+	
+    for(var i in players.blue) {
+		for(var j in players.red) {
              if(players.blue[i].lane == players.red[j].lane) {
-				alert("lol2");
+				//alert("lol2");
                 //One trade every wave
                 if (turn%18 == 0 && players.blue[i].inlane && players.red[j].inlane){
                     //100 must get a name
-                    var trade = Math.random()*( Math.abs(players.red[j].laning - players.blue[i].laning ) + 100);
+                    var trade = Math.random()*(Math.abs(players.red[j].laning - players.blue[i].laning ) + 100);
                     
                     if(trade < players.red[j].laning){
                         players.blue[i].hp -= 10; 
@@ -37,43 +38,48 @@ function doTurn(){
                     }
                 }
                 
-                if(players.red[j].hp	<=30  && players.red[j].inlane){
-                    var killed = Math.random()*( Math.max(v.affinities[players.red[j].champion], players.blue[i].affinities[players.blue[i].champion] ));
+                if(players.red[j].hp <=30  && players.red[j].inlane){
+                    var killed = Math.random()*( Math.max(60, 40 ));
                     
-                    if(killed > Math.min(players.red[j].affinities[players.red[j].champion], players.blue[i].affinities[players.blue[i].champion] )){
-                        alert("gollwu escaped :)");	
+                    if(killed > Math.min(players.red[j][players.red[j].champion], players.blue[i][players.blue[i].champion] )){
+                        alert(players.red[j].name+" escaped :)");	
                         players.red[j].hp=100;
                     }else {
-                        alert("gollwu died :(");	
+                        alert(players.red[j].name+" died :(");	
                         players.blue[i].gold+=400;
                         players.red[j].hp=100;
                     }
                     
                     players.red[j].inlane=false;
-                    back("red");
+                    //back("red");
                     
                 }
                 
                 if(players.blue[i].hp<=30 && players.blue[i].inlane){
-                    var killed = Math.random()*(Math.max(players.red[j].affinities[players.red[j].champion],players.blue[i].affinities[players.blue[i].champion] ));                    
-                    if(killed > Math.min(players.red[j].affinities[players.red[j].champion], players.blue[i].affinities[players.blue[i].champion] )){
-                        alert("wickd escaped :(");
+                    var killed = Math.random()*(Math.max(players.red[j][players.red[j].champion],players.blue[i][players.blue[i].champion] ));                    
+                    if(killed > Math.min(players.red[j][players.red[j].champion], players.blue[i][players.blue[i].champion] )){
+                        alert(players.blue[i].name+" escaped :(");
                         players.blue[i].hp=100;
                     }else {
-                        alert("wickd died :)");	
+                        alert(players.blue[i].name+" died :)");	
                         players.red[j].gold+=400;
                         players.blue[i].hp=100;
                     }
                     players.blue[i].inlane=false;
-                    back("blue");
+                    //back("blue");
                     
                 }
                 
-            }    
+            } 
+		
+			
 		}
-        	//document.getElementById('info').innerHTML = document.getElementById('info').innerHTML + "\n" + players.blue[i].name+ "HP : "+players.blue[i].hp + players.red[j].name+ " HP : "+players.red[j].hp + " wickd Gold : "+players.blue[i].gold + " gollwu Gold : "+players.red[j].gold; 
+        
 	}
 	
+	document.getElementById('info').innerHTML = '';
+	for(var i in players.blue) document.getElementById('info').innerHTML += players.blue[i].name+' HP:'+players.blue[i].hp+'<br />';
+	for(var i in players.red) document.getElementById('info').innerHTML += players.red[i].name+' HP:'+players.red[i].hp+'<br />';
 	
 	
 	
@@ -81,4 +87,4 @@ function doTurn(){
 	turn++;
 
 
-	}
+}

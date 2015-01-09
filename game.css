@@ -50,12 +50,19 @@
 	margin-left:680px;
 	margin-top:550px;
 }
-#champion_blue_supp{
+#champion_blue_support{
 	margin-left:650px;
 	margin-top:720px;
 }
 
-#champion_red_supp{
+#champion_red_support{
 	margin-left:750px;
 	margin-top:620px;
+}
+
+#info{
+	position: absolute;
+	top: 0;
+	right: 10%;
+	font-size: 200%;
 }
