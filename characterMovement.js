@@ -46,6 +46,22 @@ function moveLaningPlayers(){
     }
 }
 
+var moveElementToXY = function(e, x, y, dx, dy, dt) {
+	dx = dx || 2; dy = dy || 2; dt = dt || 10;
+	if(e.offsetLeft > x) dx = -dx;
+	if(e.offsetTop > y) dy = -dy;
+	var interX = setInterval(function(){(function(e, x, y, dx, dy, interX){
+		e.style.marginLeft = e.offsetLeft + dx + 'px';
+		console.log('moving');
+		console.log(e.offsetLeft+' '+x+' '+Math.abs(dx));
+		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)) clearInterval(interX);
+	})(e, x, y, dx, dy, interX)}, dt);
+	var interY = setInterval(function(){(function(e, x, y, dx, dy, interY){
+		e.style.marginTop = e.offsetTop + dy + 'px';
+		if(Math.abs(e.offsetTop - y) < Math.abs(dy)) clearInterval(interY);
+	})(e, x, y, dx, dy, interY)}, dt);
+};
+
 function moveJunglingPlayers(){		
 	for (var i in players['blue']){		
 		//console.log(players[color][i].champion);
@@ -53,33 +69,39 @@ function moveJunglingPlayers(){
 			switch (players.blue[i].camp) {
 				case 'BlueGrump':
 					players.blue[i].camp = "BlueSentinelle";
-					players.blue[i].DOMElement.style.marginTop =  '310px';
-					players.blue[i].DOMElement.style.marginLeft ='180px';
+					moveElementToXY(players.blue[i].DOMElement, 180, 310);
+					//players.blue[i].DOMElement.style.marginTop =  '310px';
+					//players.blue[i].DOMElement.style.marginLeft ='180px';
 					break;
 				case 'BlueSentinelle':
 					players.blue[i].camp = "BlueWolves";
-					players.blue[i].DOMElement.style.marginTop = '420px';
-					players.blue[i].DOMElement.style.marginLeft = '210px';
+					moveElementToXY(players.blue[i].DOMElement, 210, 420);
+					//players.blue[i].DOMElement.style.marginTop = '420px';
+					//players.blue[i].DOMElement.style.marginLeft = '210px';
 					break;
 				case 'BlueWolves':
 					players.blue[i].camp = "BlueRaptors";
-					players.blue[i].DOMElement.style.marginTop =  '490px';
-					players.blue[i].DOMElement.style.marginLeft =  '375px';
+					moveElementToXY(players.blue[i].DOMElement, 375, 490);
+					//players.blue[i].DOMElement.style.marginTop =  '490px';
+					//players.blue[i].DOMElement.style.marginLeft =  '375px';
 					break;
 				case 'BlueRaptors':
 					players.blue[i].camp = "BlueBrambleback";
-					players.blue[i].DOMElement.style.marginTop = '570px';
-					players.blue[i].DOMElement.style.marginLeft =  '425px';
+					moveElementToXY(players.blue[i].DOMElement, 425, 570);
+					//players.blue[i].DOMElement.style.marginTop = '570px';
+					//players.blue[i].DOMElement.style.marginLeft =  '425px';
 					break;
 				case 'BlueBrambleback':
 					players.blue[i].camp = "BlueGolems";
-					players.blue[i].DOMElement.style.marginTop = '660px';
-					players.blue[i].DOMElement.style.marginLeft =  '460px';
+					moveElementToXY(players.blue[i].DOMElement, 460, 660);
+					//players.blue[i].DOMElement.style.marginTop = '660px';
+					//players.blue[i].DOMElement.style.marginLeft =  '460px';
 					break;
 				case 'BlueGolems':
 					players.blue[i].camp = "BlueGrump";
-					players.blue[i].DOMElement.style.marginTop = '300px';
-					players.blue[i].DOMElement.style.marginLeft =  '135px';
+					moveElementToXY(players.blue[i].DOMElement, 135, 300);
+					//players.blue[i].DOMElement.style.marginTop = '300px';
+					//players.blue[i].DOMElement.style.marginLeft =  '135px';
 					break;				
 			}
 		}
@@ -90,33 +112,39 @@ function moveJunglingPlayers(){
 			switch (players.red[i].camp) {
 				case 'RedGrump':
 					players.red[i].camp = "RedSentinelle";
-					players.red[i].DOMElement.style.marginTop =  '410px';
-					players.red[i].DOMElement.style.marginLeft ='610px';
+					moveElementToXY(players.red[i].DOMElement, 610, 410);
+					//players.red[i].DOMElement.style.marginTop =  '410px';
+					//players.red[i].DOMElement.style.marginLeft ='610px';
 					break;
 				case 'RedSentinelle':
 					players.red[i].camp = "RedWolves";
-					players.red[i].DOMElement.style.marginTop = '300px';
-					players.red[i].DOMElement.style.marginLeft = '580px';
+					moveElementToXY(players.red[i].DOMElement, 580, 300);
+					//players.red[i].DOMElement.style.marginTop = '300px';
+					//players.red[i].DOMElement.style.marginLeft = '580px';
 					break;
 				case 'RedWolves':
 					players.red[i].camp = "RedRaptors";
-					players.red[i].DOMElement.style.marginTop =  '260px';
-					players.red[i].DOMElement.style.marginLeft =  '415px';
+					moveElementToXY(players.red[i].DOMElement, 415, 260);
+					//players.red[i].DOMElement.style.marginTop =  '260px';
+					//players.red[i].DOMElement.style.marginLeft =  '415px';
 					break;
 				case 'RedRaptors':
 					players.red[i].camp = "RedBrambleback";
-					players.red[i].DOMElement.style.marginTop = '170px';
-					players.red[i].DOMElement.style.marginLeft =  '365px';
+					moveElementToXY(players.red[i].DOMElement, 365, 170);
+					//players.red[i].DOMElement.style.marginTop = '170px';
+					//players.red[i].DOMElement.style.marginLeft =  '365px';
 					break;
 				case 'RedBrambleback':
 					players.red[i].camp = "RedGolems";
-					players.red[i].DOMElement.style.marginTop = '80px';
-					players.red[i].DOMElement.style.marginLeft =  '330px';
+					moveElementToXY(players.red[i].DOMElement, 330, 80);
+					//players.red[i].DOMElement.style.marginTop = '80px';
+					//players.red[i].DOMElement.style.marginLeft =  '330px';
 					break;
 				case 'RedGolems':
 					players.red[i].camp = "RedGrump";
-					players.red[i].DOMElement.style.marginTop = '420px';
-					players.red[i].DOMElement.style.marginLeft =  '655px';
+					moveElementToXY(players.red[i].DOMElement, 655, 420);
+					//players.red[i].DOMElement.style.marginTop = '420px';
+					//players.red[i].DOMElement.style.marginLeft =  '655px';
 					break;				
 			}
 		}
