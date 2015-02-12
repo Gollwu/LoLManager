@@ -47,19 +47,19 @@ function moveLaningPlayers(){
 }
 
 var moveElementToXY = function(e, x, y, dx, dy, dt) {
+	clearInterval(e.interX);
+	clearInterval(e.interY);
 	dx = dx || 2; dy = dy || 2; dt = dt || 10;
 	if(e.offsetLeft > x) dx = -dx;
 	if(e.offsetTop > y) dy = -dy;
-	var interX = setInterval(function(){(function(e, x, y, dx, dy, interX){
+	e.interX = setInterval(function(){(function(e, x, y, dx, dy){
 		e.style.marginLeft = e.offsetLeft + dx + 'px';
-		console.log('moving');
-		console.log(e.offsetLeft+' '+x+' '+Math.abs(dx));
-		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)) clearInterval(interX);
-	})(e, x, y, dx, dy, interX)}, dt);
-	var interY = setInterval(function(){(function(e, x, y, dx, dy, interY){
+		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)) clearInterval(e.interX);
+	})(e, x, y, dx, dy)}, dt);
+	e.interY = setInterval(function(){(function(e, x, y, dx, dy){
 		e.style.marginTop = e.offsetTop + dy + 'px';
-		if(Math.abs(e.offsetTop - y) < Math.abs(dy)) clearInterval(interY);
-	})(e, x, y, dx, dy, interY)}, dt);
+		if(Math.abs(e.offsetTop - y) < Math.abs(dy)) clearInterval(e.interY);
+	})(e, x, y, dx, dy)}, dt);
 };
 
 function moveJunglingPlayers(){		
