@@ -152,14 +152,26 @@ function moveJunglingPlayers(){
 }	
 
 
-function back(color){
-	if(color=="blue"){		
-		setTimeout(function() {champion_blue_top.style.marginTop = 750 + 'px';}, 1000);
+function kill(player){
+	if(player.team=="blue"){
+		player.DOMElement.style.display = 'none';	
+		moveElementToXY(player.DOMElement, 50, 750,10,10,1);		
+		setTimeout(function() {player.DOMElement.style.display = 'block';	}, 10000);
+		
+	}else{
+		player.DOMElement.style.display = 'none';
+		moveElementToXY(player.DOMElement, 750, 50,10,10,1);
+		setTimeout(function() {player.DOMElement.style.display = 'block';}, 10000);
 	}
-	if(color=="red"){		
-		setTimeout(function() {champion_red_top.style.marginLeft = 750 + 'px';}, 1000);		
-	}
+	
+}
 
+function goBackToBase(player){
+	if(player.team=="blue"){
+		setTimeout(function() {moveElementToXY(player.DOMElement, 50, 750);}, 4000);
+	}else{
+		setTimeout(function() {moveElementToXY(player.DOMElement, 750, 50);}, 4000);
+	}	
 }
 
 setInterval(moveLaningPlayers, 1000);

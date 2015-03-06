@@ -37,14 +37,18 @@ function doTurn(){
 			if(killed > Math.min(players.red[i][players.red[i].champion], players.blue[i][players.blue[i].champion] )){
 				//alert(players.red[i].name+" escaped :)");	
 				players.red[i].hp=100;
+				goBackToBase(players.red[i]);
+				players.red[i].status="base";
 			}else {
 				//alert(players.red[i].name+" died :(");	
 				players.blue[i].gold+=400;
 				players.red[i].hp=100;
+				players.red[i].status="dead";
+				kill(players.red[i]);
 			}
 			
-			players.red[i].status="dead";
-			//back("red");
+			
+			
 			
 		}
 		
@@ -52,14 +56,18 @@ function doTurn(){
 			var killed = Math.random()*(Math.max(players.red[i][players.red[i].champion],players.blue[i][players.blue[i].champion] ));                    
 			if(killed > Math.min(players.red[i][players.red[i].champion], players.blue[i][players.blue[i].champion] )){
 				//alert(players.blue[i].name+" escaped :(");
-				players.blue[i].hp=100;
+				players.blue[i].hp=100;				
+				goBackToBase(players.blue[i]);
+				players.blue[i].status="base";
 			}else {
 				//alert(players.blue[i].name+" died :)");	
 				players.red[i].gold+=400;
 				players.blue[i].hp=100;
+				players.blue[i].status="dead";
+				kill(players.blue[i]);
 			}
-			players.blue[i].status="dead";
-			//back("blue");
+			
+			
 			
 		}
  
