@@ -2,8 +2,21 @@
 	width:90px; 
 	height:90px; 
 	float:left;	
+	position:absolute;	
+}
+
+.nexus{
+	width:32px; 
+	height:32px; 
+	float:left;	
 	position:absolute;
-	
+}
+
+.turret{
+	width:32px; 
+	height:32px; 
+	float:left;	
+	position:absolute;
 }
 
 .blue{
@@ -68,9 +81,162 @@
 	margin-top:620px;
 }
 
+#blueNexus{
+	margin-left:107px;
+	margin-top:728px;	
+}
+
+#redNexus{
+	margin-left:728px;
+	margin-top:70px;
+}
+
 #info{
 	position: absolute;
 	top: 0;
 	right: 10%;
 	font-size: 200%;
+}
+#blueNexusTurret1 {
+    margin-left:110px;
+    margin-top: 690px;
+}
+
+#blueNexusTurret2 {
+    margin-left:140px;
+    margin-top: 720px;
+}
+
+#blueTopInhibTurret {
+    margin-left:85px;
+    margin-top: 580px;
+}
+
+#blueMidInhibTurret {
+    margin-left:220px;
+    margin-top: 620px;
+}
+
+#blueBotInhibturret {
+    margin-left:260px;
+    margin-top: 760px;
+}
+
+#blueTopInnerTurret {
+      margin-left:85px;
+     margin-top: 400px;
+}
+
+#blueMidInnerTurret {
+    margin-left:275px;
+    margin-top: 550px;
+}
+
+#blueBotInnerTurret {
+    margin-left:460px;
+    margin-top: 760px;
+}
+
+#blueTopOuterTurret {
+     margin-left:85px;
+     margin-top: 220px;
+}
+
+#blueBotOuterTurret {
+    margin-left:640px;
+    margin-top: 760px;
+}
+
+#blueMidOuterTurret {
+    margin-left:370px;
+    margin-top: 480px;
+}
+
+#redNexusTurret1 {
+    margin-left:690px;
+    margin-top: 80px;
+}
+
+#redNexusTurret1 {
+    
+}
+
+#redTopInhibTurret {
+    margin-left:600px;
+    margin-top: 40px;
+}
+
+#redMidInhibTurret {
+    margin-left:620px;
+    margin-top: 190px;
+}
+
+#redBotInhibTurret {
+    margin-left:760px;
+    margin-top: 230px;
+}
+
+#redTopInnerTurret {
+     margin-left:400px;
+     margin-top: 40px;
+}
+
+#redMidInnerTurret {
+    margin-left:550px;
+    margin-top: 275px;
+}
+
+#redBotInnerTurret {
+    margin-left:760px;
+    margin-top: 430px;
+}
+
+#redTopOuterTurret {
+    margin-left:220px;
+     margin-top: 40px;
+}
+
+#redMidOuterTurret {
+    margin-left:480px;
+    margin-top: 340px;
+}
+
+#redBotOuterTurret {
+    margin-left:760px;
+    margin-top: 610px;
+}
+
+#redNexusTurret2 {
+    margin-left:720px;
+    margin-top: 110px;
+}
+
+#blueInhibTop {
+    margin-left:85px;
+	margin-top:622px;	
+}
+
+#blueInhibMid {
+    margin-left:197px;
+	margin-top:650px;	
+}
+
+#blueInhibBot {
+    margin-left:210px;
+	margin-top:758px;	
+}
+
+#redInhibTop {
+    margin-left:632px;
+	margin-top:45px;
+}
+
+#redInhibMid {
+    margin-left:652px;
+	margin-top:160px;
+}
+
+#redInhibBot {
+    margin-left:758px;
+	margin-top:170px;
 }
