@@ -1,9 +1,34 @@
+body {
+    background-image: url("assets/background.png");
+}
+
 .champions { 
 	width:90px; 
 	height:90px; 
 	float:left;	
 	position:absolute;	
 }
+
+.playerPhotos {
+    width:128px;
+    height:128px;
+}
+
+.championPhotos {
+    width:128px;
+    height:128px;
+}
+
+#infoBlue {
+    width:428px;
+    float:left;
+}
+
+#infoRed {
+    width:428px;
+    float:right;
+}
+
 
 .nexus{
 	width:32px; 
@@ -28,6 +53,8 @@
 }
 
 #map{
+    margin-left:auto;
+    margin-right:auto;
 	background-image:url(assets/map.png);
 	width:856px;
 	height:856px;
@@ -91,11 +118,11 @@
 	margin-top:70px;
 }
 
-#info{
-	position: absolute;
-	top: 0;
-	right: 10%;
-	font-size: 200%;
+#info{	
+	width:856px;
+    height:400px;;
+    margin-left:auto;
+    margin-right:auto;	
 }
 #blueNexusTurret1 {
     margin-left:110px;
@@ -239,4 +266,13 @@
 #redInhibBot {
     margin-left:758px;
 	margin-top:170px;
+}
+
+
+
+
+.scoreboard {
+    background-color:#fff; 
+    height:128px;
+    width:168px;
 }

@@ -2,11 +2,14 @@ var players = {};
 
 //////////////////////////////// BLUE TEAM BOUUH
 players.blue = [{
-    name: 'wickd',
+    name: 'Wickd',
     laning: 80,
-    champion: 'irelia',
+    champion: 'Irelia',
     irelia: 99,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 1,
     role: 'top',
@@ -16,11 +19,14 @@ players.blue = [{
 	DOMElement: document.getElementById('champion_blue_top')
 	
 },{
-    name: 'shook',
+    name: 'Shook',
     laning: 35,
-    champion: 'riven',
+    champion: 'Riven',
     riven: 90,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 2,
     role: 'jungle',
@@ -29,11 +35,14 @@ players.blue = [{
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_jungle')
 },{
-    name: 'froggen',
+    name: 'Froggen',
     laning: 90,
-    champion: 'anivia',
+    champion: 'Anivia',
     anivia: 100,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 3,
     role: 'mid',
@@ -42,11 +51,14 @@ players.blue = [{
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_mid')
 },{
-    name: 'rekkles',
+    name: 'Rekkles',
     laning: 100,
-    champion: 'lucian',
+    champion: 'Lucian',
     lucian: 85,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 4,
     role: 'adc',
@@ -55,11 +67,14 @@ players.blue = [{
     team: 'blue',
 	DOMElement: document.getElementById('champion_blue_adc')
 },{
-    name: 'nyph',
+    name: 'Nyph',
     laning: 75,
-    champion: 'thresh',
+    champion: 'Thresh',
 	thresh: 80,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 4,
     role: 'support',
@@ -71,9 +86,9 @@ players.blue = [{
 
 //////////////////////////////// RED TEAM YAY
 players.red = [{
-    name: 'gollwu',
+    name: 'Gollwu',
     laning: 50,
-    champion: 'trundle',
+    champion: 'Trundle',
     trundle: 79,
     gold: 0,
     hp: 100,
@@ -84,9 +99,9 @@ players.red = [{
     team: 'red',
 	DOMElement: document.getElementById('champion_red_top')
 },{
-    name: 'nerevar',
+    name: 'Nerevar',
     laning: 25,
-    champion: 'fiddlesticks',
+    champion: 'Fiddlesticks',
     fiddlesticks: 65,
     gold: 0,
     hp: 100,
@@ -97,11 +112,14 @@ players.red = [{
     team: 'red',
 	DOMElement: document.getElementById('champion_red_jungle')
 },{
-    name: 'overplow',
+    name: 'Overplow',
     laning: 51,
-    champion: 'kogmaw',
+    champion: 'Kogmaw',
     kogmaw: 80,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 3,
     role: 'mid',
@@ -110,11 +128,14 @@ players.red = [{
     team: 'red',
 	DOMElement: document.getElementById('champion_red_mid')
 },{
-    name: 'hycariss',
+    name: 'Hycariss',
     laning: 85,
-    champion: 'vayne',
+    champion: 'Vayne',
 	vayne: 65,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 4,
     role: 'adc',
@@ -123,11 +144,14 @@ players.red = [{
     team: 'red',
 	DOMElement: document.getElementById('champion_red_adc')
 },{
-    name: 'sowerdski',
+    name: 'Sowerdski',
     laning: 10,
-    champion: 'taric',
+    champion: 'Taric',
 	taric:0,
     gold: 0,
+    kills:0,
+    deaths:0,
+    assists:0,
     hp: 100,
     lane: 4,
     role: 'support',

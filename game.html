@@ -5,6 +5,8 @@
   <link rel="stylesheet" type="text/css" href="game.css">
 </head>
 
+ 
+    
 <body>
 	<div src="assets/map.png" id="map"> 	
 		<img src="assets/champions/Irelia_Square_0.png" class="champions blue" id="champion_blue_top"  /> 
@@ -52,8 +54,73 @@
 		<img src="assets/turret.png" class="turret" id="redBotOuterTurret"  />
 		
 	</div>
-	<p id="info"/>
+	<div id="info">
+        <div id="infoBlue">
+            <div id="playerTopBlue" >
+                <img src="assets/Players/null.png" class="playerPhotos" id="topBluePhoto"/>
+                <img src="assets/Champions/null.png" class="championPhotos" id="topBlueChampion"/>
+                <div style="float:right;" class="scoreboard"></div>
+            </div>
+            <div id="playerjungleBlue">
+                <img src="assets/Players/null.png" class="playerPhotos" id="jungleBluePhoto"/>
+                <img src="assets/Champions/null.png" class="championPhotos" id="jungleBlueChampion"/>
+                <div style="float:right" class="scoreboard"></div>
+            </div>
+            <div id="playerMidBlue" >
+                <img src="assets/Players/null.png" class="playerPhotos" id="midBluePhoto"/>
+                <img src="assets/Champions/null.png" class="championPhotos" id="midBlueChampion"/>
+                <div style="float:right;" class="scoreboard"></div>
+            </div>
+            <div id="playerAdcBlue" >
+                <img src="assets/Players/null.png" class="playerPhotos" id="adcBluePhoto"/>
+                <img src="assets/Champions/null.png" class="championPhotos" id="adcBlueChampion"/>
+                <div style="float:right;" class="scoreboard"></div>
+            </div>
+            <div id="playerSupportBlue">
+                <img src="assets/Players/null.png" class="playerPhotos" id="supportBluePhoto"/>
+                <img src="assets/Champions/null.png" class="championPhotos" id="supportBlueChampion"/>
+                <div style="float:right" class="scoreboard"></div>
+            </div>
+        </div>    
+         <div id="infoRed">
+            <div id="playerTopRed">
+                <div style="float:left;" class="scoreboard"></div>
+                <img src="assets/Champions/null.png" class="championPhotos" id="topRedChampion"/>
+                <img src="assets/Players/null.png" class="playerPhotos" id="topRedPhoto"/>
+            </div>
+             <div id="playerJungleRed" >
+                 <div style="float:left;" class="scoreboard"></div>
+                 <img src="assets/Champions/null.png" class="championPhotos" id="jungleRedChampion"/>
+                <img src="assets/Players/null.png" class="playerPhotos" id="jungleRedPhoto"/>
+            </div>
+             <div id="playerMidRed" >
+                 <div style="float:left;" class="scoreboard"></div>
+                 <img src="assets/Champions/null.png" class="championPhotos" id="midRedChampion"/>
+                <img src="assets/Players/null.png" class="playerPhotos" id="midRedPhoto"/>
+            </div>
+             <div id="playerAdcRed" >
+                 <div style="float:left;" class="scoreboard"></div>
+                 <img src="assets/Champions/null.png" class="championPhotos" id="adcRedChampion"/>
+                <img src="assets/Players/null.png" class="playerPhotos" id="adcRedPhoto"/>
+            </div>
+             <div id="playerSupportRed">
+                 <div style="float:left;" class="scoreboard"></div>
+                 <img src="assets/Champions/null.png" class="championPhotos" id="supportRedChampion"/>
+                <img src="assets/Players/null.png" class="playerPhotos" id="supportRedPhoto"/>
+            </div>
+        </div>  
+    </div>
 	<script type="text/javascript" src="db.js"> </script>
+    <script>
+        for (var i in players.blue){
+            document.getElementById(players.blue[i].role+"BlueChampion").src="assets/Champions/"+players.blue[i].champion+"_Square_0.png"		
+            document.getElementById(players.blue[i].role+"BluePhoto").src="assets/Players/"+players.blue[i].name+".png"		            
+        }
+         for (var i in players.red){
+            document.getElementById(players.red[i].role+"RedChampion").src="assets/Champions/"+players.red[i].champion+"_Square_0.png"		
+            document.getElementById(players.red[i].role+"RedPhoto").src="assets/Players/"+players.red[i].name+".png"		            
+        }
+    </script>   
 	<script type="text/javascript" src="characterMovement.js"> </script>
 	<script type="text/javascript" src="gameEngine.js"> </script>
 </body>

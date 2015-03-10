@@ -74,9 +74,9 @@ function doTurn(){
         
 	}
 	
-	document.getElementById('info').innerHTML = '';
-	for(var i in players.blue) document.getElementById('info').innerHTML += players.blue[i].name+' HP:'+players.blue[i].hp+'<br />';
-	for(var i in players.red) document.getElementById('info').innerHTML += players.red[i].name+' HP:'+players.red[i].hp+'<br />';
+	//document.getElementById('info').innerHTML = '';
+	//for(var i in players.blue) document.getElementById('info').innerHTML += players.blue[i].name+' HP:'+players.blue[i].hp+'<br />';
+	//for(var i in players.red) document.getElementById('info').innerHTML += players.red[i].name+' HP:'+players.red[i].hp+'<br />';
 	
 	
 	
