@@ -19,6 +19,24 @@ body {
     height:128px;
 }
 
+.scoreboard {
+    background-color:#000000; 
+    color:#ffffff;
+    height:128px;
+    width:168px;
+}
+
+
+
+.redGoldInfo {
+   
+}
+
+.blueGoldInfo {
+    margin-right:50px;
+}
+
+
 #infoBlue {
     width:428px;
     float:left;
@@ -270,9 +288,8 @@ body {
 
 
 
-
-.scoreboard {
-    background-color:#fff; 
-    height:128px;
+.itemBar {
     width:168px;
 }
+
+

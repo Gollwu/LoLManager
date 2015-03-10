@@ -7,6 +7,19 @@ function sortByKey(array, key) {
     });
 }
 
+function pad (str, max) {
+  str = str.toString();
+  return str.length < max ? pad("0" + str, max) : str;
+}
+
+function updatePlayer(player){
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Kills").innerHTML = player.kills;
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Deaths").innerHTML = player.deaths;
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Assists").innerHTML = player.assists;
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Gold").innerHTML = pad(player.gold,5);
+                            
+}
+
 function doTurn(){	 
 	// players.blue and players.red are sorted: lane ~ i
     for(var i in players.blue) {
@@ -14,6 +27,9 @@ function doTurn(){
 		if (players.red[i].status=="laning"){
 			players.blue[i].gold+=11;
 			players.red[i].gold+=11;
+            updatePlayer(players.blue[i]);                
+            updatePlayer(players.red[i]);
+            
 		}
 	
 		//One trade every wave
@@ -42,9 +58,13 @@ function doTurn(){
 			}else {
 				//alert(players.red[i].name+" died :(");	
 				players.blue[i].gold+=400;
+                players.blue[i].kills++;
+                players.red[i].deaths++; 
 				players.red[i].hp=100;
 				players.red[i].status="dead";
 				kill(players.red[i]);
+                updatePlayer(players.blue[i]);
+                updatePlayer(players.red[i]);
 			}
 			
 			
@@ -62,9 +82,13 @@ function doTurn(){
 			}else {
 				//alert(players.blue[i].name+" died :)");	
 				players.red[i].gold+=400;
+                players.red[i].kills++;
+                players.blue[i].deaths++;   
 				players.blue[i].hp=100;
 				players.blue[i].status="dead";
 				kill(players.blue[i]);
+                updatePlayer(players.blue[i]);
+                updatePlayer(players.red[i]);
 			}
 			
 			

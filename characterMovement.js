@@ -68,10 +68,12 @@ var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 
 function moveJunglingPlayers(){		
 	for (var i in players['blue']){	
-		if (players.blue[i].status=="jungling"){			
+		if (players.blue[i].status=="jungling"){	
+            players.blue[i].gold+=400;
+            updatePlayer(players.blue[i]);
 			switch (players.blue[i].camp) {
 				case 'BlueGrump':
-					players.blue[i].camp = "BlueSentinelle";
+					players.blue[i].camp = "BlueSentinelle";                    
 					moveElementToXY(players.blue[i].DOMElement, 180, 310);
 					break;
 				case 'BlueSentinelle':
@@ -98,7 +100,9 @@ function moveJunglingPlayers(){
 		}
 	}
 	for (var i in players['red']){				
-		if (players.red[i].status=="jungling"){			
+		if (players.red[i].status=="jungling"){	
+            players.red[i].gold+=400;
+            updatePlayer(players.red[i]);
 			switch (players.red[i].camp) {
 				case 'RedGrump':
 					players.red[i].camp = "RedSentinelle";
