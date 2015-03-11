@@ -27,7 +27,7 @@ function playerCreeping(player){
 
 function tradeWithOpponent(player, oppositePlayer){
     //One trade every turn
-    if (player.status=="laning" && players.red[i].status=="laning"){
+    if (player.status=="laning" && oppositePlayer.status=="laning"){
         //100 must get a name
         var trade = Math.random()*(Math.abs(oppositePlayer.laning - player.laning ) + 100);
 
@@ -42,23 +42,26 @@ function tradeWithOpponent(player, oppositePlayer){
     }     
 }
 
-function checkDead(player){
-    if(players.blue[i].hp<=15 && players.blue[i].status=="laning"){
-        var killed = Math.random()*2-1;  //Need formula here 
-        alert(killed);
-        if(!killed){           
-            players.blue[i].hp=100;				
-            goBackToBase(players.blue[i]);
-            players.blue[i].lane=0;
-            players.blue[i].status="base";
+function checkDead(player, killer, assists){
+    if(player.hp<=15 && player.status=="laning"){
+        var killed = Math.round(Math.random()*2-1);  //Need formula here 
+       
+        if(!killed){  		
+            goBackToBase(player);
+            player.lane=0;
+            player.status="base";
         }else {           
-            players.red[i].gold+=400;
-            players.red[i].kills++;
-            players.blue[i].deaths++;   
-            players.blue[i].hp=100;
-            players.blue[i].status="dead";
-            players.blue[i].lane=0;
-            kill(players.blue[i]);            
+            killer.gold+=400;
+            killer.kills++;
+			for(var i in assists){
+				assists[i].assists++;
+				assists[i].gold+=200;
+			}
+            player.deaths++;   
+            player.hp=100;
+            player.status="dead";
+            player.lane=0;
+            kill(player);            
         }
     }        
 }
@@ -69,24 +72,42 @@ function doTurn(){
 	    if (players.blue[i].status=="laning"){
 		  playerCreeping(players.blue[i]);
         }
-        for(var j in players.red){
+		var oppositePlayers = new Array();
+		var oppositeAssistsPlayers = new Array();
+        for(var j in players.red){			
             if(players.red[j].lane==players.blue[i].lane){
-                tradeWithOpponent(players.blue[i],players.red[j])
-            }
-        }	
-        checkDead(players.blue[i]);
+				oppositePlayers.push(players.red[j]);
+				oppositeAssistsPlayers.push(players.red[j]);	
+			}
+		}	
+		for(var k in oppositePlayers){
+			tradeWithOpponent(players.blue[i],oppositePlayers[k]);			
+			oppositeAssistsPlayers.splice(k,1);			
+			checkDead(players.blue[i],oppositePlayers[k], oppositeAssistsPlayers);
+			oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
+		}
+                
         updatePlayer(players.blue[i]);
 	}
     for(var i in players.red) {
 	    if (players.red[i].status=="laning"){
 		  playerCreeping(players.red[i]);
         }
-        for(var j in players.blue){
+		
+		var oppositePlayers = new Array();
+		var oppositeAssistsPlayers = new Array();
+		for(var j in players.blue){			
             if(players.blue[j].lane==players.red[i].lane){
-                tradeWithOpponent(players.red[i],players.blue[j])
+				oppositePlayers.push(players.blue[j]);   
+				oppositeAssistsPlayers.push(players.blue[j]);				
             }
-        }	
-        checkDead(players.red[i]);
+		}	
+		for(var k in oppositePlayers){
+			tradeWithOpponent(players.red[i],oppositePlayers[k]);						
+			oppositeAssistsPlayers.splice(k,1);						
+			checkDead(players.red[i],oppositePlayers[k], oppositeAssistsPlayers);
+			oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
+		}        	        
         updatePlayer(players.red[i]);
 	}
 }

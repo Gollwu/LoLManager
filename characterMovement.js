@@ -155,9 +155,9 @@ function respawnPlayer(playerDOMElement){
 
 function goBackToBase(player){
 	if(player.team=="blue"){
-		setTimeout(function() {moveElementToXY(player.DOMElement, 20, 750);}, 4000);
+		setTimeout(function() {moveElementToXY(player.DOMElement, 20, 750); player.hp=100;}, 4000);
 	}else{
-		setTimeout(function() {moveElementToXY(player.DOMElement, 750, 20);}, 4000);
+		setTimeout(function() {moveElementToXY(player.DOMElement, 750, 20); player.hp=100;}, 4000);
 	}	
 }
 
