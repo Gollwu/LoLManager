@@ -6,7 +6,23 @@ body {
 	width:90px; 
 	height:90px; 
 	float:left;	
-	position:absolute;	
+	position:absolute;	  
+}
+
+.itemBar {
+    width:168px;
+}
+
+.HPBar1 {
+    width:100%; height:10px; background-color:green; float:left; margin-top:85%;
+}
+
+.HPBar2 {
+   width:0%;
+   height:10px; 
+   background-color:red; 
+   float:right;
+   margin-top:85%;
 }
 
 .playerPhotos {
@@ -25,8 +41,6 @@ body {
     height:128px;
     width:168px;
 }
-
-
 
 .redGoldInfo {
    
@@ -79,51 +93,71 @@ body {
 	position:relative;
 }
 
-#champion_blue_top{
+#mapChampionBlueTop{
 	margin-left:50px;
-	margin-top:80px;
+	margin-top:80px;    
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_red_top{
+#mapChampionRedTop{
 	margin-left:150px;
 	margin-top:40px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_blue_jungle{
+#mapChampionBlueJungler{
 	margin-left:170px;
 	margin-top:300px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_red_jungle{
+#mapChampionRedJungler{
 	margin-left:600px;
 	margin-top:400px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
-#champion_blue_mid{
+#mapChampionBlueMid{
 	margin-left:350px;
 	margin-top:420px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_red_mid{
+#mapChampionRedMid{
 	margin-left:440px;
 	margin-top:330px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
-#champion_blue_adc{
+#mapChampionBlueAdc{
 	margin-left:590px;
 	margin-top:650px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_red_adc{
+#mapChampionRedAdc{
 	margin-left:680px;
 	margin-top:550px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
-#champion_blue_support{
+#mapChampionBlueSupport{
 	margin-left:650px;
 	margin-top:720px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
-#champion_red_support{
+#mapChampionRedSupport{
 	margin-left:750px;
 	margin-top:620px;
+    background: url('assets/champions/null.png');
+    background-size: 100% auto;  
 }
 
 #blueNexus{
@@ -285,11 +319,3 @@ body {
     margin-left:758px;
 	margin-top:170px;
 }
-
-
-
-.itemBar {
-    width:168px;
-}
-
-

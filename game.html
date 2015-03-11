@@ -8,17 +8,49 @@
  
     
 <body>
-	<div src="assets/map.png" id="map"> 	
-		<img src="assets/champions/Irelia_Square_0.png" class="champions blue" id="champion_blue_top"  /> 
-		<img src="assets/champions/Trundle_Square_0.png" class="champions red" id="champion_red_top"  /> 
-		<img src="assets/champions/Riven_Square_0.png" class="champions blue" id="champion_blue_jungle"  /> 
-		<img src="assets/champions/Fiddlesticks_Square_0.png" class="champions red" id="champion_red_jungle"  />
-		<img src="assets/champions/Anivia_Square_0.png" class="champions blue" id="champion_blue_mid"  /> 
-		<img src="assets/champions/KogMaw_Square_0.png" class="champions red" id="champion_red_mid"  />
-		<img src="assets/champions/Lucian_Square_0.png" class="champions blue" id="champion_blue_adc"  /> 
-		<img src="assets/champions/Vayne_Square_0.png" class="champions red" id="champion_red_adc"  />
-		<img src="assets/champions/Thresh_Square_0.png" class="champions blue" id="champion_blue_support"  /> 
-		<img src="assets/champions/Taric_Square_0.png" class="champions red" id="champion_red_support"  />
+	<div src="assets/map.png" id="map">       
+        <div class="champions blue" id="mapChampionBlueTop"> 
+            <div id="topBlueHP" class="HPBar1"></div>  
+            <div id="topBlueMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions red" id="mapChampionRedTop"> 
+            <div id="topRedHP" class="HPBar1"></div>  
+            <div id="topRedMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions blue" id="mapChampionBlueJungler"> 
+            <div id="junglerBlueHP" class="HPBar1"></div>  
+            <div id="junglerBlueMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions red" id="mapChampionRedJungler"> 
+            <div id="junglerRedHP" class="HPBar1"></div>  
+            <div id="junglerRedMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions blue" id="mapChampionBlueMid"> 
+            <div id="midBlueHP" class="HPBar1"></div>  
+            <div id="midBlueMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions red" id="mapChampionRedMid"> 
+            <div id="midRedHP" class="HPBar1"></div>  
+            <div id="midRedMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions blue" id="mapChampionBlueAdc"> 
+            <div id="adcBlueHP" class="HPBar1"></div>  
+            <div id="adcBlueMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions red" id="mapChampionRedAdc"> 
+            <div id="adcRedHP" class="HPBar1"></div>  
+            <div id="adcRedMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions blue" id="mapChampionBlueSupport"> 
+            <div id="supportBlueHP" class="HPBar1"></div>  
+            <div id="supportBlueMissingHP" class="HPBar2"></div>
+        </div>
+        <div class="champions red" id="mapChampionRedSupport"> 
+            <div id="supportRedHP" class="HPBar1"></div>  
+            <div id="supportRedMissingHP" class="HPBar2"></div>
+        </div>
+            
+        
 		
 		<img src="assets/nexus.png" class="nexus" id="blueNexus"  />
 		<img src="assets/nexus.png" class="nexus" id="redNexus"  />
@@ -244,13 +276,15 @@
     </div>
 	<script type="text/javascript" src="db.js"> </script>
     <script>
-        for (var i in players.blue){
-            document.getElementById(players.blue[i].role+"BlueChampion").src="assets/Champions/"+players.blue[i].champion+"_Square_0.png"		
-            document.getElementById(players.blue[i].role+"BluePhoto").src="assets/Players/"+players.blue[i].name+".png"		            
+        for (var i in players.blue){            
+            document.getElementById("mapChampionBlue"+players.blue[i].role.charAt(0).toUpperCase() + players.blue[i].role.slice(1)).style.backgroundImage="url(assets/Champions/"+players.blue[i].champion+"_Square_0.png)"		
+            document.getElementById(players.blue[i].role+"BluePhoto").src="assets/Players/"+players.blue[i].name+".png"		
+            document.getElementById(players.blue[i].role+"BlueChampion").src="assets/Champions/"+players.blue[i].champion+"_Square_0.png"            
         }
          for (var i in players.red){
+            document.getElementById("mapChampionRed"+players.red[i].role.charAt(0).toUpperCase() + players.red[i].role.slice(1)).style.backgroundImage="url(assets/Champions/"+players.red[i].champion+"_Square_0.png)"			
+            document.getElementById(players.red[i].role+"RedPhoto").src="assets/Players/"+players.red[i].name+".png"		 
             document.getElementById(players.red[i].role+"RedChampion").src="assets/Champions/"+players.red[i].champion+"_Square_0.png"		
-            document.getElementById(players.red[i].role+"RedPhoto").src="assets/Players/"+players.red[i].name+".png"		            
         }
     </script>   
 	<script type="text/javascript" src="characterMovement.js"> </script>

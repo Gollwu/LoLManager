@@ -69,7 +69,7 @@ var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 function moveJunglingPlayers(){		
 	for (var i in players['blue']){	
 		if (players.blue[i].status=="jungling"){	
-            players.blue[i].gold+=400;
+            players.blue[i].gold+=30;
             updatePlayer(players.blue[i]);
 			switch (players.blue[i].camp) {
 				case 'BlueGrump':
@@ -101,7 +101,7 @@ function moveJunglingPlayers(){
 	}
 	for (var i in players['red']){				
 		if (players.red[i].status=="jungling"){	
-            players.red[i].gold+=400;
+            players.red[i].gold+=30;
             updatePlayer(players.red[i]);
 			switch (players.red[i].camp) {
 				case 'RedGrump':

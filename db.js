@@ -6,7 +6,8 @@ players.blue = [{
     laning: 80,
     champion: 'Irelia',
     irelia: 99,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -16,14 +17,15 @@ players.blue = [{
     status: 'laning',
 	camp: 'none',
     team: 'blue',
-	DOMElement: document.getElementById('champion_blue_top')
+	DOMElement: document.getElementById('mapChampionBlueTop')
 	
 },{
     name: 'Shook',
     laning: 35,
     champion: 'Riven',
     riven: 90,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -33,13 +35,14 @@ players.blue = [{
 	status: 'jungling', 
 	camp: 'BlueSentinelle',	
     team: 'blue',
-	DOMElement: document.getElementById('champion_blue_jungle')
+	DOMElement: document.getElementById('mapChampionBlueJungler')
 },{
     name: 'Froggen',
     laning: 90,
     champion: 'Anivia',
     anivia: 100,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -49,13 +52,14 @@ players.blue = [{
     status: 'laning',
 	camp: 'none',
     team: 'blue',
-	DOMElement: document.getElementById('champion_blue_mid')
+	DOMElement: document.getElementById('mapChampionBlueMid')
 },{
     name: 'Rekkles',
     laning: 100,
     champion: 'Lucian',
     lucian: 85,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -65,13 +69,14 @@ players.blue = [{
     status: 'laning',
 	camp: 'none',
     team: 'blue',
-	DOMElement: document.getElementById('champion_blue_adc')
+	DOMElement: document.getElementById('mapChampionBlueAdc')
 },{
     name: 'Nyph',
     laning: 75,
     champion: 'Thresh',
 	thresh: 80,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -81,7 +86,7 @@ players.blue = [{
     status: 'laning',
 	camp: 'none',
     team: 'blue',
-	DOMElement: document.getElementById('champion_blue_support')
+	DOMElement: document.getElementById('mapChampionBlueSupport')
 }];
 
 //////////////////////////////// RED TEAM YAY
@@ -90,7 +95,8 @@ players.red = [{
     laning: 50,
     champion: 'Trundle',
     trundle: 79,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -100,13 +106,14 @@ players.red = [{
     status: 'laning',
 	camp: 'none',
     team: 'red',
-	DOMElement: document.getElementById('champion_red_top')
+	DOMElement: document.getElementById('mapChampionRedTop')
 },{
     name: 'Nerevar',
     laning: 25,
     champion: 'Fiddlesticks',
     fiddlesticks: 65,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -116,13 +123,14 @@ players.red = [{
     status: 'jungling',
 	camp: 'RedSentinelle',
     team: 'red',
-	DOMElement: document.getElementById('champion_red_jungle')
+	DOMElement: document.getElementById('mapChampionRedJungler')
 },{
     name: 'Overplow',
     laning: 51,
     champion: 'Kogmaw',
     kogmaw: 80,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -132,13 +140,14 @@ players.red = [{
     status: 'laning',
 	camp: 'none',
     team: 'red',
-	DOMElement: document.getElementById('champion_red_mid')
+	DOMElement: document.getElementById('mapChampionRedMid')
 },{
     name: 'Hycariss',
     laning: 85,
     champion: 'Vayne',
 	vayne: 65,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -148,13 +157,14 @@ players.red = [{
     status: 'laning',
 	camp: 'none',
     team: 'red',
-	DOMElement: document.getElementById('champion_red_adc')
+	DOMElement: document.getElementById('mapChampionRedAdc')
 },{
     name: 'Sowerdski',
     laning: 10,
     champion: 'Taric',
 	taric:0,
-    gold: 0,
+    gold: 475,
+    stuffValue: 475,
     kills:0,
     deaths:0,
     assists:0,
@@ -164,5 +174,5 @@ players.red = [{
     status: 'laning',
 	camp: 'none',
     team: 'red',
-	DOMElement: document.getElementById('champion_red_support')
+	DOMElement: document.getElementById('mapChampionRedSupport')
 }];

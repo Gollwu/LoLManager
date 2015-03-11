@@ -1,5 +1,3 @@
-var turn = 1;
-
 function sortByKey(array, key) {
     return array.sort(function(a, b) {
         var x = a[key], y = b[key];
@@ -17,99 +15,82 @@ function updatePlayer(player){
     document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Deaths").innerHTML = player.deaths;
     document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Assists").innerHTML = player.assists;
     document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"Gold").innerHTML = pad(player.gold,5);
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"HP").style.width = player.hp + "%"
+    document.getElementById(player.role+player.team.charAt(0).toUpperCase() + player.team.slice(1)+"MissingHP").style.width = 100-player.hp + "%"
                             
+}
+
+function playerCreeping(player){   
+    player.gold+=18;
+    updatePlayer(player);     
+}
+
+function tradeWithOpponent(player, oppositePlayer){
+    //One trade every turn
+    if (player.status=="laning" && players.red[i].status=="laning"){
+        //100 must get a name
+        var trade = Math.random()*(Math.abs(oppositePlayer.laning - player.laning ) + 100);
+
+        if(trade < oppositePlayer.laning){
+            player.hp -= 2; 
+        }else if (trade < oppositePlayer.laning+player.laning){
+            oppositePlayer.hp-=2;
+        }else if (trade < oppositePlayer.laning+player.laning+50){
+            oppositePlayer.hp-=2;
+            player.hp-=2;
+        }
+    }     
+}
+
+function checkDead(player){
+    if(players.blue[i].hp<=15 && players.blue[i].status=="laning"){
+        var killed = Math.random()*2-1;  //Need formula here 
+        alert(killed);
+        if(!killed){           
+            players.blue[i].hp=100;				
+            goBackToBase(players.blue[i]);
+            players.blue[i].lane=0;
+            players.blue[i].status="base";
+        }else {           
+            players.red[i].gold+=400;
+            players.red[i].kills++;
+            players.blue[i].deaths++;   
+            players.blue[i].hp=100;
+            players.blue[i].status="dead";
+            players.blue[i].lane=0;
+            kill(players.blue[i]);            
+        }
+    }        
 }
 
 function doTurn(){	 
 	// players.blue and players.red are sorted: lane ~ i
     for(var i in players.blue) {
-	
-		if (players.red[i].status=="laning"){
-			players.blue[i].gold+=11;
-			players.red[i].gold+=11;
-            updatePlayer(players.blue[i]);                
-            updatePlayer(players.red[i]);
-            
-		}
-	
-		//One trade every wave
-		if (turn%18 == 0 && players.blue[i].status=="laning" && players.red[i].status=="laning"){
-			//100 must get a name
-			var trade = Math.random()*(Math.abs(players.red[i].laning - players.blue[i].laning ) + 100);
-			
-			if(trade < players.red[i].laning){
-				players.blue[i].hp -= 10; 
-			}else if (trade < players.red[i].laning+players.blue[i].laning){
-				players.red[i].hp-=10;
-			}else if (trade < players.red[i].laning+players.blue[i].laning+50){
-				players.red[i].hp-=10;
-				players.blue[i].hp-=10;
-			}
-		}
-		
-		if(players.red[i].hp <=30  && players.red[i].status=="laning"){
-			var killed = Math.random()*( Math.max(60, 40 ));
-			
-			if(killed > Math.min(players.red[i][players.red[i].champion], players.blue[i][players.blue[i].champion] )){
-				//alert(players.red[i].name+" escaped :)");	
-				players.red[i].hp=100;
-				goBackToBase(players.red[i]);
-				players.red[i].status="base";
-			}else {
-				//alert(players.red[i].name+" died :(");	
-				players.blue[i].gold+=400;
-                players.blue[i].kills++;
-                players.red[i].deaths++; 
-				players.red[i].hp=100;
-				players.red[i].status="dead";
-				kill(players.red[i]);
-                updatePlayer(players.blue[i]);
-                updatePlayer(players.red[i]);
-			}
-			
-			
-			
-			
-		}
-		
-		if(players.blue[i].hp<=30 && players.blue[i].status=="laning"){
-			var killed = Math.random()*(Math.max(players.red[i][players.red[i].champion],players.blue[i][players.blue[i].champion] ));                    
-			if(killed > Math.min(players.red[i][players.red[i].champion], players.blue[i][players.blue[i].champion] )){
-				//alert(players.blue[i].name+" escaped :(");
-				players.blue[i].hp=100;				
-				goBackToBase(players.blue[i]);
-				players.blue[i].status="base";
-			}else {
-				//alert(players.blue[i].name+" died :)");	
-				players.red[i].gold+=400;
-                players.red[i].kills++;
-                players.blue[i].deaths++;   
-				players.blue[i].hp=100;
-				players.blue[i].status="dead";
-				kill(players.blue[i]);
-                updatePlayer(players.blue[i]);
-                updatePlayer(players.red[i]);
-			}
-			
-			
-			
-		}
- 
-        
+	    if (players.blue[i].status=="laning"){
+		  playerCreeping(players.blue[i]);
+        }
+        for(var j in players.red){
+            if(players.red[j].lane==players.blue[i].lane){
+                tradeWithOpponent(players.blue[i],players.red[j])
+            }
+        }	
+        checkDead(players.blue[i]);
+        updatePlayer(players.blue[i]);
 	}
-	
-	//document.getElementById('info').innerHTML = '';
-	//for(var i in players.blue) document.getElementById('info').innerHTML += players.blue[i].name+' HP:'+players.blue[i].hp+'<br />';
-	//for(var i in players.red) document.getElementById('info').innerHTML += players.red[i].name+' HP:'+players.red[i].hp+'<br />';
-	
-	
-	
-	
-	turn++;
-
-
+    for(var i in players.red) {
+	    if (players.red[i].status=="laning"){
+		  playerCreeping(players.red[i]);
+        }
+        for(var j in players.blue){
+            if(players.blue[j].lane==players.red[i].lane){
+                tradeWithOpponent(players.red[i],players.blue[j])
+            }
+        }	
+        checkDead(players.red[i]);
+        updatePlayer(players.red[i]);
+	}
 }
 
 players.blue = sortByKey(players.blue, 'lane');
 players.red = sortByKey(players.red, 'lane');
-setInterval(doTurn, 100);
+setInterval(doTurn, 2000);
