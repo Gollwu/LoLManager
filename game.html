@@ -8,7 +8,7 @@
  
     
 <body>
-	<div src="assets/map.png" id="map">       
+	<div id="map">       
         <div class="champions blue" id="mapChampionBlueTop"> 
             <div id="topBlueHP" class="HPBar1"></div>  
             <div id="topBlueMissingHP" class="HPBar2"></div>
@@ -276,19 +276,39 @@
     </div>
 	<script type="text/javascript" src="db.js"> </script>
     <script>
-        for (var i in players.blue){            
-            document.getElementById("mapChampionBlue"+players.blue[i].role.charAt(0).toUpperCase() + players.blue[i].role.slice(1)).style.backgroundImage="url(assets/Champions/"+players.blue[i].champion+"_Square_0.png)"		
-            document.getElementById(players.blue[i].role+"BluePhoto").src="assets/Players/"+players.blue[i].name+".png"		
-            document.getElementById(players.blue[i].role+"BlueChampion").src="assets/Champions/"+players.blue[i].champion+"_Square_0.png"            
-        }
-         for (var i in players.red){
-            document.getElementById("mapChampionRed"+players.red[i].role.charAt(0).toUpperCase() + players.red[i].role.slice(1)).style.backgroundImage="url(assets/Champions/"+players.red[i].champion+"_Square_0.png)"			
-            document.getElementById(players.red[i].role+"RedPhoto").src="assets/Players/"+players.red[i].name+".png"		 
-            document.getElementById(players.red[i].role+"RedChampion").src="assets/Champions/"+players.red[i].champion+"_Square_0.png"		
+        var colors = ['red', 'blue'];
+        for (var a in colors){
+            var color = colors[a];    
+            for (var i in players[color]){            
+                document.getElementById("mapChampion"+ color.charAt(0).toUpperCase() + color.slice(1)+players[color][i].role.charAt(0).toUpperCase() + players[color][i].role.slice(1)).style.backgroundImage="url(assets/Champions/"+players[color][i].champion+"_Square_0.png)"		
+                document.getElementById(players[color][i].role+color.charAt(0).toUpperCase() + color.slice(1)+"Photo").src="assets/Players/"+players[color][i].name+".png"		 
+                document.getElementById(players[color][i].role+ color.charAt(0).toUpperCase() + color.slice(1)+"Champion").src="assets/Champions/"+players[color][i].champion+"_Square_0.png"		           
+            }  
         }
     </script>   
 	<script type="text/javascript" src="characterMovement.js"> </script>
 	<script type="text/javascript" src="gameEngine.js"> </script>
+    <script>
+        document.onkeypress = returnKey;
+        function returnKey(evt){            
+            if ((evt.keyCode == 13)){
+                  
+              var colors = ['red', 'blue'];
+              for (var a in colors){
+                var color = colors[a];                
+                for(var i in players[color]){
+                    players[color][i].kills=0;
+                    players[color][i].deaths=16;
+                    players[color][i].assists=0;  
+                    document.getElementById(players[color][i].role+ color.charAt(0).toUpperCase() + color.slice(1)+"Photo").src="assets/Players/djambi.png"		 
+                    document.getElementById(players[color][i].role+color.charAt(0).toUpperCase() + color.slice(1)+"Champion").src="assets/Champions/Shen_Square_0.png"
+
+                    }
+                }
+              }
+            }    
+    </script>
+
 </body>
 
 

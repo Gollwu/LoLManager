@@ -127,7 +127,7 @@ players.red = [{
 },{
     name: 'Overplow',
     laning: 51,
-    champion: 'Kogmaw',
+    champion: 'KogMaw',
     kogmaw: 80,
     gold: 475,
     stuffValue: 475,

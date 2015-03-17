@@ -47,8 +47,7 @@ function checkDead(player, killer, assists){
         var killed = Math.round(Math.random()*2-1);  //Need formula here 
        
         if(!killed){  		
-            goBackToBase(player);
-            player.lane=0;
+            goBackToBase(player);            
             player.status="base";
         }else {           
             killer.gold+=400;
@@ -59,8 +58,7 @@ function checkDead(player, killer, assists){
 			}
             player.deaths++;   
             player.hp=100;
-            player.status="dead";
-            player.lane=0;
+            player.status="dead";            
             kill(player);            
         }
     }        

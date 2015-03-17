@@ -10,7 +10,115 @@ for (var i in players.red){
     offsetInitY.red.push(players.red[i].DOMElement.offsetTop);
 }
 
-var first = true;
+var baseBlueSideCoord = [30,780];
+var toplaneBlueSideCoord = [50,80];
+var midlaneBlueSideCoord = [350,420];
+var botlaneBlueSideCoord = [640,600];
+
+var baseRedSideCoord = [780,30];
+var toplaneRedSideCoord = [150,40];
+var midlaneRedSideCoord = [440,330];
+var botlaneRedSideCoord = [700,670];
+
+
+function sendPlayerToLane(player,laneFrom, laneTo, callback){    
+    var playersOnThisLane = new Array();
+    var laneCoords;
+    var colors = ['red', 'blue'];
+	for (var a in colors){
+		var color = colors[a];
+        if(color==player.team){   
+            for(var i in players[color]){		
+                if(players[color][i].lane==laneTo){
+                     playersOnThisLane.push(players[color][i]);                     
+                }
+            }
+            if(laneTo==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
+            else if(laneTo==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
+            else if(laneTo==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
+            else if(laneTo==4 && color=="blue"){laneCoords = botlaneBlueSideCoord;}
+            else if(laneTo==0 && color=="red"){laneCoords = baseRedSideCoord;}
+            else if(laneTo==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
+            else if(laneTo==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
+            else if(laneTo==4 && color=="red"){laneCoords = botlaneRedSideCoord;}     
+            switch (playersOnThisLane.length){               
+                case 0:                               
+                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);                    
+                    break;       
+                case 1:  
+                    console.log(player.name);
+                    console.log(laneCoords[0]-25);
+                    console.log(laneCoords[1]-25);
+                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
+                    console.log(playersOnThisLane[0].name);
+                    console.log(laneCoords[0]+45);
+                    console.log(laneCoords[1]+25);
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+45, laneCoords[1]+25); 
+                    break;   
+                case 2:     
+                    moveElementToXY(player.DOMElement, laneCoords[0]-12.5, laneCoords[1]-25);  
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+22.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0], laneCoords[1]+25); 
+                    break; 
+                case 3:
+                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);  
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    break;  
+                case 4:
+                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);  
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-12.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]-12.5, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[3].DOMElement, laneCoords[0]+12.5, laneCoords[1]+25); 
+                    break;     
+            }  
+            playersOnThisLane = new Array();
+            for(var i in players[color]){		
+                if(players[color][i].lane==laneFrom && players[color][i]!=player ){
+                     playersOnThisLane.push(players[color][i])                   
+                }
+            }
+           
+            if(laneFrom==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
+            else if(laneFrom==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
+            else if(laneFrom==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
+            else if(laneFrom==4 && color=="blue"){laneCoords = botlaneBlueSideCoord; }
+            else if(laneFrom==0 && color=="red"){laneCoords = baseRedSideCoord;}
+            else if(laneFrom==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
+            else if(laneFrom==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
+            else if(laneFrom==4 && color=="red"){laneCoords = botlaneRedSideCoord; }
+            
+            switch (playersOnThisLane.length){
+                case 0:
+                    break;       
+                case 1:                     
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0], laneCoords[1]); 
+                    break;   
+                case 2:  
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
+                    break; 
+                case 3:        
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-12.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0], laneCoords[1]+25); 
+                    break;  
+                case 4:                  
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]-25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[3].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    break;     
+            }  
+        }
+    }
+    player.lane=laneTo;   
+    if (typeof callback === "function") {   
+        callback(player);
+    }
+}
 
 function moveLaningPlayers(){	
 	var colors = ['red', 'blue'];
@@ -69,64 +177,64 @@ var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 function moveJunglingPlayers(){		
 	for (var i in players['blue']){	
 		if (players.blue[i].status=="jungling"){	
-            players.blue[i].gold+=30;
+            players.blue[i].gold+=80;
             updatePlayer(players.blue[i]);
 			switch (players.blue[i].camp) {
 				case 'BlueGrump':
 					players.blue[i].camp = "BlueSentinelle";                    
-					moveElementToXY(players.blue[i].DOMElement, 180, 310);
+					moveElementToXY(players.blue[i].DOMElement, 200, 360);
 					break;
 				case 'BlueSentinelle':
 					players.blue[i].camp = "BlueWolves";
-					moveElementToXY(players.blue[i].DOMElement, 210, 420);
+					moveElementToXY(players.blue[i].DOMElement, 210, 450);
 					break;
 				case 'BlueWolves':
 					players.blue[i].camp = "BlueRaptors";
-					moveElementToXY(players.blue[i].DOMElement, 375, 490);
+					moveElementToXY(players.blue[i].DOMElement, 395, 520);
 					break;
 				case 'BlueRaptors':
 					players.blue[i].camp = "BlueBrambleback";
-					moveElementToXY(players.blue[i].DOMElement, 425, 570);
+					moveElementToXY(players.blue[i].DOMElement, 435, 600);
 					break;
 				case 'BlueBrambleback':
 					players.blue[i].camp = "BlueGolems";
-					moveElementToXY(players.blue[i].DOMElement, 460, 660);					
+					moveElementToXY(players.blue[i].DOMElement, 475, 675);					
 					break;
 				case 'BlueGolems':
 					players.blue[i].camp = "BlueGrump";
-					moveElementToXY(players.blue[i].DOMElement, 135, 300);
+					moveElementToXY(players.blue[i].DOMElement, 115, 335);
 					break;				
 			}
 		}
 	}
 	for (var i in players['red']){				
 		if (players.red[i].status=="jungling"){	
-            players.red[i].gold+=30;
+            players.red[i].gold+=80;
             updatePlayer(players.red[i]);
 			switch (players.red[i].camp) {
 				case 'RedGrump':
 					players.red[i].camp = "RedSentinelle";
-					moveElementToXY(players.red[i].DOMElement, 610, 410);					
+					moveElementToXY(players.red[i].DOMElement, 630, 430);					
 					break;
 				case 'RedSentinelle':
 					players.red[i].camp = "RedWolves";
-					moveElementToXY(players.red[i].DOMElement, 580, 300);					
+					moveElementToXY(players.red[i].DOMElement, 625, 345);					
 					break;
 				case 'RedWolves':
 					players.red[i].camp = "RedRaptors";
-					moveElementToXY(players.red[i].DOMElement, 415, 260);		
+					moveElementToXY(players.red[i].DOMElement, 450, 275);		
 					break;
 				case 'RedRaptors':
 					players.red[i].camp = "RedBrambleback";
-					moveElementToXY(players.red[i].DOMElement, 365, 170);				
+					moveElementToXY(players.red[i].DOMElement, 395, 200);				
 					break;
 				case 'RedBrambleback':
 					players.red[i].camp = "RedGolems";
-					moveElementToXY(players.red[i].DOMElement, 330, 80);					
+					moveElementToXY(players.red[i].DOMElement, 350, 120);					
 					break;
 				case 'RedGolems':
 					players.red[i].camp = "RedGrump";
-					moveElementToXY(players.red[i].DOMElement, 655, 420);				
+					moveElementToXY(players.red[i].DOMElement, 710, 455);				
 					break;				
 			}
 		}
@@ -134,33 +242,21 @@ function moveJunglingPlayers(){
 }	
 
 
-function kill(player){
-	if(player.team=="blue"){		
-		player.DOMElement.style.visibility = 'hidden';				
-		moveElementToXY(player.DOMElement, 20, 750,2, 2, 10, respawnPlayer);
-			
-	}else{	
-		player.DOMElement.style.visibility = 'hidden';			
-		moveElementToXY(player.DOMElement, 750, 20, 2, 2, 10, respawnPlayer);	
-	}
-	
+function kill(player){		
+    player.DOMElement.style.visibility = 'hidden';				
+    sendPlayerToLane(player, player.lane, 0, respawnPlayer);		
 }
 
-function respawnPlayer(playerDOMElement){
-	setTimeout(function() {playerDOMElement.style.visibility = 'visible'; console.log(playerDOMElement.style.marginTop);}, 10000);			
-	
+function respawnPlayer(player){
+	player.DOMElement.style.visibility = 'visible';    	
 }
 
 
 
-function goBackToBase(player){
-	if(player.team=="blue"){
-		setTimeout(function() {moveElementToXY(player.DOMElement, 20, 750); player.hp=100;}, 4000);
-	}else{
-		setTimeout(function() {moveElementToXY(player.DOMElement, 750, 20); player.hp=100;}, 4000);
-	}	
+function goBackToBase(player){	
+    setTimeout(function() {sendPlayerToLane(player,player.lane,0); player.hp=100;}, 3000);	
 }
 
-setInterval(moveLaningPlayers, 1000);
-setInterval(moveJunglingPlayers, 2000);
+//setInterval(moveLaningPlayers, 1000);
+setInterval(moveJunglingPlayers, 6000);
 
