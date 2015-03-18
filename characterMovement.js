@@ -11,14 +11,14 @@ for (var i in players.red){
 }
 
 var baseBlueSideCoord = [30,780];
-var toplaneBlueSideCoord = [50,80];
-var midlaneBlueSideCoord = [350,420];
-var botlaneBlueSideCoord = [640,600];
+var toplaneBlueSideCoord = [90,80];
+var midlaneBlueSideCoord = [380,420];
+var botlaneBlueSideCoord = [680,700];
 
-var baseRedSideCoord = [780,30];
+var baseRedSideCoord = [800,20];
 var toplaneRedSideCoord = [150,40];
-var midlaneRedSideCoord = [440,330];
-var botlaneRedSideCoord = [700,670];
+var midlaneRedSideCoord = [450,360];
+var botlaneRedSideCoord = [740,670];
 
 
 function sendPlayerToLane(player,laneFrom, laneTo, callback){    
@@ -42,22 +42,16 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             else if(laneTo==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
             else if(laneTo==4 && color=="red"){laneCoords = botlaneRedSideCoord;}     
             switch (playersOnThisLane.length){               
-                case 0:                               
+                case 0:       
                     moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);                    
                     break;       
-                case 1:  
-                    console.log(player.name);
-                    console.log(laneCoords[0]-25);
-                    console.log(laneCoords[1]-25);
-                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
-                    console.log(playersOnThisLane[0].name);
-                    console.log(laneCoords[0]+45);
-                    console.log(laneCoords[1]+25);
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+45, laneCoords[1]+25); 
+                case 1:                      
+                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);                    
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
                     break;   
                 case 2:     
                     moveElementToXY(player.DOMElement, laneCoords[0]-12.5, laneCoords[1]-25);  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+22.5, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
                     moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0], laneCoords[1]+25); 
                     break; 
                 case 3:
@@ -93,7 +87,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             switch (playersOnThisLane.length){
                 case 0:
                     break;       
-                case 1:                     
+                case 1:  
                     moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0], laneCoords[1]); 
                     break;   
                 case 2:  
@@ -123,13 +117,9 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
 function moveLaningPlayers(){	
 	var colors = ['red', 'blue'];
 	for (var a in colors){
-		var color = colors[a];
-		
-		//console.log(color);
-		
+		var color = colors[a];		
 		var move = function(color){
-			for (var i in players[color]){
-				//console.log(players[color][i].champion);
+			for (var i in players[color]){			
 				if (players[color][i].status=="laning"){
 
 					setTimeout((function(color,i){
@@ -242,19 +232,36 @@ function moveJunglingPlayers(){
 }	
 
 
-function kill(player){		
-    player.DOMElement.style.visibility = 'hidden';				
-    sendPlayerToLane(player, player.lane, 0, respawnPlayer);		
+function kill(player){		   
+    player.DOMElement.style.visibility  = "hidden";				
+    sendPlayerToLane(player, player.lane, 0, respawnPlayer);
 }
 
 function respawnPlayer(player){
-	player.DOMElement.style.visibility = 'visible';    	
+     setTimeout(function() {
+        player.DOMElement.style.visibility = "visible";
+        player.hp=100;
+        console.log("respawn" + player.name);
+        if (player.role=="top"){
+              sendPlayerToLane(player, 0, 1, makePlayerLane);
+        }else if (player.role=="mid"){
+              sendPlayerToLane(player, 0, 3, makePlayerLane);
+        }else if (player.role=="adc"){
+              sendPlayerToLane(player, 0, 4, makePlayerLane);
+        }else if (player.role=="support"){
+              sendPlayerToLane(player, 0, 4, makePlayerLane);
+        }
+    }, 5000);
+}
+
+function makePlayerLane(player){
+	player.status = 'laning';    	
 }
 
 
 
 function goBackToBase(player){	
-    setTimeout(function() {sendPlayerToLane(player,player.lane,0); player.hp=100;}, 3000);	
+    setTimeout(function() {sendPlayerToLane(player,player.lane,0, respawnPlayer); }, 3000);	
 }
 
 //setInterval(moveLaningPlayers, 1000);
