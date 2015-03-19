@@ -1,6 +1,8 @@
 var players = {};
 var turrets = {};
-
+var nexus = {};
+var inhibs = {};
+ 
 //////////////////////////////// BLUE TEAM BOUUH
 players.blue = [{
     name: 'Wickd',
@@ -304,3 +306,5 @@ turrets = [{
     hp:100
 	DOMElement: document.getElementById('redBotOuterTurret')         
 }];
+
+
