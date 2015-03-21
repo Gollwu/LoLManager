@@ -1,3 +1,4 @@
+//Get current Position of the DOM elements of the players
 var offsetInitX = {}, offsetInitY = {};
 offsetInitX.red = []; offsetInitX.blue = [];
 offsetInitY.red = []; offsetInitY.blue = [];
@@ -10,6 +11,7 @@ for (var i in players.red){
     offsetInitY.red.push(players.red[i].DOMElement.offsetTop);
 }
 
+//Variable with the position in px of the lanes
 var baseBlueSideCoord = [30,780];
 var toplaneBlueSideCoord = [90,80];
 var midlaneBlueSideCoord = [380,420];
@@ -20,7 +22,7 @@ var toplaneRedSideCoord = [150,40];
 var midlaneRedSideCoord = [450,360];
 var botlaneRedSideCoord = [740,670];
 
-
+//Send a player from one lane to another
 function sendPlayerToLane(player,laneFrom, laneTo, callback){    
     var playersOnThisLane = new Array();
     var laneCoords;
@@ -30,9 +32,11 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
         if(color==player.team){   
             for(var i in players[color]){		
                 if(players[color][i].lane==laneTo){
-                     playersOnThisLane.push(players[color][i]);                     
+					//Get a list of player of your team already on the lane you are sending the player
+                    playersOnThisLane.push(players[color][i]);                     
                 }
             }
+			//Get position of the lane to go to
             if(laneTo==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
             else if(laneTo==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
             else if(laneTo==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
@@ -40,7 +44,8 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             else if(laneTo==0 && color=="red"){laneCoords = baseRedSideCoord;}
             else if(laneTo==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
             else if(laneTo==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
-            else if(laneTo==4 && color=="red"){laneCoords = botlaneRedSideCoord;}     
+            else if(laneTo==4 && color=="red"){laneCoords = botlaneRedSideCoord;}   
+			//How to display them on the lane depending on the amount of players already on the lane		
             switch (playersOnThisLane.length){               
                 case 0:       
                     moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);                    
@@ -68,13 +73,14 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                     moveElementToXY(playersOnThisLane[3].DOMElement, laneCoords[0]+12.5, laneCoords[1]+25); 
                     break;     
             }  
+			//Get a list of player of your team already on the lane the player is coming from
             playersOnThisLane = new Array();
             for(var i in players[color]){		
                 if(players[color][i].lane==laneFrom && players[color][i]!=player ){
                      playersOnThisLane.push(players[color][i])                   
                 }
             }
-           
+            //Get position of the lane tthe player is from
             if(laneFrom==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
             else if(laneFrom==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
             else if(laneFrom==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
@@ -83,7 +89,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             else if(laneFrom==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
             else if(laneFrom==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
             else if(laneFrom==4 && color=="red"){laneCoords = botlaneRedSideCoord; }
-            
+            //How to display them on the lane depending on the amount of players already on the lane	
             switch (playersOnThisLane.length){
                 case 0:
                     break;       
@@ -108,12 +114,14 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             }  
         }
     }
+	//Callback function
     player.lane=laneTo;   
     if (typeof callback === "function") {   
         callback(player);
     }
 }
 
+//Make the players move from 2px in one diretion every 0.250s when they are laning
 function moveLaningPlayers(){	
 	var colors = ['red', 'blue'];
 	for (var a in colors){
@@ -137,13 +145,14 @@ function moveLaningPlayers(){
 				}		
 			}
 		};
-
+		//Blue and red team are moving with a 0.125s difference
 		setTimeout(function(){move('blue');}, 125);
 		move('red');
 
     }
 }
 
+//Base function to send a player to a position (E=DOMElement, x and y the coordinates)
 var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 	clearInterval(e.interX);
 	clearInterval(e.interY);
@@ -164,6 +173,7 @@ var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
     }
 };
 
+//Automatic movements of jungler players and gold generation at each camp. First blue players then red players
 function moveJunglingPlayers(){		
 	for (var i in players['blue']){	
 		if (players.blue[i].status=="jungling"){	
@@ -231,12 +241,13 @@ function moveJunglingPlayers(){
 	}
 }	
 
-
+//Function to call when a player is killed, make him dissapear, send him to base and make him respawn
 function kill(player){		   
     player.DOMElement.style.visibility  = "hidden";				
     sendPlayerToLane(player, player.lane, 0, respawnPlayer);
 }
 
+//Respawn a player (give him 100HP and send him back to a lane)
 function respawnPlayer(player){
      setTimeout(function() {
         player.DOMElement.style.visibility = "visible";
@@ -259,10 +270,12 @@ function makePlayerLane(player){
 }
 
 
-
+//Send player to base and simulate backs in LoL
 function goBackToBase(player){	
     setTimeout(function() {sendPlayerToLane(player,player.lane,0, respawnPlayer); }, 3000);	
 }
+
+//Start the movements of players
 
 //setInterval(moveLaningPlayers, 1000);
 setInterval(moveJunglingPlayers, 6000);
