@@ -20,6 +20,29 @@ function updatePlayer(player){
                             
 }
 
+function updateTurret(element, index, array){   
+    if (element.hp >75 && element.name.indexOf("red") > -1) {
+        element.DOMElement.src = "assets/turretFullRed.png"
+    }else if(element.hp >50 && element.name.indexOf("red") > -1) {
+         element.DOMElement.src = "assets/turret75Red.png"
+    }else if(element.hp >25 && element.name.indexOf("red") > -1) {
+         element.DOMElement.src = "assets/turret50Red.png"
+    }else if(element.hp >0 && element.name.indexOf("red") > -1) {
+         element.DOMElement.src = "assets/turret25Red.png"
+    }else if(element.hp >75 && element.name.indexOf("blue") > -1) {
+         element.DOMElement.src = "assets/turretFullBed.png"
+    }else if(element.hp >50 && element.name.indexOf("blue") > -1) {
+         element.DOMElement.src = "assets/turret75Blue.png"
+    }else if(element.hp >25 && element.name.indexOf("blue") > -1) {
+         element.DOMElement.src = "assets/turret50Blue.png"
+    }else if(element.hp >0 && element.name.indexOf("blue") > -1) {
+         element.DOMElement.src = "assets/turret25Blue.png"
+    }else if(element.hp == 0) {
+         element.DOMElement.src = "assets/turret.png"
+    }
+    
+}    
+
 function playerCreeping(player){   
     player.gold+=18;
     updatePlayer(player);     
@@ -83,8 +106,7 @@ function doTurn(){
 			oppositeAssistsPlayers.splice(k,1);			
 			checkDead(players.blue[i],oppositePlayers[k], oppositeAssistsPlayers);
 			oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
-		}
-                
+		}          
         updatePlayer(players.blue[i]);
 	}
     for(var i in players.red) {
@@ -108,6 +130,7 @@ function doTurn(){
 		}        	        
         updatePlayer(players.red[i]);
 	}
+    turrets.forEach(updateTurret)  
 }
 
 players.blue = sortByKey(players.blue, 'lane');
