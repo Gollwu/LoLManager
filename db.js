@@ -254,15 +254,15 @@ turrets = [{
 },{
     name: 'blueTopOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueBotInnerTurret') 
+	DOMElement: document.getElementById('blueTopOuterTurret') 
 },{
     name: 'blueMidOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueBotInnerTurret') 
+	DOMElement: document.getElementById('blueMidOuterTurret') 
 },{
     name: 'blueBotOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueBotInnerTurret') 
+	DOMElement: document.getElementById('blueBotOuterTurret') 
 },{
     name: 'redNexusTurret1',
     hp:100,

@@ -23,29 +23,35 @@ function updatePlayer(player){
                             
 }
 
-function updateTurret(element, index, array){   
-    if (element.hp >75 && element.name.indexOf("red") > -1) {
-        element.DOMElement.src = "assets/turretFullRed.png"
-    }else if(element.hp >50 && element.name.indexOf("red") > -1) {
-         element.DOMElement.src = "assets/turret75Red.png"
-    }else if(element.hp >25 && element.name.indexOf("red") > -1) {
-         element.DOMElement.src = "assets/turret50Red.png"
-    }else if(element.hp >0 && element.name.indexOf("red") > -1) {
-         element.DOMElement.src = "assets/turret25Red.png"
-    }else if(element.hp >75 && element.name.indexOf("blue") > -1) {
-         element.DOMElement.src = "assets/turretFullBed.png"
-    }else if(element.hp >50 && element.name.indexOf("blue") > -1) {
-         element.DOMElement.src = "assets/turret75Blue.png"
-    }else if(element.hp >25 && element.name.indexOf("blue") > -1) {
-         element.DOMElement.src = "assets/turret50Blue.png"
-    }else if(element.hp >0 && element.name.indexOf("blue") > -1) {
-         element.DOMElement.src = "assets/turret25Blue.png"
-    }else if(element.hp == 0) {
-         element.DOMElement.src = "assets/turret.png"
+function updateTurret(turret){   
+    if (turret.hp >75 && turret.name.indexOf("red") > -1) {
+        turret.DOMElement.src = "assets/turretFullRed.png"
+    }else if(turret.hp >50 && turret.name.indexOf("red") > -1) {
+         turret.DOMElement.src = "assets/turret75Red.png"
+    }else if(turret.hp >25 && turret.name.indexOf("red") > -1) {
+         turret.DOMElement.src = "assets/turret50Red.png"
+    }else if(turret.hp >0 && turret.name.indexOf("red") > -1) {
+         turret.DOMElement.src = "assets/turret25Red.png"
+    }else if(turret.hp >75 && turret.name.indexOf("blue") > -1) {
+         turret.DOMElement.src = "assets/turretFullBed.png"
+    }else if(turret.hp >50 && turret.name.indexOf("blue") > -1) {
+         turret.DOMElement.src = "assets/turret75Blue.png"
+    }else if(turret.hp >25 && turret.name.indexOf("blue") > -1) {
+         turret.DOMElement.src = "assets/turret50Blue.png"
+    }else if(turret.hp >0 && turret.name.indexOf("blue") > -1) {
+         turret.DOMElement.src = "assets/turret25Blue.png"
+    }else if(turret.hp == 0) {
+         turret.DOMElement.src = "assets/turret.png"
     }
     
 }    
 
+//Make the first turret of the lane on the player take damage
+function pushTurret(player){
+    
+    
+    updateTurret(turret);
+}
 
 //Simulate player creeping
 function playerCreeping(player){   
@@ -98,54 +104,43 @@ function checkDead(player, killer, assists){
 //Main function simulating a turn in the game
 function doTurn(){	 
 	// players.blue and players.red are sorted: lane ~ i
-	//To be changed in one loop for both teams following the other js functions models 
-    for(var i in players.blue) {
-	    if (players.blue[i].status=="laning"){
-			//Simulate creeping
-			playerCreeping(players.blue[i]);
-        }
-		var oppositePlayers = new Array();
-		var oppositeAssistsPlayers = new Array();
-		//Get opposite players in lane
-        for(var j in players.red){			
-            if(players.red[j].lane==players.blue[i].lane){
-				oppositePlayers.push(players.red[j]);
-				oppositeAssistsPlayers.push(players.red[j]);	
-			}
-		}			
-		//Trade with every opponent (loop on oppositePlayers where oppositeAssistsPlayers always contain all the opposite players on the lane but the player you are trading with
-		for(var k in oppositePlayers){
-			tradeWithOpponent(players.blue[i],oppositePlayers[k]);			
-			oppositeAssistsPlayers.splice(k,1);			
-			checkDead(players.blue[i],oppositePlayers[k], oppositeAssistsPlayers);
-			oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
+	
+    var colors = ['red', 'blue'];
+    for (var a in colors){
+        var color = colors[a]; 
+        var oppositeColor = (color=='red'?'blue':'red')        
+        for(var i in players[color]){
+            if (players[color][i].status=="laning"){
+                //Simulate creeping
+                playerCreeping(players.blue[i]);
 
-		}
-        //Update UI     
-        updatePlayer(players.blue[i]);
-	}
-    for(var i in players.red) {
-	    if (players.red[i].status=="laning"){
-		  playerCreeping(players.red[i]);
-        }
-		
-		var oppositePlayers = new Array();
-		var oppositeAssistsPlayers = new Array();
-		for(var j in players.blue){			
-            if(players.blue[j].lane==players.red[i].lane){
-				oppositePlayers.push(players.blue[j]);   
-				oppositeAssistsPlayers.push(players.blue[j]);				
+                var oppositePlayers = new Array();
+                var oppositeAssistsPlayers = new Array();
+                //Get opposite players in lane
+                for(var j in players[oppositeColor]){			
+                    if(players[oppositeColor][j].lane==players[color][i].lane){
+                        oppositePlayers.push(players[oppositeColor][j]);
+                        oppositeAssistsPlayers.push(players[oppositeColor][j]);	
+                    }
+                }		
+                //If there is no opposite player on the lane, attack the turret
+                if(oppositePlayers.length==0){
+                    pushTurret(players[color][i]);
+                }else{
+                    //Trade with every opponent (loop on oppositePlayers where oppositeAssistsPlayers always contain all the opposite players on the lane but the player you are trading with
+                    for(var k in oppositePlayers){
+                        tradeWithOpponent(players[color][i],oppositePlayers[k]);			
+                        oppositeAssistsPlayers.splice(k,1);			
+                        checkDead(players[color][i],oppositePlayers[k], oppositeAssistsPlayers);
+                        oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
+
+                    }
+                }
             }
-		}	
-		for(var k in oppositePlayers){
-			tradeWithOpponent(players.red[i],oppositePlayers[k]);						
-			oppositeAssistsPlayers.splice(k,1);						
-			checkDead(players.red[i],oppositePlayers[k], oppositeAssistsPlayers);
-			oppositeAssistsPlayers.splice(k,0,oppositePlayers[k]);	
-		}        	        
-        updatePlayer(players.red[i]);
-	}
-    turrets.forEach(updateTurret)  
+            //Update UI     
+            updatePlayer(players[color][i]);
+	   }    
+    }     
 }
 
 //Sort players and start turn every 2 seconds
