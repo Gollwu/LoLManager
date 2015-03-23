@@ -288,25 +288,24 @@
     </script>   
 	<script type="text/javascript" src="characterMovement.js"> </script>
 	<script type="text/javascript" src="gameEngine.js"> </script>
+	<script type="text/javascript" src="libs/konami.js"></script>
     <script>
-        document.onkeypress = returnKey;
-        function returnKey(evt){            
-            if ((evt.keyCode == 13)){
-                  
-              var colors = ['red', 'blue'];
-              for (var a in colors){
-                var color = colors[a];                
-                for(var i in players[color]){
-                    players[color][i].kills=0;
-                    players[color][i].deaths=16;
-                    players[color][i].assists=0;  
-                    document.getElementById(players[color][i].role+ color.charAt(0).toUpperCase() + color.slice(1)+"Photo").src="assets/Players/djambi.png"		 
-                    document.getElementById(players[color][i].role+color.charAt(0).toUpperCase() + color.slice(1)+"Champion").src="assets/Champions/Shen_Square_0.png"
+	var easter_egg = new Konami();
+	easter_egg.code = function() {
+		var colors = ['red', 'blue'];
+		for (var a in colors){
+			var color = colors[a];                
+			for(var i in players[color]){
+				players[color][i].kills=0;
+				players[color][i].deaths=16;
+				players[color][i].assists=0;  
+				document.getElementById(players[color][i].role+ color.charAt(0).toUpperCase() + color.slice(1)+"Photo").src="assets/Players/djambi.png"		 
+				document.getElementById(players[color][i].role+color.charAt(0).toUpperCase() + color.slice(1)+"Champion").src="assets/Champions/Shen_Square_0.png"
 
-                    }
-                }
-              }
-            }    
+			}
+		}
+	}
+	easter_egg.load();   
     </script>
 
 </body>

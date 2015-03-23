@@ -1,3 +1,5 @@
+//Local database of Players, turrets, nexus and inhibitors. They also contain an attribute to get their element in the DOM
+
 var players = {};
 var turrets = {};
 var nexus = {};
