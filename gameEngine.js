@@ -25,21 +25,21 @@ function updatePlayer(player){
 
 function updateTurret(turret){   
     if (turret.hp >75 && turret.name.indexOf("red") > -1) {
-        turret.DOMElement.src = "assets/turretFullRed.png"
+        turret.DOMElement.src = "assets/Red_Turret_100.png"
     }else if(turret.hp >50 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/turret75Red.png"
+         turret.DOMElement.src = "assets/Red_Turret_75.png"
     }else if(turret.hp >25 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/turret50Red.png"
+         turret.DOMElement.src = "assets/Red_Turret_50.png"
     }else if(turret.hp >0 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/turret25Red.png"
+         turret.DOMElement.src = "assets/Red_Turret_25.png"
     }else if(turret.hp >75 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/turretFullBed.png"
+         turret.DOMElement.src = "assets/Blue_Turret_100.png"
     }else if(turret.hp >50 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/turret75Blue.png"
+         turret.DOMElement.src = "assets/Blue_Turret_75.png"
     }else if(turret.hp >25 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/turret50Blue.png"
+         turret.DOMElement.src = "assets/Blue_Turret_50.png"
     }else if(turret.hp >0 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/turret25Blue.png"
+         turret.DOMElement.src = "assets/Blue_Turret_25.png"
     }else if(turret.hp == 0) {
          turret.DOMElement.src = "assets/turret.png"
     }    
