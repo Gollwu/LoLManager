@@ -42,8 +42,7 @@ function updateTurret(turret){
          turret.DOMElement.src = "assets/turret25Blue.png"
     }else if(turret.hp == 0) {
          turret.DOMElement.src = "assets/turret.png"
-    }
-    
+    }    
 }    
 
 //Make the first turret of the lane on the player take damage
@@ -123,7 +122,7 @@ function doTurn(){
                         oppositeAssistsPlayers.push(players[oppositeColor][j]);	
                     }
                 }		
-                //If there is no opposite player on the lane, attack the turret
+                //If there is no opposite player on the lane, attack the next turret on the lane
                 if(oppositePlayers.length==0){
                     pushTurret(players[color][i]);
                 }else{
