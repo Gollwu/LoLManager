@@ -1,9 +1,20 @@
 //Local database of Players, turrets, nexus and inhibitors. They also contain an attribute to get their element in the DOM
 
 var players = {};
-var turrets = {};
+
 var nexus = {};
+
 var inhibs = {};
+inhibs.blue = {};
+inhibs.red = {};
+
+var turrets = {};
+turrets.red = {};
+turrets.blue = {};
+
+
+
+
  
 //////////////////////////////// BLUE TEAM BOUUH
 players.blue = [{
@@ -17,7 +28,7 @@ players.blue = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 1,
+    lane: 'top',    
     role: 'top',
     status: 'laning',
 	camp: 'none',
@@ -35,7 +46,7 @@ players.blue = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 2,
+    lane: 'jungle',
     role: 'jungler',
 	status: 'jungling', 
 	camp: 'BlueSentinelle',	
@@ -52,7 +63,7 @@ players.blue = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 3,
+    lane: 'mid',
     role: 'mid',
     status: 'laning',
 	camp: 'none',
@@ -69,7 +80,7 @@ players.blue = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 4,
+    lane: 'bot',
     role: 'adc',
     status: 'laning',
 	camp: 'none',
@@ -86,7 +97,7 @@ players.blue = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 4,
+    lane: 'bot',
     role: 'support',
     status: 'laning',
 	camp: 'none',
@@ -106,7 +117,7 @@ players.red = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 1,
+    lane: 'top',
     role: 'top',
     status: 'laning',
 	camp: 'none',
@@ -123,7 +134,7 @@ players.red = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 2,
+    lane: 'jungle',
     role: 'jungler',
     status: 'jungling',
 	camp: 'RedSentinelle',
@@ -140,7 +151,7 @@ players.red = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 3,
+    lane: 'mid',
     role: 'mid',
     status: 'laning',
 	camp: 'none',
@@ -157,7 +168,7 @@ players.red = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 4,
+    lane: 'bot',
     role: 'adc',
     status: 'laning',
 	camp: 'none',
@@ -174,7 +185,7 @@ players.red = [{
     deaths:0,
     assists:0,
     hp: 100,
-    lane: 4,
+    lane: 'bot',
     role: 'support',
     status: 'laning',
 	camp: 'none',
@@ -182,88 +193,50 @@ players.red = [{
 	DOMElement: document.getElementById('mapChampionRedSupport')
 }];
 
-nexus = [{
+nexus.blue = {
     name: 'blueNexus',
     hp:100,
 	DOMElement: document.getElementById('blueNexus')	
-},{
+}
+nexus.red =  {
     name: 'redNexus',
     hp:100,
 	DOMElement: document.getElementById('redNexus')
-}];
+};
 
 
-inhibs = [{
+inhibs.blue.top = {
     name: 'blueInhibTop',
     hp:100,
 	DOMElement: document.getElementById('blueInhibTop')	
-},{
+}
+inhibs.blue.mid = {
     name: 'blueInhibMid',
     hp:100,
 	DOMElement: document.getElementById('blueInhibMid')
-},{
+}
+inhibs.blue.bot = {
     name: 'blueInhibBot',
     hp:100,
 	DOMElement: document.getElementById('blueInhibBot')
-},{
+}
+inhibs.red.top = {
     name: 'redInhibTop',
     hp:100,
 	DOMElement: document.getElementById('redInhibTop')
-},{
+}
+inhibs.red.mid = {
     name: 'redInhibMid',
     hp:100,
 	DOMElement: document.getElementById('redInhibMid')
-},{
+}
+inhibs.red.bot = {
     name: 'redInhibBot',
     hp:100,
 	DOMElement: document.getElementById('redInhibBot')    
-}];
+}
 
-turrets = [{
-    name: 'blueNexusTurret1',
-    hp:100,
-	DOMElement: document.getElementById('blueNexusTurret1')	
-},{
-    name: 'blueNexusTurret2',
-    hp:100,
-	DOMElement: document.getElementById('blueNexusTurret2')
-},{
-    name: 'blueTopInhibTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueTopInhibTurret')
-},{
-    name: 'blueMidInhibTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueMidInhibTurret')
-},{
-    name: 'blueBotInhibturret',
-    hp:100,
-	DOMElement: document.getElementById('blueBotInhibturret')
-},{
-    name: 'blueTopInnerTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueTopInnerTurret')    
-},{
-    name: 'blueMidInnerTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueMidInnerTurret')
-},{
-    name: 'blueBotInnerTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueBotInnerTurret')    
-},{
-    name: 'blueTopOuterTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueTopOuterTurret') 
-},{
-    name: 'blueMidOuterTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueMidOuterTurret') 
-},{
-    name: 'blueBotOuterTurret',
-    hp:100,
-	DOMElement: document.getElementById('blueBotOuterTurret') 
-},{
+turrets.red.base = [{   
     name: 'redNexusTurret1',
     hp:100,
 	DOMElement: document.getElementById('redNexusTurret1') 
@@ -271,42 +244,116 @@ turrets = [{
     name: 'redNexusTurret2',
     hp:100,
 	DOMElement: document.getElementById('redNexusTurret2')     
-},{
+}];
+
+turrets.red.top = [{   
     name: 'redTopInhibTurret',
     hp:100,
 	DOMElement: document.getElementById('redTopInhibTurret')
 },{
+    name: 'redTopInnerTurret',
+    hp:100,
+	DOMElement: document.getElementById('redTopInnerTurret')    
+},{      
+    name: 'redTopOuterTurret',
+    hp:100,
+	DOMElement: document.getElementById('redTopOuterTurret') 
+}];
+
+turrets.red.mid = [{   
     name: 'redMidInhibTurret',
     hp:100,
 	DOMElement: document.getElementById('redMidInhibTurret')    
 },{
+    name: 'redMidInnerTurret',
+    hp:100,
+	DOMElement: document.getElementById('redMidInnerTurret') 
+},{    
+    name: 'redMidOuterTurret',
+    hp:100,
+	DOMElement: document.getElementById('redMidOuterTurret') 
+}];
+
+turrets.red.bot = [{ 
     name: 'redBotInhibTurret',
     hp:100,
 	DOMElement: document.getElementById('redBotInhibTurret')
 },{
-    name: 'redTopInnerTurret',
-    hp:100,
-	DOMElement: document.getElementById('redTopInnerTurret')    
-},{
-    name: 'redMidInnerTurret',
-    hp:100,
-	DOMElement: document.getElementById('redMidInnerTurret') 
-},{
     name: 'redBotInnerTurret',
     hp:100,
 	DOMElement: document.getElementById('redBotInnerTurret') 
-},{
-    name: 'redTopOuterTurret',
-    hp:100,
-	DOMElement: document.getElementById('redTopOuterTurret') 
-},{
-    name: 'redMidOuterTurret',
-    hp:100,
-	DOMElement: document.getElementById('redMidOuterTurret') 
 },{
     name: 'redBotOuterTurret',
     hp:100,
 	DOMElement: document.getElementById('redBotOuterTurret')         
 }];
 
+turrets.blue.base = [{ 
+ name: 'blueNexusTurret1',
+    hp:100,
+	DOMElement: document.getElementById('blueNexusTurret1')	
+},{
+    name: 'blueNexusTurret2',
+    hp:100,
+	DOMElement: document.getElementById('blueNexusTurret2')
+}];
 
+turrets.blue.top = [{ 
+    name: 'blueTopInhibTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueTopInhibTurret')
+},{ 
+    name: 'blueTopInnerTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueTopInnerTurret')    
+},{
+     name: 'blueTopOuterTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueTopOuterTurret') 
+}];
+    
+turrets.blue.mid = [{  
+    name: 'blueMidInhibTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueMidInhibTurret')    
+},{   
+    name: 'blueMidInnerTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueMidInnerTurret')    
+},{   
+    name: 'blueMidOuterTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueMidOuterTurret')   
+}];    
+    
+turrets.blue.bot = [{  
+    name: 'blueBotInhibturret',
+    hp:100,
+	DOMElement: document.getElementById('blueBotInhibTurret')
+},{ 
+    name: 'blueBotInnerTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueBotInnerTurret')    
+},{   
+    name: 'blueBotOuterTurret',
+    hp:100,
+	DOMElement: document.getElementById('blueBotOuterTurret') 
+}];
+
+//Given a team and a lane, return the next turret to be hit by the players. If the three turrets are down, hit the nexus turrets then the nexus
+
+function getStructureToHit(color,lane){  
+    if(turrets[color][lane][2].hp > 0){
+        return turrets[color][lane][2];
+    }else if (turrets[color][lane][1].hp > 0){
+        return turrets[color][lane][1];
+    } else if (turrets[color][lane][0].hp > 0){
+        return turrets[color][lane][0];
+    }else if (inhibs[color][lane].hp > 0){
+        return inhibs[color][lane];
+    }else if (turrets[color].base[0].hp > 0){
+        return turrets[color].base[0];
+    }else if (turrets[color].base[1].hp > 0){
+        return turrets[color].base[1];
+    }else return nexus[color];
+}

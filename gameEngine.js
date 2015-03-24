@@ -1,10 +1,3 @@
-//UTility function to sort players
-function sortByKey(array, key) {
-    return array.sort(function(a, b) {
-        var x = a[key], y = b[key];
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
-}
 
 //Utility function to add 0 to a string for golds
 function pad (str, max) {
@@ -23,33 +16,45 @@ function updatePlayer(player){
                             
 }
 
-function updateTurret(turret){   
-    if (turret.hp >75 && turret.name.indexOf("red") > -1) {
-        turret.DOMElement.src = "assets/Red_Turret_100.png"
-    }else if(turret.hp >50 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/Red_Turret_75.png"
-    }else if(turret.hp >25 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/Red_Turret_50.png"
-    }else if(turret.hp >0 && turret.name.indexOf("red") > -1) {
-         turret.DOMElement.src = "assets/Red_Turret_25.png"
-    }else if(turret.hp >75 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/Blue_Turret_100.png"
-    }else if(turret.hp >50 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/Blue_Turret_75.png"
-    }else if(turret.hp >25 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/Blue_Turret_50.png"
-    }else if(turret.hp >0 && turret.name.indexOf("blue") > -1) {
-         turret.DOMElement.src = "assets/Blue_Turret_25.png"
-    }else if(turret.hp == 0) {
-         turret.DOMElement.src = "assets/turret.png"
-    }    
+function updateStructure(structure){   
+    //Turrets Update
+    if(structure.name.indexOf("Turret") > -1){
+        if (structure.hp >75 && structure.name.indexOf("red") > -1) {
+            structure.DOMElement.src = "assets/Red_Turret_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Turret_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Turret_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Turret_25.png"
+        }else if(structure.hp >75 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Turret_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Turret_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Turret_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Turret_25.png"
+        }else if(structure.hp == 0) {
+             structure.DOMElement.src = "assets/turret.png"
+        }    
+    }
 }    
 
 //Make the first turret of the lane on the player take damage
 function pushTurret(player){
+    oppositeTeam = (player.team=='red'?'blue':'red')
+    structureToHit = getStructureToHit(oppositeTeam, player.lane);
+    structureToHit.hp -= 25;
     
+    if(structureToHit.name.indexOf("Turret") && structureToHit.hp<=0){
+        for(var i in players[color]){
+            players[color][i].gold +=150;
+            updatePlayer(player);            
+        }
+    }
     
-    updateTurret(turret);
+    updateStructure(structureToHit);
 }
 
 //Simulate player creeping
@@ -111,7 +116,7 @@ function doTurn(){
         for(var i in players[color]){
             if (players[color][i].status=="laning"){
                 //Simulate creeping
-                playerCreeping(players.blue[i]);
+                playerCreeping(players[color][i]);
 
                 var oppositePlayers = new Array();
                 var oppositeAssistsPlayers = new Array();
@@ -139,10 +144,10 @@ function doTurn(){
             //Update UI     
             updatePlayer(players[color][i]);
 	   }    
-    }     
+    }  
+    if (nexus.blue.hp < 0){alert("RED TEAM WINS");}
+    if (nexus.red.hp < 0){alert("BLUE TEAN WINS");}
 }
 
 //Sort players and start turn every 2 seconds
-players.blue = sortByKey(players.blue, 'lane');
-players.red = sortByKey(players.red, 'lane');
 setInterval(doTurn, 2000);

@@ -37,14 +37,14 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 }
             }
 			//Get position of the lane to go to
-            if(laneTo==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
-            else if(laneTo==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
-            else if(laneTo==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
-            else if(laneTo==4 && color=="blue"){laneCoords = botlaneBlueSideCoord;}
-            else if(laneTo==0 && color=="red"){laneCoords = baseRedSideCoord;}
-            else if(laneTo==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
-            else if(laneTo==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
-            else if(laneTo==4 && color=="red"){laneCoords = botlaneRedSideCoord;}   
+            if(laneTo=='base' && color=="blue"){laneCoords = baseBlueSideCoord;}
+            else if(laneTo=='top' && color=="blue"){laneCoords = toplaneBlueSideCoord;}
+            else if(laneTo=='mid' && color=="blue"){laneCoords = midlaneBlueSideCoord;}
+            else if(laneTo=='bot' && color=="blue"){laneCoords = botlaneBlueSideCoord;}
+            else if(laneTo=='base' && color=="red"){laneCoords = baseRedSideCoord;}
+            else if(laneTo=='top' && color=="red"){laneCoords = toplaneRedSideCoord;}
+            else if(laneTo=='mid' && color=="red"){laneCoords = midlaneRedSideCoord;}
+            else if(laneTo=='bot' && color=="red"){laneCoords = botlaneRedSideCoord;}   
 			//How to display them on the lane depending on the amount of players already on the lane		
             switch (playersOnThisLane.length){               
                 case 0:       
@@ -81,14 +81,14 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 }
             }
             //Get position of the lane tthe player is from
-            if(laneFrom==0 && color=="blue"){laneCoords = baseBlueSideCoord;}
-            else if(laneFrom==1 && color=="blue"){laneCoords = toplaneBlueSideCoord;}
-            else if(laneFrom==3 && color=="blue"){laneCoords = midlaneBlueSideCoord;}
-            else if(laneFrom==4 && color=="blue"){laneCoords = botlaneBlueSideCoord; }
-            else if(laneFrom==0 && color=="red"){laneCoords = baseRedSideCoord;}
-            else if(laneFrom==1 && color=="red"){laneCoords = toplaneRedSideCoord;}
-            else if(laneFrom==3 && color=="red"){laneCoords = midlaneRedSideCoord;}
-            else if(laneFrom==4 && color=="red"){laneCoords = botlaneRedSideCoord; }
+            if(laneFrom=='base' && color=="blue"){laneCoords = baseBlueSideCoord;}
+            else if(laneFrom=='top' && color=="blue"){laneCoords = toplaneBlueSideCoord;}
+            else if(laneFrom=='mid' && color=="blue"){laneCoords = midlaneBlueSideCoord;}
+            else if(laneFrom=='bot' && color=="blue"){laneCoords = botlaneBlueSideCoord; }
+            else if(laneFrom=='base' && color=="red"){laneCoords = baseRedSideCoord;}
+            else if(laneFrom=='top' && color=="red"){laneCoords = toplaneRedSideCoord;}
+            else if(laneFrom=='mid' && color=="red"){laneCoords = midlaneRedSideCoord;}
+            else if(laneFrom=='bot' && color=="red"){laneCoords = botlaneRedSideCoord; }
             //How to display them on the lane depending on the amount of players already on the lane	
             switch (playersOnThisLane.length){
                 case 0:
@@ -244,23 +244,22 @@ function moveJunglingPlayers(){
 //Function to call when a player is killed, make him dissapear, send him to base and make him respawn
 function kill(player){		   
     player.DOMElement.style.visibility  = "hidden";				
-    sendPlayerToLane(player, player.lane, 0, respawnPlayer);
+    sendPlayerToLane(player, player.lane, 'base', respawnPlayer);
 }
 
 //Respawn a player (give him 100HP and send him back to a lane)
 function respawnPlayer(player){
      setTimeout(function() {
         player.DOMElement.style.visibility = "visible";
-        player.hp=100;
-        console.log("respawn" + player.name);
+        player.hp=100;       
         if (player.role=="top"){
-              sendPlayerToLane(player, 0, 1, makePlayerLane);
+              sendPlayerToLane(player, 'base', 'top', makePlayerLane);
         }else if (player.role=="mid"){
-              sendPlayerToLane(player, 0, 3, makePlayerLane);
+              sendPlayerToLane(player, 'base', 'mid', makePlayerLane);
         }else if (player.role=="adc"){
-              sendPlayerToLane(player, 0, 4, makePlayerLane);
+              sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
         }else if (player.role=="support"){
-              sendPlayerToLane(player, 0, 4, makePlayerLane);
+              sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
         }
     }, 5000);
 }
@@ -272,7 +271,7 @@ function makePlayerLane(player){
 
 //Send player to base and simulate backs in LoL
 function goBackToBase(player){	
-    setTimeout(function() {sendPlayerToLane(player,player.lane,0, respawnPlayer); }, 3000);	
+    setTimeout(function() {sendPlayerToLane(player,player.lane,'base', respawnPlayer); }, 3000);	
 }
 
 //Start the movements of players
