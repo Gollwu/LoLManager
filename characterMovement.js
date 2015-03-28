@@ -94,7 +94,8 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 case 0:
                     break;       
                 case 1:  
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1], null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1], null, null, null, callback);
+					          console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
                     break;   
                 case 2:  
                     moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, callback);     
@@ -129,7 +130,6 @@ function moveLaningPlayers(){
 		var move = function(color){
 			for (var i in players[color]){			
 				if (players[color][i].status=="laning"){
-
 					setTimeout((function(color,i){
 						players[color][i].DOMElement.style.marginLeft = offsetInitX[color][i] + 2 + 'px';
 						setTimeout(function(){
@@ -162,20 +162,20 @@ var moveElementToXY = function(player, x, y, dx, dy, dt, cb) {
 	if(e.offsetTop > y) dy = -dy;
   e.reach = {x:false, y:false};
 	e.interX = setInterval(function(){(function(e, x, y, dx, dy, cb, player){
-		e.style.marginLeft = e.offsetLeft + dx + 'px';
 		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)){
 		  clearInterval(e.interX);
 		  e.reach.x = true;
 		  if(e.reach.y) cb(player);
 		}
+		e.style.marginLeft = e.offsetLeft + dx + 'px';
 	})(e, x, y, dx, dy, cb, player)}, dt);
 	e.interY = setInterval(function(){(function(e, x, y, dx, dy, cb){
-		e.style.marginTop = e.offsetTop + dy + 'px';
 		if(Math.abs(e.offsetTop - y) < Math.abs(dy)){
 		  clearInterval(e.interY);
 		  e.reach.y = true;
 		  if(e.reach.x) cb(player);
 		}
+		e.style.marginTop = e.offsetTop + dy + 'px';
 	})(e, x, y, dx, dy, cb, player)}, dt);
 };
 
