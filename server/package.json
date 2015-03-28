@@ -1,0 +1,29 @@
+{
+  "name": "lolmanager",
+  "version": "1.0.0",
+  "description": "An awesome simuation for lol",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/grunt ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nhacsam/lolmanager"
+  },
+  "keywords": ["osefr"],
+  "author": "Nicolas <nikkidbz@gmail.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Nhacsam/lolmanager/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "~0.3.0",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.1",
+    "grunt-mocha-cli": "~1.1.0",
+    "grunt-complexity": "~0.1.3",
+    "grunt-cli": "~0.1.9"
+  }
+}
