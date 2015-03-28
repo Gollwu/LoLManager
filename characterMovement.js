@@ -48,11 +48,11 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
 			//How to display them on the lane depending on the amount of players already on the lane		
             switch (playersOnThisLane.length){               
                 case 0:       
-                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);                    
+                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]); 					
                     break;       
                 case 1:                      
-                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);                    
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);    
+                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 					
                     break;   
                 case 2:     
                     moveElementToXY(player.DOMElement, laneCoords[0]-12.5, laneCoords[1]-25);  
@@ -95,6 +95,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                     break;       
                 case 1:  
                     moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0], laneCoords[1]); 
+					console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
                     break;   
                 case 2:  
                     moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
@@ -129,7 +130,6 @@ function moveLaningPlayers(){
 		var move = function(color){
 			for (var i in players[color]){			
 				if (players[color][i].status=="laning"){
-
 					setTimeout((function(color,i){
 						players[color][i].DOMElement.style.marginLeft = offsetInitX[color][i] + 2 + 'px';
 						setTimeout(function(){
@@ -160,12 +160,12 @@ var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 	if(e.offsetLeft > x) dx = -dx;
 	if(e.offsetTop > y) dy = -dy;
 	e.interX = setInterval(function(){(function(e, x, y, dx, dy){
-		e.style.marginLeft = e.offsetLeft + dx + 'px';
 		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)) clearInterval(e.interX);
+		e.style.marginLeft = e.offsetLeft + dx + 'px';		
 	})(e, x, y, dx, dy)}, dt);
 	e.interY = setInterval(function(){(function(e, x, y, dx, dy){
-		e.style.marginTop = e.offsetTop + dy + 'px';
 		if(Math.abs(e.offsetTop - y) < Math.abs(dy)) clearInterval(e.interY);
+		e.style.marginTop = e.offsetTop + dy + 'px';		
 	})(e, x, y, dx, dy)}, dt);
 	
 	 if (typeof callback === "function") {   
