@@ -152,7 +152,7 @@ function moveLaningPlayers(){
     }
 }
 
-//Base function to send a player to a position (E=DOMElement, x and y the coordinates)
+//Base function to send a player to a position (E=DOMElement, x and y the coordinates) hi
 var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
 	clearInterval(e.interX);
 	clearInterval(e.interY);
