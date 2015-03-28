@@ -10,13 +10,17 @@
     "type": "git",
     "url": "https://github.com/Nhacsam/lolmanager"
   },
-  "keywords": ["osefr"],
+  "keywords": [
+    "osefr"
+  ],
   "author": "Nicolas <nikkidbz@gmail.com>",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/Nhacsam/lolmanager/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "~4.12.3"
+  },
   "devDependencies": {
     "expect.js": "~0.3.0",
     "grunt-contrib-jshint": "~0.6.4",
