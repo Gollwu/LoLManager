@@ -1,15 +1,21 @@
 //Get current Position of the DOM elements of the players
 var offsetInitX = {}, offsetInitY = {};
-offsetInitX.red = []; offsetInitX.blue = [];
-offsetInitY.red = []; offsetInitY.blue = [];
-for (var i in players.blue){
-    offsetInitX.blue.push(players.blue[i].DOMElement.offsetLeft);
-    offsetInitY.blue.push(players.blue[i].DOMElement.offsetTop);
-}
-for (var i in players.red){
-    offsetInitX.red.push(players.red[i].DOMElement.offsetLeft);
-    offsetInitY.red.push(players.red[i].DOMElement.offsetTop);
-}
+
+var resetOffset = function() {
+  offsetInitX = {}, offsetInitY = {};
+  offsetInitX.red = []; offsetInitX.blue = [];
+  offsetInitY.red = []; offsetInitY.blue = [];
+  for (var i in players.blue){
+      offsetInitX.blue.push(players.blue[i].DOMElement.offsetLeft);
+      offsetInitY.blue.push(players.blue[i].DOMElement.offsetTop);
+  }
+  for (var i in players.red){
+      offsetInitX.red.push(players.red[i].DOMElement.offsetLeft);
+      offsetInitY.red.push(players.red[i].DOMElement.offsetTop);
+  }
+};
+
+resetOffset();
 
 //Variable with the position in px of the lanes
 var baseBlueSideCoord = [30,780];
@@ -52,25 +58,25 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                     break;       
                 case 1:                      
                     moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);                      
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
                     break;   
                 case 2:     
                     moveElementToXY(player, laneCoords[0]-12.5, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
                     break; 
                 case 3:
                     moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
                     break;  
                 case 4:
                     moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25 ,null, null, null, null); 
                     break;     
             }  
 			//Get a list of player of your team already on the lane the player is coming from
@@ -94,23 +100,23 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 case 0:
                     break;       
                 case 1:  
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1], null, null, null, callback);
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1] ,null, null, null, null); 
 					          console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
                     break;   
                 case 2:  
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]-25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]-25, laneCoords[1]-25 ,null, null, null, null); 
                     break; 
                 case 3:        
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0], laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null);     
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
                     break;  
                 case 4:                  
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-25, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]-25 ,null, null, null, null);   
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
+                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
                     break;     
             }  
         }
@@ -124,6 +130,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
 
 //Make the players move from 2px in one diretion every 0.250s when they are laning
 function moveLaningPlayers(){	
+
 	var colors = ['red', 'blue'];
 	for (var a in colors){
 		var color = colors[a];		
@@ -132,12 +139,16 @@ function moveLaningPlayers(){
 				if (players[color][i].status=="laning"){
 					setTimeout((function(color,i){
 						players[color][i].DOMElement.style.marginLeft = offsetInitX[color][i] + 2 + 'px';
+						resetOffset();
 						setTimeout(function(){
 							players[color][i].DOMElement.style.marginTop = offsetInitY[color][i] + 2 + 'px';
+							resetOffset();
 							setTimeout(function(){
 								players[color][i].DOMElement.style.marginLeft = offsetInitX[color][i] - 2 + 'px';
+								resetOffset();
 								setTimeout(function(){
 									players[color][i].DOMElement.style.marginTop = offsetInitY[color][i] - 2 + 'px';
+									resetOffset();
 								},250);				
 							},250);			
 						},250);
@@ -271,7 +282,7 @@ function respawnPlayer(player){
 }
 
 function makePlayerLane(player){
-	player.status = 'laning';    	
+	player.status = 'laning'; 	
 }
 
 
@@ -282,6 +293,6 @@ function goBackToBase(player){
 
 //Start the movements of players
 
-//setInterval(moveLaningPlayers, 1000);
+setInterval(moveLaningPlayers, 1000);
 setInterval(moveJunglingPlayers, 6000);
 
