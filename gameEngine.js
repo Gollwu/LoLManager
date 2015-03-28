@@ -38,6 +38,27 @@ function updateStructure(structure){
         }else if(structure.hp == 0) {
              structure.DOMElement.src = "assets/turret.png"
         }    
+    }	
+	else if(structure.name.indexOf("Nexus") > -1 && structure.name.indexOf("Turret") <= -1){
+        if (structure.hp >75 && structure.name.indexOf("red") > -1) {
+            structure.DOMElement.src = "assets/Red_Nexus_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_25.png"
+        }else if(structure.hp >75 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_25.png"
+        }else if(structure.hp == 0) {
+             structure.DOMElement.src = "assets/nexus.png"
+        }    
     }
 }    
 
