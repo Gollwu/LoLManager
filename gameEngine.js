@@ -43,18 +43,19 @@ function updateStructure(structure){
 
 //Make the first turret of the lane on the player take damage
 function pushTurret(player){
-    oppositeTeam = (player.team=='red'?'blue':'red')
-    structureToHit = getStructureToHit(oppositeTeam, player.lane);
-    structureToHit.hp -= 25;
-    
-    if(structureToHit.name.indexOf("Turret") && structureToHit.hp<=0){
-        for(var i in players[color]){
-            players[color][i].gold +=150;
-            updatePlayer(player);            
-        }
-    }
-    
-    updateStructure(structureToHit);
+	if(player.lane != 'base'){
+		oppositeTeam = (player.team=='red'?'blue':'red')
+		structureToHit = getStructureToHit(oppositeTeam, player.lane);
+		structureToHit.hp -= 25;
+		
+		if(structureToHit.name.indexOf("Turret") && structureToHit.hp<=0){
+			for(var i in players[color]){
+				players[color][i].gold +=150;
+				updatePlayer(player);            
+			}
+		}		
+		updateStructure(structureToHit);
+	}	
 }
 
 //Simulate player creeping
