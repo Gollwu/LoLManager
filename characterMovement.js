@@ -48,29 +48,29 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
 			//How to display them on the lane depending on the amount of players already on the lane		
             switch (playersOnThisLane.length){               
                 case 0:       
-                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);                    
+                    moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);                    
                     break;       
                 case 1:                      
-                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);                    
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);                      
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25); 
                     break;   
                 case 2:     
-                    moveElementToXY(player.DOMElement, laneCoords[0]-12.5, laneCoords[1]-25);  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0], laneCoords[1]+25); 
+                    moveElementToXY(player, laneCoords[0]-12.5, laneCoords[1]-25, null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25); 
                     break; 
                 case 3:
-                    moveElementToXY(player.DOMElement, laneCoords[0]-25, laneCoords[1]-25);  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-25, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+25, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25); 
                     break;  
                 case 4:
-                    moveElementToXY(player.DOMElement, laneCoords[0], laneCoords[1]);  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-12.5, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]-12.5, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[3].DOMElement, laneCoords[0]+12.5, laneCoords[1]+25); 
+                    moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25); 
                     break;     
             }  
 			//Get a list of player of your team already on the lane the player is coming from
@@ -94,31 +94,31 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 case 0:
                     break;       
                 case 1:  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0], laneCoords[1]); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1], null, null, null, callback);     
                     break;   
                 case 2:  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]-25, laneCoords[1]-25); 
                     break; 
                 case 3:        
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-12.5, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+12.5, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0], laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25, null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0], laneCoords[1]+25); 
                     break;  
                 case 4:                  
-                    moveElementToXY(playersOnThisLane[0].DOMElement, laneCoords[0]-25, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[1].DOMElement, laneCoords[0]+25, laneCoords[1]-25); 
-                    moveElementToXY(playersOnThisLane[2].DOMElement, laneCoords[0]-25, laneCoords[1]+25); 
-                    moveElementToXY(playersOnThisLane[3].DOMElement, laneCoords[0]+25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
+                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25); 
+                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-25, laneCoords[1]+25); 
+                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+25, laneCoords[1]+25); 
                     break;     
             }  
         }
     }
 	//Callback function
     player.lane=laneTo;   
-    if (typeof callback === "function") {   
-        callback(player);
-    }
+    //if (typeof callback === "function") {   
+    //    callback(player);
+    //}
 }
 
 //Make the players move from 2px in one diretion every 0.250s when they are laning
@@ -152,25 +152,31 @@ function moveLaningPlayers(){
     }
 }
 
-//Base function to send a player to a position (E=DOMElement, x and y the coordinates)
-var moveElementToXY = function(e, x, y, dx, dy, dt, callback) {
+//Base function to send a player to a position (x and y the coordinates)
+var moveElementToXY = function(player, x, y, dx, dy, dt, cb) {
+  var e = player.DOMElement;
 	clearInterval(e.interX);
 	clearInterval(e.interY);
-	dx = dx || 2; dy = dy || 2; dt = dt || 10;
+	dx = dx || 2; dy = dy || 2; dt = dt || 10; cb = cb || function(){};
 	if(e.offsetLeft > x) dx = -dx;
 	if(e.offsetTop > y) dy = -dy;
-	e.interX = setInterval(function(){(function(e, x, y, dx, dy){
+  e.reach = {x:false, y:false};
+	e.interX = setInterval(function(){(function(e, x, y, dx, dy, cb, player){
 		e.style.marginLeft = e.offsetLeft + dx + 'px';
-		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)) clearInterval(e.interX);
-	})(e, x, y, dx, dy)}, dt);
-	e.interY = setInterval(function(){(function(e, x, y, dx, dy){
+		if(Math.abs(e.offsetLeft - x) < Math.abs(dx)){
+		  clearInterval(e.interX);
+		  e.reach.x = true;
+		  if(e.reach.y) cb(player);
+		}
+	})(e, x, y, dx, dy, cb, player)}, dt);
+	e.interY = setInterval(function(){(function(e, x, y, dx, dy, cb){
 		e.style.marginTop = e.offsetTop + dy + 'px';
-		if(Math.abs(e.offsetTop - y) < Math.abs(dy)) clearInterval(e.interY);
-	})(e, x, y, dx, dy)}, dt);
-	
-	 if (typeof callback === "function") {   
-        callback(e);
-    }
+		if(Math.abs(e.offsetTop - y) < Math.abs(dy)){
+		  clearInterval(e.interY);
+		  e.reach.y = true;
+		  if(e.reach.x) cb(player);
+		}
+	})(e, x, y, dx, dy, cb, player)}, dt);
 };
 
 //Automatic movements of jungler players and gold generation at each camp. First blue players then red players
@@ -182,27 +188,27 @@ function moveJunglingPlayers(){
 			switch (players.blue[i].camp) {
 				case 'BlueGrump':
 					players.blue[i].camp = "BlueSentinelle";                    
-					moveElementToXY(players.blue[i].DOMElement, 200, 360);
+					moveElementToXY(players.blue[i], 200, 360);
 					break;
 				case 'BlueSentinelle':
 					players.blue[i].camp = "BlueWolves";
-					moveElementToXY(players.blue[i].DOMElement, 210, 450);
+					moveElementToXY(players.blue[i], 210, 450);
 					break;
 				case 'BlueWolves':
 					players.blue[i].camp = "BlueRaptors";
-					moveElementToXY(players.blue[i].DOMElement, 395, 520);
+					moveElementToXY(players.blue[i], 395, 520);
 					break;
 				case 'BlueRaptors':
 					players.blue[i].camp = "BlueBrambleback";
-					moveElementToXY(players.blue[i].DOMElement, 435, 600);
+					moveElementToXY(players.blue[i], 435, 600);
 					break;
 				case 'BlueBrambleback':
 					players.blue[i].camp = "BlueGolems";
-					moveElementToXY(players.blue[i].DOMElement, 475, 675);					
+					moveElementToXY(players.blue[i], 475, 675);					
 					break;
 				case 'BlueGolems':
 					players.blue[i].camp = "BlueGrump";
-					moveElementToXY(players.blue[i].DOMElement, 115, 335);
+					moveElementToXY(players.blue[i], 115, 335);
 					break;				
 			}
 		}
@@ -214,27 +220,27 @@ function moveJunglingPlayers(){
 			switch (players.red[i].camp) {
 				case 'RedGrump':
 					players.red[i].camp = "RedSentinelle";
-					moveElementToXY(players.red[i].DOMElement, 630, 430);					
+					moveElementToXY(players.red[i], 630, 430);					
 					break;
 				case 'RedSentinelle':
 					players.red[i].camp = "RedWolves";
-					moveElementToXY(players.red[i].DOMElement, 625, 345);					
+					moveElementToXY(players.red[i], 625, 345);					
 					break;
 				case 'RedWolves':
 					players.red[i].camp = "RedRaptors";
-					moveElementToXY(players.red[i].DOMElement, 450, 275);		
+					moveElementToXY(players.red[i], 450, 275);		
 					break;
 				case 'RedRaptors':
 					players.red[i].camp = "RedBrambleback";
-					moveElementToXY(players.red[i].DOMElement, 395, 200);				
+					moveElementToXY(players.red[i], 395, 200);				
 					break;
 				case 'RedBrambleback':
 					players.red[i].camp = "RedGolems";
-					moveElementToXY(players.red[i].DOMElement, 350, 120);					
+					moveElementToXY(players.red[i], 350, 120);					
 					break;
 				case 'RedGolems':
 					players.red[i].camp = "RedGrump";
-					moveElementToXY(players.red[i].DOMElement, 710, 455);				
+					moveElementToXY(players.red[i], 710, 455);				
 					break;				
 			}
 		}
