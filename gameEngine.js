@@ -145,8 +145,8 @@ function doTurn(){
             updatePlayer(players[color][i]);
 	   }    
     }  
-    if (nexus.blue.hp < 0){alert("RED TEAM WINS");}
-    if (nexus.red.hp < 0){alert("BLUE TEAN WINS");}
+    if (nexus.blue.hp < 0){console.log("RED TEAM WINS");}
+    if (nexus.red.hp < 0){console.log("BLUE TEAN WINS");}
 }
 
 //Sort players and start turn every 2 seconds
