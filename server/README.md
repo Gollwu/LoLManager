@@ -9,11 +9,15 @@ An awesome simuation for lol
 This module is installed via npm:
 
 ``` bash
-$ npm install lolmanager
+$ npm install
+$ cp config.js.dist config.js
+$ node fixtures/*
 ```
 
-## Example Usage
+Change the values in the config.js file to adapt it for your system.
 
-``` js
-var lolmanager = require('lolmanager');
+## launch the aplplication :
+
+``` bash
+$ node src/app.js
 ```
