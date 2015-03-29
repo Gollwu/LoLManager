@@ -56,25 +56,40 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
 			  //How to display them on the lane depending on the amount of players already on the lane		
               switch (playersOnThisLane.length){               
                   case 0:       
-                      moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback);                    
+                      //moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback);   
+                      player.DOMElement.style.marginLeft = laneCoords[0] + 'px';
+                      player.DOMElement.style.marginTop = laneCoords[1] + 'px';
+                      callback(player);
                       break;       
-                  case 1:                      
-                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback);                 
+                  case 1:
+                      //moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback);
+                      player.DOMElement.style.marginLeft = laneCoords[0]-25 + 'px';
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
+                      callback(player);         
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
                       break;   
                   case 2:     
-                      moveElementToXY(player, laneCoords[0]-12, laneCoords[1]-25, 50, 50, 0, callback); 
+                      //moveElementToXY(player, laneCoords[0]-12, laneCoords[1]-25, 50, 50, 0, callback); 
+                      player.DOMElement.style.marginLeft = laneCoords[0]-12 + 'px';
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
+                      callback(player);  
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
                       break; 
                   case 3:
-                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback); 
+                      //moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback); 
+                      player.DOMElement.style.marginLeft = laneCoords[0]-25 + 'px';
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
+                      callback(player);  
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
                       break;  
                   case 4:
-                      moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback); 
+                      //moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback); 
+                      player.DOMElement.style.marginLeft = laneCoords[0] + 'px';
+                      player.DOMElement.style.marginTop = laneCoords[1] + 'px';
+                      callback(player);  
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
