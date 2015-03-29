@@ -1,6 +1,6 @@
 var config = {
-
-    dbconnectionUrl: 'postgres://user:pass@example.com:5432/dbname'
+    dbconnectionUrl: 'postgres://user:pass@example.com:5432/dbname',
+    env:  global.env ?  global.env : 'dev'
 };
 
 module.exports = config;

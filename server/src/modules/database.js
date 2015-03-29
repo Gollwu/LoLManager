@@ -6,7 +6,6 @@
 var config = require('../../config.js'),
     Sequelize = require('sequelize');
 
-
 module.exports = {
 
     /**
@@ -18,7 +17,8 @@ module.exports = {
         return new Sequelize(config.dbconnectionUrl, {
             default: {
                 timestamp: true
-            }
+            },
+            logging: config.env == 'dev' ? console.log : function(){}
         });
     }
 

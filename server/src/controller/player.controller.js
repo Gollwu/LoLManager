@@ -17,12 +17,13 @@ var app = express();
 app.param('id', function(req, res, next, id) {
     Player.find(id).then(function(player) {
         if (!player) {
-            res.send('Not Found', 404);
+            res.status(404).end();
+        } else {
+            req.player = player;
+            next();
         }
-        req.player = player;
-        next();
     }).fail(function(error) {
-        res.send(error, 500);
+        res.status(500).end(error);
     });
 });
 
@@ -35,7 +36,7 @@ app.param('id', function(req, res, next, id) {
  */
 app.get('/', function(req, res) {
     Player.findAll().then(function(players) {
-        res.send(players);
+        res.json(players);
     });
 });
 
@@ -49,7 +50,7 @@ app.get('/', function(req, res) {
  *
  */
 app.get('/:id', function(req, res) {
-    res.send(req.player);
+    res.json(req.player);
 });
 
 /**

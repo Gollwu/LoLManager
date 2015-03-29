@@ -17,12 +17,13 @@ var app = express();
 app.param('id', function(req, res, next, id) {
     Champion.find(id).then(function(champion) {
         if (!champion) {
-            res.send('Not Found', 404);
+            res.status(404).send('Not Found');
+        } else {
+            req.champion = champion;
+            next();
         }
-        req.champion = champion;
-        next();
     }).fail(function(error) {
-        res.send(error, 500);
+        res.status(500).send(error);
     });
 });
 
@@ -35,7 +36,7 @@ app.param('id', function(req, res, next, id) {
  */
 app.get('/', function(req, res) {
     Champion.findAll().then(function(champions) {
-        res.send(champions);
+        res.json(champions);
     });
 });
 
@@ -49,7 +50,7 @@ app.get('/', function(req, res) {
  *
  */
 app.get('/:id', function(req, res) {
-    res.send(req.champion);
+    res.json(req.champion);
 });
 
 /**

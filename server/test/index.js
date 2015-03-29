@@ -1,9 +1,13 @@
+global.env  = 'prod';
 var expect = require('expect.js'),
-    lolmanager = require('..');
+    request = require('supertest'),
+    lolmanager = require('../src/app.js');
 
 describe('lolmanager', function() {
-  it('should say hello', function(done) {
-    expect(lolmanager()).to.equal('Hello, world');
-    done();
-  });
+    it('compilation passing', function(done) {
+
+        request(lolmanager).get('/')
+        .expect(404)
+        .end(done);
+    });
 });

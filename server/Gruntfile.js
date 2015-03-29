@@ -33,7 +33,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['**/*.js', '!node_modules/**/*.js'],
-        tasks: ['default'],
+        tasks: ['mochacli'],
         options: {
           nospawn: true
         }

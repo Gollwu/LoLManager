@@ -26,7 +26,8 @@
     "pg-hstore": "~2.3.1",
     "pg": "~4.3.0",
     "body-parser": "~1.12.2",
-    "apidoc": "~0.12.1"
+    "apidoc": "~0.12.1",
+    "supertest": "~0.15.0"
   },
   "devDependencies": {
     "expect.js": "~0.3.0",

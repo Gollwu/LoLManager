@@ -1,7 +1,14 @@
 var db = require('../modules/database'),
     Sequelize = require('sequelize');
 
-var Player = db.getConection().define('player', {
+var statModel  = {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0
+};
+var connection = db.getConection();
+
+var Player = connection.define('player', {
     firstName: {
         type: Sequelize.STRING(25)
     },
@@ -22,101 +29,25 @@ var Player = db.getConection().define('player', {
     role: {
         type: Sequelize.STRING(15)
     },
-    warding: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    community: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    attitude: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    charisma: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    adaptability: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    laning: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    farming: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    outplay: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    ganking: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    pressuring: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    smiting: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    ADCarry: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    Tank: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    ADTank: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    APTank: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0   	
-    },
-    APCarry: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    AssassinAD: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    AssassinAP: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    },
-    Support: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0
-    }
+    warding: statModel,
+    community: statModel,
+    attitude: statModel,
+    charisma: statModel,
+    adaptability: statModel,
+    laning: statModel,
+    farming: statModel,
+    outplay: statModel,
+    ganking: statModel,
+    pressuring: statModel,
+    smiting: statModel,
+    ADCarry: statModel,
+    Tank: statModel,
+    ADTank: statModel,
+    APTank: statModel,
+    APCarry: statModel,
+    AssassinAD: statModel,
+    AssassinAP: statModel,
+    Support: statModel
 });
 
 module.exports = Player;

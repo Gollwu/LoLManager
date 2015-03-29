@@ -1,7 +1,8 @@
 var express = require('express'),
     logger = require('morgan')
     fs = require('fs'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    config = require('../config');
 
 var app = express();
 
@@ -11,7 +12,9 @@ var app = express();
 var api = express();
 app.use('/api', api);
 
-app.use(logger('dev')); /* 'default', 'short', 'tiny', 'dev' */
+if (config.env == 'dev') {
+    app.use(logger('dev'));
+}
 app.use(bodyParser.json());
 
 /**
@@ -32,3 +35,5 @@ fs.readdirSync(__dirname + '/controller').forEach(function(name){
 
 app.listen(3000);
 console.log('Listening on port 3000...');
+
+module.exports = app;
