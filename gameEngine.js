@@ -110,15 +110,15 @@ function checkDead(player, killer, assists){
         var killed = Math.round(Math.random()*2-1);  //Need formula here 
        
         if(!killed){  		
-            goBackToBase(player);            
             player.status="base";
+            goBackToBase(player);
         }else {           
             killer.gold+=400;
             killer.kills++;
-			for(var i in assists){
-				assists[i].assists++;
-				assists[i].gold+=200;
-			}
+			      for(var i in assists){
+				      assists[i].assists++;
+				      assists[i].gold+=200;
+			      }
             player.deaths++;   
             player.hp=100;
             player.status="dead";            
