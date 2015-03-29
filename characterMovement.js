@@ -50,34 +50,65 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             else if(laneTo=='base' && color=="red"){laneCoords = baseRedSideCoord;}
             else if(laneTo=='top' && color=="red"){laneCoords = toplaneRedSideCoord;}
             else if(laneTo=='mid' && color=="red"){laneCoords = midlaneRedSideCoord;}
-            else if(laneTo=='bot' && color=="red"){laneCoords = botlaneRedSideCoord;}   
-			//How to display them on the lane depending on the amount of players already on the lane		
-            switch (playersOnThisLane.length){               
-                case 0:       
-                    moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);                    
-                    break;       
-                case 1:                      
-                    moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);                      
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
-                    break;   
-                case 2:     
-                    moveElementToXY(player, laneCoords[0]-12.5, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
-                    break; 
-                case 3:
-                    moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
-                    break;  
-                case 4:
-                    moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);     
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
-                    moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25 ,null, null, null, null); 
-                    break;     
+            else if(laneTo=='bot' && color=="red"){laneCoords = botlaneRedSideCoord;}
+            
+            if(laneTo == 'base'){ 
+			  //How to display them on the lane depending on the amount of players already on the lane		
+              switch (playersOnThisLane.length){               
+                  case 0:       
+                      moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback);                    
+                      break;       
+                  case 1:                      
+                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback);                 
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
+                      break;   
+                  case 2:     
+                      moveElementToXY(player, laneCoords[0]-12, laneCoords[1]-25, 50, 50, 0, callback); 
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
+                      break; 
+                  case 3:
+                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback); 
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
+                      break;  
+                  case 4:
+                      moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback); 
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25 ,null, null, null, null); 
+                      break;     
+              }
+            } else {
+              switch (playersOnThisLane.length){               
+                  case 0:       
+                      moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);                    
+                      break;       
+                  case 1:                      
+                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);                      
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
+                      break;   
+                  case 2:     
+                      moveElementToXY(player, laneCoords[0]-12, laneCoords[1]-25, null, null, null, callback);     
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
+                      break; 
+                  case 3:
+                      moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, null, null, null, callback);     
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
+                      break;  
+                  case 4:
+                      moveElementToXY(player, laneCoords[0], laneCoords[1], null, null, null, callback);     
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25 ,null, null, null, null); 
+                      break;     
+              }
             }  
 			//Get a list of player of your team already on the lane the player is coming from
             playersOnThisLane = new Array();
@@ -95,6 +126,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             else if(laneFrom=='top' && color=="red"){laneCoords = toplaneRedSideCoord;}
             else if(laneFrom=='mid' && color=="red"){laneCoords = midlaneRedSideCoord;}
             else if(laneFrom=='bot' && color=="red"){laneCoords = botlaneRedSideCoord; }
+            
             //How to display them on the lane depending on the amount of players already on the lane	
             switch (playersOnThisLane.length){
                 case 0:
@@ -168,7 +200,8 @@ var moveElementToXY = function(player, x, y, dx, dy, dt, cb) {
   var e = player.DOMElement;
 	clearInterval(e.interX);
 	clearInterval(e.interY);
-	dx = dx || 2; dy = dy || 2; dt = dt || 10; cb = cb || function(){};
+	dx = dx || 2; dy = dy || 2; cb = cb || function(){};
+	if(dt === undefined) dt = 10;
 	if(e.offsetLeft > x) dx = -dx;
 	if(e.offsetTop > y) dy = -dy;
   e.reach = {x:false, y:false};
