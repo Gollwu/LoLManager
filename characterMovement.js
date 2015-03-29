@@ -29,7 +29,7 @@ var midlaneRedSideCoord = [450,360];
 var botlaneRedSideCoord = [740,670];
 
 //Send a player from one lane to another
-function sendPlayerToLane(player,laneFrom, laneTo, callback){    
+function sendPlayerToLane(player,laneFrom, laneTo, callback){
     var playersOnThisLane = new Array();
     var laneCoords;
     var colors = ['red', 'blue'];
@@ -148,7 +148,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                     break;       
                 case 1:  
                     moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1] ,null, null, null, null); 
-					          console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
+					          //console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
                     break;   
                 case 2:  
                     moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
@@ -314,20 +314,20 @@ function kill(player){
 
 //Respawn a player (give him 100HP and send him back to a lane)
 function respawnPlayer(player){
-     setTimeout(function() {
-        player.DOMElement.style.visibility = "visible";
-        player.hp=100;       
-		updatePlayer(player);
-        if (player.role=="top"){
-              sendPlayerToLane(player, 'base', 'top', makePlayerLane);
-        }else if (player.role=="mid"){
-              sendPlayerToLane(player, 'base', 'mid', makePlayerLane);
-        }else if (player.role=="adc"){
-              sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
-        }else if (player.role=="support"){
-              sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
-        }
-    }, 5000);
+  setTimeout(function() {
+    player.DOMElement.style.visibility = "visible";
+    player.hp=100;       
+    updatePlayer(player);
+    if (player.role=="top"){
+          sendPlayerToLane(player, 'base', 'top', makePlayerLane);
+    }else if (player.role=="mid"){
+          sendPlayerToLane(player, 'base', 'mid', makePlayerLane);
+    }else if (player.role=="adc"){
+          sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
+    }else if (player.role=="support"){
+          sendPlayerToLane(player, 'base', 'bot', makePlayerLane);
+    }
+  }, 5000);
 }
 
 function makePlayerLane(player){
@@ -337,7 +337,11 @@ function makePlayerLane(player){
 
 //Send player to base and simulate backs in LoL
 function goBackToBase(player){	
-    setTimeout(function() {sendPlayerToLane(player,player.lane,'base', respawnPlayer); }, 3000);	
+    if(!player.DOMElement.style.opacity) player.DOMElement.style.opacity = 1;
+    if(player.DOMElement.style.opacity > 0){
+      player.DOMElement.style.opacity -= 0.1;
+      setTimeout(function() {goBackToBase(player);}, 300);
+    }else setTimeout(function() {sendPlayerToLane(player,player.lane,'base', respawnPlayer); player.DOMElement.style.opacity = 1;}, 1);
 }
 
 //Start the movements of players
