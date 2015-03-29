@@ -1,7 +1,7 @@
-var db = require('../common/database/connection'),
+var db = require('../modules/database'),
     Sequelize = require('sequelize');
 
-var Player = db.define('player', {
+var Player = db.getConection().define('player', {
     firstName: {
         type: Sequelize.STRING(25)
     },

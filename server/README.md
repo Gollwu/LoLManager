@@ -16,8 +16,20 @@ $ node fixtures/*
 
 Change the values in the config.js file to adapt it for your system.
 
-## launch the aplplication :
+## launch the application :
 
 ``` bash
 $ node src/app.js
+```
+
+## Documentation :
+
+Install apidoc
+``` bash
+$ npm install apidoc -g
+```
+
+Compute the documentation
+``` bash
+$ apidoc -i src -o doc
 ```

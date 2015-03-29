@@ -1,22 +1,22 @@
 {
   "name": "lolmanager",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An awesome simuation for lol",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "node_modules/.bin/grunt ci"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nhacsam/lolmanager"
+    "url": "https://github.com/Gollwu/LoLManager"
   },
   "keywords": [
     "osefr"
   ],
-  "author": "Nicolas <nikkidbz@gmail.com>",
+  "author": "Gollwu",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/Nhacsam/lolmanager/issues"
+    "url": "https://github.com/Gollwu/LoLManager"
   },
   "dependencies": {
     "express": "~4.12.3",
@@ -24,7 +24,9 @@
     "fs": "0.0.2",
     "sequelize": "~2.0.5",
     "pg-hstore": "~2.3.1",
-    "pg": "~4.3.0"
+    "pg": "~4.3.0",
+    "body-parser": "~1.12.2",
+    "apidoc": "~0.12.1"
   },
   "devDependencies": {
     "expect.js": "~0.3.0",
@@ -34,5 +36,11 @@
     "grunt-mocha-cli": "~1.1.0",
     "grunt-complexity": "~0.1.3",
     "grunt-cli": "~0.1.9"
+  },
+  "apidoc": {
+    "name": "LoL Manager",
+    "version": "0.1.0",
+    "description": "An awesome simuation for lol",
+    "title": "Api Rest Documentation for LoLManager"
   }
 }
