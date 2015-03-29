@@ -92,12 +92,22 @@ var Player = db.getConection().define('player', {
         allowNull: false,
         defaultValue: 0
     },
+    APTank: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0   	
+    },
     APCarry: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0
     },
     AssassinAD: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    AssassinAP: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0
