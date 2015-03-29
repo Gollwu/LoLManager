@@ -302,6 +302,7 @@ function respawnPlayer(player){
      setTimeout(function() {
         player.DOMElement.style.visibility = "visible";
         player.hp=100;       
+		updatePlayer(player):
         if (player.role=="top"){
               sendPlayerToLane(player, 'base', 'top', makePlayerLane);
         }else if (player.role=="mid"){
