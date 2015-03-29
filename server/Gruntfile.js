@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     complexity: {
       generic: {
-        src: ['src/**/*.js'],
+        src: ['app/**/*.js'],
         options: {
           errorsOnly: false,
           cyclometric: 6,       // default is 3
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'src/**/*.js',
+        'app/**/*.js',
         'test/**/*.js'
       ],
       options: {

@@ -1,7 +1,7 @@
 global.env  = 'prod';
 var expect = require('expect.js'),
     request = require('supertest'),
-    lolmanager = require('../src/app.js');
+    lolmanager = require('../app/app.js');
 
 describe('lolmanager', function() {
     it('compilation passing', function(done) {
