@@ -36,6 +36,7 @@ var Player = connection.define('player', {
     adaptability: statModel,
     laning: statModel,
     farming: statModel,
+	shotcalling: statModel,
     outplay: statModel,
     ganking: statModel,
     pressuring: statModel,
