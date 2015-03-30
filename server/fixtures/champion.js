@@ -1,4 +1,4 @@
-var Champion = require('../src/model/champion');
+var Champion = require('../app/model/champion');
 
 Champion.sync({force: true}).then(function () {
     // Table created

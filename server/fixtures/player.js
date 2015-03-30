@@ -1,12 +1,12 @@
-var Player = require('../src/model/player');
+var Player = require('../app/model/player');
 
 Player.sync({force: true}).then(function () {
     // Table created
     Player.create({
         firstName: 'Jeff',
         lastName: 'Aubry',
-        pseudo: 'Golwu'
-		birthdate: '1992-11-02',
+        pseudo: 'Golwu',
+		birthdate: new Date(1992, 11, 2),
 		country: 'France',
 		role: 'top',
 		warding: 40,
@@ -34,8 +34,8 @@ Player.sync({force: true}).then(function () {
 	 Player.create({
         firstName: 'Nicolas',
         lastName: 'Djambi',
-        pseudo: 'Nhacsam'
-		birthdate: '1994-04-29',
+        pseudo: 'Nhacsam',
+		birthdate: new Date(1994,4,29),
 		country: 'France',
 		role: 'junger',
 		warding: 17,
@@ -63,8 +63,8 @@ Player.sync({force: true}).then(function () {
 	 Player.create({
         firstName: 'Arthur',
         lastName: 'Baudoin',
-        pseudo: 'Overplow'
-		birthdate: '1991-12-25',
+        pseudo: 'Overplow',
+		birthdate: new Date(1991,12,25),
 		country: 'France',
 		role: 'mid',
 		warding: 25,
@@ -92,8 +92,8 @@ Player.sync({force: true}).then(function () {
     Player.create({
         firstName: 'Fabien',
         lastName: 'Daoulas',
-        pseudo: 'Hycariss'
-		birthdate: '1991-04-07',
+        pseudo: 'Hycariss',
+		birthdate: new Date(1991,4,7),
 		country: 'France',
 		role: 'adcarry',
 		warding: 62,
@@ -121,8 +121,8 @@ Player.sync({force: true}).then(function () {
 	 Player.create({
         firstName: 'Alexis',
         lastName: 'Krakovinsky',
-        pseudo: 'Sowerdski'
-		birthdate: '1992-10-28',
+        pseudo: 'Sowerdski',
+		birthdate: new Date(1992,10,28),
 		country: 'France',
 		role: 'support',
 		warding: 22,
@@ -150,8 +150,8 @@ Player.sync({force: true}).then(function () {
 	Player.create({
         firstName: 'Mike',
         lastName: 'Petersen',
-        pseudo: 'Wicked'
-		birthdate: '1994-04-29',
+        pseudo: 'Wicked',
+		birthdate: new Date(1994,4,29),
 		country: 'Denmark',
 		role: 'top',
 		warding: 40,
@@ -179,8 +179,8 @@ Player.sync({force: true}).then(function () {
 	Player.create({
         firstName: 'Ilyas',
         lastName: 'Hartsema',
-        pseudo: 'Shook'
-		birthdate: '1994-11-05',
+        pseudo: 'Shook',
+		birthdate: new Date(1994,11,5),
 		country: 'Netherlands',
 		role: 'jungler',
 		warding: 72,
@@ -208,8 +208,8 @@ Player.sync({force: true}).then(function () {
 	Player.create({
         firstName: 'Henrik',
         lastName: 'Hansen',
-        pseudo: 'Froggen'
-		birthdate: '1994-02-21',
+        pseudo: 'Froggen',
+		birthdate: new Date(1994,2,21),
 		country: 'Denmark',
 		role: 'mid',
 		warding: 92,
@@ -237,8 +237,8 @@ Player.sync({force: true}).then(function () {
 	Player.create({
         firstName: 'Martin',
         lastName: 'Larsson',
-        pseudo: 'Rekkles'
-		birthdate: '1996-09-20',
+        pseudo: 'Rekkles',
+		birthdate: new Date(1996,9,20),
 		country: 'Sweden',
 		role: 'adcarry',
 		warding: 66,
@@ -266,8 +266,8 @@ Player.sync({force: true}).then(function () {
 	Player.create({
         firstName: 'Mitch ',
         lastName: 'Voorspoels',
-        pseudo: 'Krepo'
-		birthdate: '1990-05-8' ,
+        pseudo: 'Krepo',
+		birthdate: new Date(1990,5,8),
 		country: 'Belgium',
 		role: 'support',
 		warding: 97,
