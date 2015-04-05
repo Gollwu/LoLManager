@@ -38,23 +38,45 @@ function updateStructure(structure){
         }else if(structure.hp == 0) {
              structure.DOMElement.src = "assets/turret.png"
         }    
+    }	
+	else if(structure.name.indexOf("Nexus") > -1 && structure.name.indexOf("Turret") <= -1){
+        if (structure.hp >75 && structure.name.indexOf("red") > -1) {
+            structure.DOMElement.src = "assets/Red_Nexus_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("red") > -1) {
+             structure.DOMElement.src = "assets/Red_Nexus_25.png"
+        }else if(structure.hp >75 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_100.png"
+        }else if(structure.hp >50 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_75.png"
+        }else if(structure.hp >25 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_50.png"
+        }else if(structure.hp >0 && structure.name.indexOf("blue") > -1) {
+             structure.DOMElement.src = "assets/Blue_Nexus_25.png"
+        }else if(structure.hp == 0) {
+             structure.DOMElement.src = "assets/nexus.png"
+        }    
     }
 }    
 
 //Make the first turret of the lane on the player take damage
 function pushTurret(player){
-    oppositeTeam = (player.team=='red'?'blue':'red')
-    structureToHit = getStructureToHit(oppositeTeam, player.lane);
-    structureToHit.hp -= 25;
-    
-    if(structureToHit.name.indexOf("Turret") && structureToHit.hp<=0){
-        for(var i in players[color]){
-            players[color][i].gold +=150;
-            updatePlayer(player);            
-        }
-    }
-    
-    updateStructure(structureToHit);
+	if(player.lane != 'base'){
+		oppositeTeam = (player.team=='red'?'blue':'red')
+		structureToHit = getStructureToHit(oppositeTeam, player.lane);
+		structureToHit.hp -= 25;
+		
+		if(structureToHit.name.indexOf("Turret") && structureToHit.hp<=0){
+			for(var i in players[color]){
+				players[color][i].gold +=150;
+				updatePlayer(player);            
+			}
+		}		
+		updateStructure(structureToHit);
+	}	
 }
 
 //Simulate player creeping
@@ -88,15 +110,15 @@ function checkDead(player, killer, assists){
         var killed = Math.round(Math.random()*2-1);  //Need formula here 
        
         if(!killed){  		
-            goBackToBase(player);            
             player.status="base";
+            goBackToBase(player);
         }else {           
             killer.gold+=400;
             killer.kills++;
-			for(var i in assists){
-				assists[i].assists++;
-				assists[i].gold+=200;
-			}
+			      for(var i in assists){
+				      assists[i].assists++;
+				      assists[i].gold+=200;
+			      }
             player.deaths++;   
             player.hp=100;
             player.status="dead";            
@@ -145,8 +167,8 @@ function doTurn(){
             updatePlayer(players[color][i]);
 	   }    
     }  
-    if (nexus.blue.hp < 0){alert("RED TEAM WINS");}
-    if (nexus.red.hp < 0){alert("BLUE TEAN WINS");}
+    if (nexus.blue.hp < 0){console.log("RED TEAM WINS");}
+    if (nexus.red.hp < 0){console.log("BLUE TEAN WINS");}
 }
 
 //Sort players and start turn every 2 seconds
