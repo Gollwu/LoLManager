@@ -13,9 +13,9 @@ var globalConf = require('./config');
 var paths = {
     app: 'app/',
     test: 'test/',
-    front: 'front/',
-    images: 'front/assets/images/',
-    fonts: 'front/assets/fonts/',
+    front: 'public/',
+    images: 'public/assets/images/',
+    fonts: 'public/assets/fonts/',
     fixtures: 'fixtures/',
     upload_fixtures: 'fixtures/upload/',
     dist: 'www/'
