@@ -59,4 +59,4 @@ app.get('/:id', function(req, res) {
 module.exports = {
     app: app,
     base: '/champion'
-}
+};

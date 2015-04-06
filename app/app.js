@@ -1,8 +1,8 @@
 var express = require('express'),
-    logger = require('morgan')
+    logger = require('morgan'),
     fs = require('fs'),
     bodyParser = require('body-parser'),
-    config = require('../config');
+    config = require('../config.js');
 
 var app = express();
 
@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 fs.readdirSync(__dirname + '/controller').forEach(function(name){
     var ctrl = require('./controller/' + name);
 
-    ctrl.api = (ctrl.api == undefined) ? true : ctrl.api;
+    ctrl.api = (ctrl.api === undefined) ? true : ctrl.api;
 
     if (ctrl.api) {
         api.use(ctrl.base, ctrl.app);
@@ -32,8 +32,4 @@ fs.readdirSync(__dirname + '/controller').forEach(function(name){
         app.use(ctrl.base, ctrl.app);
     }
 });
-
-app.listen(3000);
-console.log('Listening on port 3000...');
-
 module.exports = app;
