@@ -84,16 +84,6 @@ gulp.task('mocha', function () {
     ;
 });
 
-// Compile the documentation
-gulp.task('apidoc', function(cb){
-    $.apidoc.exec({
-        src: paths.app,
-        dest: "doc/"
-  }, cb);
-});
-
-
-
 // run hints
 gulp.task('jshint', ['mocha'], function () {
   return gulp.src([paths.app + '**/*.js', paths.front + '**/*.js' ])

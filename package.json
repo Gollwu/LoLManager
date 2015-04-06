@@ -57,8 +57,7 @@
     "gulp-coverage": "~0.3.34",
     "gulp-nodemon": "~2.0.2",
     "gulp-env": "~0.2.0",
-    "gulp-flatten": "0.0.4",
-    "gulp-apidoc": "~0.1.2"
+    "gulp-flatten": "0.0.4"
   },
   "apidoc": {
     "name": "LoL Manager",
