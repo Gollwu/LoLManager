@@ -16,21 +16,21 @@ describe('champion', function() {
     });
 
     it('get champions', function(done) {
-        request(app).get('/api/champion')
+        request(app).get('/champion')
         .expect('Content-Type', /json/)
         .expect(200)
         .end(done);
     });
 
     it('get one champion', function(done) {
-        request(app).get('/api/champion/1')
+        request(app).get('/champion/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
 
     it('get error if champion not exists', function(done) {
-        request(app).get('/api/champion/-1')
+        request(app).get('/champion/-1')
             .expect(404)
             .end(done);
     });

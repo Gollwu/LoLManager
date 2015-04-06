@@ -22,7 +22,7 @@ app.param('id', function(req, res, next, id) {
             req.player = player;
             next();
         }
-    }).fail(function(error) {
+    }, function(error) {
         res.status(500).end(error);
     });
 });

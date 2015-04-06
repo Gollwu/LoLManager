@@ -6,16 +6,11 @@ var express = require('express'),
 
 var app = express();
 
-/**
- * Prefix routes by /api
- */
-var api = express();
-app.use('/api', api);
 
 if (process.env.NODE_ENV == 'DEV') {
     app.use(logger('dev'));
 }
-app.use(bodyParser.json());
+
 
 /**
  * Include all the moduler in controller/
@@ -23,14 +18,7 @@ app.use(bodyParser.json());
  */
 fs.readdirSync(__dirname + '/controller').forEach(function(name){
     var ctrl = require('./controller/' + name);
-
-    ctrl.api = (ctrl.api === undefined) ? true : ctrl.api;
-
-    if (ctrl.api) {
-        api.use(ctrl.base, ctrl.app);
-    } else {
-        app.use(ctrl.base, ctrl.app);
-    }
+    app.use((ctrl.base || '/'), ctrl.app);
 });
 
 /**

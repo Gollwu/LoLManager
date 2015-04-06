@@ -79,7 +79,6 @@ gulp.task('mocha', function () {
         .pipe($.coverage.format())
         .pipe(gulp.dest('reports'))
          .once('error', function () {
-            process.exit(1);
         })
     ;
 });
