@@ -14,11 +14,9 @@ describe('lolmanager', function() {
         server.close();
     });
 
-
-    it('compilation passing', function(done) {
-
-        request(app).get('/')
-        .expect(404)
+    it('return the content of www', function(done) {
+        request(app).get('/favicon.ico')
+        .expect(200)
         .end(done);
     });
 });
