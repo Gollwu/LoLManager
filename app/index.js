@@ -1,3 +1,9 @@
+
+if (! process.env.NODE_ENV) {
+    process.env.NODE_ENV = 'PROD';
+}
+
+
 var app = require('./app.js');
 
 var port = process.env.PORT || 3000;

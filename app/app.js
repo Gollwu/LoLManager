@@ -12,7 +12,7 @@ var app = express();
 var api = express();
 app.use('/api', api);
 
-if (config.env == 'dev') {
+if (process.env.NODE_ENV == 'DEV') {
     app.use(logger('dev'));
 }
 app.use(bodyParser.json());

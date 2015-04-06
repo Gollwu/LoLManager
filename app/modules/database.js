@@ -18,7 +18,7 @@ module.exports = {
             default: {
                 timestamp: true
             },
-            logging: config.env == 'dev' ? console.log : function(){}
+            logging: process.env.NODE_ENV == 'DEV' ? console.log : function(){}
         });
     }
 

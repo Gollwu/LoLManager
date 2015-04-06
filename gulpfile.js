@@ -134,5 +134,5 @@ gulp.task('watch-test', ['build'], function(){
 
 gulp.task('test', ['jshint', 'mocha']);
 gulp.task('build', ['images', 'fonts', 'misc']);
-gulp.task('install-dev', ['images', 'fonts', 'misc', 'apidoc']);
-gulp.task('install', ['build']);
+gulp.task('install-dev', ['build', 'apidoc', 'fixtures']);
+gulp.task('install', ['build', 'fixtures']);
