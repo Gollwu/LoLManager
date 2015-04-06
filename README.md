@@ -17,7 +17,8 @@ $ npm install
 $ cp config.js.dist config.js
 ```
 
-Change the values in the config.js file to adapt it for your system.
+Change the values in the config.js file to adapt it for your system. Of course, you have to install postgre.
+
 
 ### launch the application :
 
