@@ -1,4 +1,6 @@
 
+
+
 //Utility function to add 0 to a string for golds
 function pad (str, max) {
   str = str.toString();
@@ -170,6 +172,9 @@ function doTurn(){
     if (nexus.blue.hp < 0){console.log("RED TEAM WINS");}
     if (nexus.red.hp < 0){console.log("BLUE TEAN WINS");}
 }
+
+//add init AGENT TURRET
+var botOutterTurret = new AgentTurret(new EventEngine(),"blue",{x:610,y:780});
 
 //Sort players and start turn every 2 seconds
 setInterval(doTurn, 2000);
