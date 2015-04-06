@@ -9,7 +9,7 @@ var app = express();
  * Home page
  */
 app.get('/', function(req, res) {
-    res.json({hello: 'world'});
+    res.render('home.html', {hello: 'world'});
 });
 
 

@@ -2,7 +2,8 @@ var express = require('express'),
     logger = require('morgan'),
     fs = require('fs'),
     bodyParser = require('body-parser'),
-    config = require('../config.js');
+    config = require('../config.js'),
+    swig = require('swig');
 
 var app = express();
 
@@ -10,6 +11,18 @@ var app = express();
 if (process.env.NODE_ENV == 'DEV') {
     app.use(logger('dev'));
 }
+
+
+
+// This is where all the magic happens!
+app.set('views', __dirname + '/../dist');
+app.engine('html', swig.renderFile);
+
+app.set('view engine', 'html');
+console.log( __dirname + '/../dist');
+
+app.set('view cache', (process.env.NODE_ENV == 'PROD'));
+swig.setDefaults({ cache: (process.env.NODE_ENV == 'PROD') });
 
 
 /**
