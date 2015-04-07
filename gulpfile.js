@@ -13,12 +13,13 @@ var globalConf = require('./config');
 var paths = {
     app: 'app/',
     test: 'test/',
-    front: 'front/',
-    images: 'front/assets/images/',
-    fonts: 'front/assets/fonts/',
+    front: 'public/',
+    images: 'public/assets/images/',
+    fonts: 'public/assets/fonts/',
     fixtures: 'fixtures/',
     upload_fixtures: 'fixtures/upload/',
-    dist: 'www/'
+    dist: 'www/',
+    views_dist: 'views'
 };
 
 // compress image and copy its
@@ -61,6 +62,64 @@ gulp.task('fixtures', function () {
 });
 
 
+// Load template
+gulp.task('scripts', function () {
+    gulp.src($.mainBowerFiles({filter: '**/*.js'}))
+        .pipe($.uglify())
+        .pipe($.concat('vendor.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+
+    gulp.src(concat(paths.front + '**/*.js'))
+        .pipe($.uglify())
+        .pipe($.concat('vendor.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+});
+
+
+
+// Compile js
+gulp.task('scripts', function () {
+    gulp.src($.mainBowerFiles({filter: '**/*.js'}))
+        .pipe($.uglify())
+        .pipe($.concat('vendor.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+
+    gulp.src(paths.front + '**/*.js')
+        .pipe($.uglify())
+        .pipe($.concat('app.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+});
+
+
+// Compile js
+gulp.task('scripts-dev', function () {
+    gulp.src($.mainBowerFiles({filter: '**/*.js'}))
+        .pipe($.concat('vendor.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+
+    gulp.src(paths.front + '**/*.js')
+        .pipe($.concat('app.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+});
+
+
+
+// compile scss
+gulp.task('styles', function () {
+
+    gulp.src($.mainBowerFiles({filter: '**/*.css' }))
+        .pipe($.concat('vendor.css'))
+        .pipe(gulp.dest(paths.dist+ 'styles/'));
+
+    gulp.src(paths.front + '*.scss')
+        .pipe($.sass())
+        .pipe($.concat('app.css'))
+        .pipe(gulp.dest(paths.dist+ 'styles/'));
+});
+
+
+
+
 // run the mocha test
 gulp.task('mocha', function () {
     $.env({
@@ -79,20 +138,9 @@ gulp.task('mocha', function () {
         .pipe($.coverage.format())
         .pipe(gulp.dest('reports'))
          .once('error', function () {
-            process.exit(1);
         })
     ;
 });
-
-// Compile the documentation
-gulp.task('apidoc', function(cb){
-    $.apidoc.exec({
-        src: paths.app,
-        dest: "doc/"
-  }, cb);
-});
-
-
 
 // run hints
 gulp.task('jshint', ['mocha'], function () {
@@ -116,7 +164,7 @@ gulp.task('serve', ['watch'], function() {
 
 // clean the dest file
 gulp.task('clean', function (done) {
-  $.del([paths.dist +'*', '!' + globalConf.upload_dir], done);
+  $.del([paths.dist +'*', '!' + globalConf.upload_dir, paths.views_dist], done);
 });
 
 // Watch for rebuild
@@ -124,6 +172,10 @@ gulp.task('watch', ['build'], function(){
     gulp.watch(paths.images + '**/*', ['images']);
     gulp.watch(paths.fonts + '**/*', ['fonts']);
     gulp.watch(paths.front + '**/favicon.*', ['misc']);
+    gulp.watch(paths.front + '**/*.js', ['scripts-dev']);
+    gulp.watch('bower_components/**/*.js', ['scripts-dev']);
+    gulp.watch(paths.front + '**/*css', ['styles']);
+    gulp.watch('bower_components/**/*scss', ['styles']);
 });
 
 // watch for launch test
@@ -133,6 +185,6 @@ gulp.task('watch-test', ['build'], function(){
 
 
 gulp.task('test', ['jshint', 'mocha']);
-gulp.task('build', ['images', 'fonts', 'misc']);
-gulp.task('install-dev', ['build', 'apidoc', 'fixtures']);
+gulp.task('build', ['images', 'fonts', 'misc', 'scripts', 'styles']);
+gulp.task('install-dev', ['build', 'apidoc', 'fixtures', 'scripts-dev', 'styles']);
 gulp.task('install', ['build', 'fixtures']);
