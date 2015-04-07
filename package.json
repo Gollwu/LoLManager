@@ -61,11 +61,5 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "apidoc": {
-    "name": "LoL Manager",
-    "version": "0.1.0",
-    "description": "An awesome simuation for lol",
-    "title": "Api Rest Documentation for LoLManager"
   }
 }

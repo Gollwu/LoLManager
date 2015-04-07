@@ -186,5 +186,5 @@ gulp.task('watch-test', ['build'], function(){
 
 gulp.task('test', ['jshint', 'mocha']);
 gulp.task('build', ['images', 'fonts', 'misc', 'scripts', 'styles']);
-gulp.task('install-dev', ['build', 'apidoc', 'fixtures', 'scripts-dev', 'styles']);
+gulp.task('install-dev', ['build', 'fixtures', 'scripts-dev', 'styles']);
 gulp.task('install', ['build', 'fixtures']);
