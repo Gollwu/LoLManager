@@ -1,5 +1,5 @@
 var configGE = {
 	// aggro range from turret in px
-	turretRange : 500
+	turretRange : 80
 
 }

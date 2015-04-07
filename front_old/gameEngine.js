@@ -131,6 +131,9 @@ function checkDead(player, killer, assists){
 
 //Main function simulating a turn in the game
 function doTurn(){	 
+    // fire event onNewGameLoop
+    eventEngine.dispatchEvent("onNewGameLoop");
+
 	// players.blue and players.red are sorted: lane ~ i
 	
     var colors = ['red', 'blue'];
@@ -169,12 +172,25 @@ function doTurn(){
             updatePlayer(players[color][i]);
 	   }    
     }  
+
+
+
     if (nexus.blue.hp < 0){console.log("RED TEAM WINS");}
     if (nexus.red.hp < 0){console.log("BLUE TEAN WINS");}
 }
 
 //add init AGENT TURRET
-var botOutterTurret = new AgentTurret(new EventEngine(),"blue",{x:610,y:780});
+var turrets = [];
+turrets.push(new AgentTurret(new EventEngine(),"blue",{x:350,y:450}));// mid blue turret
+
+// add an event engine
+var eventEngine = new EventEngine();
+eventEngine.addListener("onNewGameLoop",
+                        function(){
+                            console.log("New game loop");
+                            AgentTurret.prototype.checkDistChampTurret(turrets);
+                        });
+
 
 //Sort players and start turn every 2 seconds
 setInterval(doTurn, 2000);
