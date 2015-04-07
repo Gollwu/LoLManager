@@ -1,8 +1,14 @@
+/*
+ *	CLASS EventEngine
+ *	Handle events of multi agent architecture
+ */
+
 var EventEngine = function () {
 	this.callBacks = {};
 };
 
-EventEngine.prototype.on = function(eventName, callback) {
+// add new event to the list to handle them
+EventEngine.prototype.addListener = function(eventName, callback) {
 	
 	if (! this.callBacks[eventName]) { 
 		this.callBacks[eventName] = [];
@@ -10,15 +16,11 @@ EventEngine.prototype.on = function(eventName, callback) {
 	this.callBacks[eventName].push(callback);	
 }
 
-
-EventEngine.prototype.dispatch = function(eventName, eventObj) {
+// dispatch event (execute callback with param eventObj)
+EventEngine.prototype.dispatchEvent = function(eventName, eventObj, targetObj) {
 	for( var i in this.callBacks[eventName] ) {
 
 		var callback = this.callBacks[eventName][i];
-		callback(eventObj);
+		callback(eventObj, targetObj);
 	}
 }
-
-/*exports.create = function() {
-	return new EventEngine();
-};*/
