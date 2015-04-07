@@ -43,7 +43,7 @@ AgentTurret.prototype.__checkRelativePosition = function(self){
 };
 
 AgentTurret.prototype.__onTurretAttack = function(target){
-	this.__env.dispatchEvent("onTurretAttack", this, target);
+	this.__env.dispatchEvent("onAttack", this, target);
 };
 
 //getters

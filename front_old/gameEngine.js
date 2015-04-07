@@ -194,11 +194,11 @@ eventEngine.addListener("onNewGameLoop",
                             console.log("New game loop");
                             AgentTurret.prototype.checkDistChampTurret(turretsAgents);
                         });
-eventEngine.addListener("onTurretAttack",
-                        function(turret, player){
+eventEngine.addListener("onAttack",
+                        function(source, player){
                             for(var i in champAgents)
                                 if(champAgents[i].getObjPlayer().name == player.name){
-                                    champAgents[i].receiveDamage(turret);
+                                    champAgents[i].receiveDamage(source);
                                 }
                         });
 
