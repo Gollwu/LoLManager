@@ -1,7 +1,7 @@
 
-var AgentTurret = function (environement, team, position) {
+var AgentTurret = function (environment, team, position) {
 
-	this.__env = environement;
+	this.__env = environment;
 	this.__team = team;
 	
 	this.__positionTurretX = position.x;

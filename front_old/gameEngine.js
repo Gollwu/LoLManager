@@ -180,15 +180,15 @@ function doTurn(){
 }
 
 //add init AGENT TURRET
-var turrets = [];
-turrets.push(new AgentTurret(new EventEngine(),"blue",{x:350,y:450}));// mid blue turret
+var turretsAgents = [];
+turretsAgents.push(new AgentTurret(new EventEngine(),"blue",{x:350,y:450}));// mid blue turret
 
 // add an event engine
 var eventEngine = new EventEngine();
 eventEngine.addListener("onNewGameLoop",
                         function(){
                             console.log("New game loop");
-                            AgentTurret.prototype.checkDistChampTurret(turrets);
+                            AgentTurret.prototype.checkDistChampTurret(turretsAgents);
                         });
 
 

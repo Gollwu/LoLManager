@@ -1,5 +1,5 @@
 
-var Environement = function(turrets) {
+var Environment = function(turrets) {
 
 	this.__actions = [
 		'attack'
