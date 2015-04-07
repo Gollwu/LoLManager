@@ -1,11 +1,16 @@
 
-var AgentTurret = function (environment, team, position) {
+var AgentTurret = function (environment, team, turret) {
 
 	this.__env = environment;
 	this.__team = team;
+
+	this.__turret = turret;
 	
-	this.__positionTurretX = position.x;
-	this.__positionTurretY = position.y;
+	this.__positionTurretX = this.__turret.x;
+	this.__positionTurretY = this.__turret.y;
+
+	this.__type = "turret";
+	this.__damage = 10;
 
 
 };
@@ -19,41 +24,29 @@ AgentTurret.prototype.checkDistChampTurret = function(turrets){
 
 // private method
 AgentTurret.prototype.__checkRelativePosition = function(self){
-	var colors = ['red', 'blue'];
-	for (var a in colors){
-		var color = colors[a];		
-			for (var i in players[color]){			
-				positionPlayerX = parseInt(players[color][i].DOMElement.style.marginLeft);
-				positionPlayerY = parseInt(players[color][i].DOMElement.style.marginTop);
+	// only check ennemy team
+	var color = this.__team == 'red'?'blue':'red';
+	
+	for (var i in players[color]){			
+		positionPlayerX = parseInt(players[color][i].DOMElement.style.marginLeft);
+		positionPlayerY = parseInt(players[color][i].DOMElement.style.marginTop);
 
-				if(utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY) < configGE.turretRange){
-					console.log("champ under attack : "+players[color][i].name);
-				}else{
-					console.log("not in range : "+utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY));
-				}
+		if(utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY) < configGE.turretRange){
+			console.log("champ under attack : "+players[color][i].name);
+			// attack this champion
+			// fire event onTurretAttack
+			this.__onTurretAttack(players[color][i]);
+		}else{
+			console.log(players[color][i].name+" is not in range : "+utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY));
 		}
 	}
 };
 
-/*AgentTurret.prototype.doAction = function(name) {
-	this.engine.dispatch(name, this);
+AgentTurret.prototype.__onTurretAttack = function(target){
+	this.__env.dispatchEvent("onTurretAttack", this, target);
 };
 
-AgentTurret.prototype.onChamp = function(eventName, callback) {
-	this.engine.on(eventName, function(champ) {
-		if (champ != this) {
-			callback(champ);
-		}
-	});
+//getters
+AgentTurret.prototype.getDamage = function(){
+	return this.__damage;
 };
-
-AgentTurret.prototype.visible = function (x, y) {
-	
-	var dx = x-this.x ; 
-	var dy = y-this.y ;
-	var d2 = dx*dx + dy*dy;
-	return d2 < 10;
-}*/
-
-/*exports.create = function(env, team, position) {
-	return new AgentTurret(env, team, position); */

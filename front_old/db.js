@@ -196,148 +196,208 @@ players.red = [{
 nexus.blue = {
     name: 'blueNexus',
     hp:100,
-	DOMElement: document.getElementById('blueNexus')	
+	DOMElement: document.getElementById('blueNexus'),
+    x: 87,
+    y: 748
 }
 nexus.red =  {
     name: 'redNexus',
     hp:100,
-	DOMElement: document.getElementById('redNexus')
+	DOMElement: document.getElementById('redNexus'),
+    x: 768,
+    y: 48
 };
 
 
 inhibs.blue.top = {
     name: 'blueInhibTop',
     hp:100,
-	DOMElement: document.getElementById('blueInhibTop')	
+	DOMElement: document.getElementById('blueInhibTop'),
+    x: 65,
+    y: 615
 }
 inhibs.blue.mid = {
     name: 'blueInhibMid',
     hp:100,
-	DOMElement: document.getElementById('blueInhibMid')
+	DOMElement: document.getElementById('blueInhibMid'),
+    x: 180,
+    y: 650
 }
 inhibs.blue.bot = {
     name: 'blueInhibBot',
     hp:100,
-	DOMElement: document.getElementById('blueInhibBot')
+	DOMElement: document.getElementById('blueInhibBot'),
+    x: 220,
+    y: 765
 }
 inhibs.red.top = {
     name: 'redInhibTop',
     hp:100,
-	DOMElement: document.getElementById('redInhibTop')
+	DOMElement: document.getElementById('redInhibTop'),
+    x: 630,
+    y: 55
 }
 inhibs.red.mid = {
     name: 'redInhibMid',
     hp:100,
-	DOMElement: document.getElementById('redInhibMid')
+	DOMElement: document.getElementById('redInhibMid'),
+    x: 670,
+    y: 170
 }
 inhibs.red.bot = {
     name: 'redInhibBot',
     hp:100,
-	DOMElement: document.getElementById('redInhibBot')    
+	DOMElement: document.getElementById('redInhibBot'),
+    x: 785,
+    y: 220  
 }
 
 turrets.red.base = [{   
     name: 'redNexusTurret1',
     hp:100,
-	DOMElement: document.getElementById('redNexusTurret1') 
+	DOMElement: document.getElementById('redNexusTurret1'),
+    x: 735,
+    y: 80
 },{
     name: 'redNexusTurret2',
     hp:100,
-	DOMElement: document.getElementById('redNexusTurret2')     
+	DOMElement: document.getElementById('redNexusTurret2'),
+    x: 755,
+    y: 110    
 }];
 
 turrets.red.top = [{   
     name: 'redTopInhibTurret',
     hp:100,
-	DOMElement: document.getElementById('redTopInhibTurret')
+	DOMElement: document.getElementById('redTopInhibTurret'),
+    x: 575,
+    y: 45
 },{
     name: 'redTopInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('redTopInnerTurret')    
+	DOMElement: document.getElementById('redTopInnerTurret'),
+    x: 415,
+    y: 60    
 },{      
     name: 'redTopOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('redTopOuterTurret') 
+	DOMElement: document.getElementById('redTopOuterTurret'),
+    x: 250,
+    y: 35 
 }];
 
 turrets.red.mid = [{   
     name: 'redMidInhibTurret',
     hp:100,
-	DOMElement: document.getElementById('redMidInhibTurret')    
+	DOMElement: document.getElementById('redMidInhibTurret'),
+    x: 635,
+    y: 200    
 },{
     name: 'redMidInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('redMidInnerTurret') 
+	DOMElement: document.getElementById('redMidInnerTurret'),
+    x: 540,
+    y: 260 
 },{    
     name: 'redMidOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('redMidOuterTurret') 
+	DOMElement: document.getElementById('redMidOuterTurret'),
+    x: 515,
+    y: 350 
 }];
 
 turrets.red.bot = [{ 
     name: 'redBotInhibTurret',
     hp:100,
-	DOMElement: document.getElementById('redBotInhibTurret')
+	DOMElement: document.getElementById('redBotInhibTurret'),
+    x: 785,
+    y: 255
 },{
     name: 'redBotInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('redBotInnerTurret') 
+	DOMElement: document.getElementById('redBotInnerTurret'),
+    x: 770,
+    y: 400 
 },{
     name: 'redBotOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('redBotOuterTurret')         
+	DOMElement: document.getElementById('redBotOuterTurret'),
+    x: 800,
+    y: 610         
 }];
 
 turrets.blue.base = [{ 
  name: 'blueNexusTurret1',
     hp:100,
-	DOMElement: document.getElementById('blueNexusTurret1')	
+	DOMElement: document.getElementById('blueNexusTurret1'),
+    x: 100,
+    y: 710	
 },{
     name: 'blueNexusTurret2',
     hp:100,
-	DOMElement: document.getElementById('blueNexusTurret2')
+	DOMElement: document.getElementById('blueNexusTurret2'),
+    x: 125,
+    y: 735
 }];
 
 turrets.blue.top = [{ 
     name: 'blueTopInhibTurret',
     hp:100,
-	DOMElement: document.getElementById('blueTopInhibTurret')
+	DOMElement: document.getElementById('blueTopInhibTurret'),
+    x: 65,
+    y: 555
 },{ 
     name: 'blueTopInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('blueTopInnerTurret')    
+	DOMElement: document.getElementById('blueTopInnerTurret'),
+    x: 75,
+    y: 410    
 },{
      name: 'blueTopOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueTopOuterTurret') 
+	DOMElement: document.getElementById('blueTopOuterTurret'),
+    x: 50,
+    y: 220 
 }];
     
 turrets.blue.mid = [{  
     name: 'blueMidInhibTurret',
     hp:100,
-	DOMElement: document.getElementById('blueMidInhibTurret')    
+	DOMElement: document.getElementById('blueMidInhibTurret'),
+    x: 215,
+    y: 610    
 },{   
     name: 'blueMidInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('blueMidInnerTurret')    
+	DOMElement: document.getElementById('blueMidInnerTurret'),
+    x: 300,
+    y: 550    
 },{   
     name: 'blueMidOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueMidOuterTurret')   
+	DOMElement: document.getElementById('blueMidOuterTurret'),
+    x: 350,
+    y: 450   
 }];    
     
 turrets.blue.bot = [{  
     name: 'blueBotInhibturret',
     hp:100,
-	DOMElement: document.getElementById('blueBotInhibTurret')
+	DOMElement: document.getElementById('blueBotInhibTurret'),
+    x: 270,
+    y: 765
 },{ 
     name: 'blueBotInnerTurret',
     hp:100,
-	DOMElement: document.getElementById('blueBotInnerTurret')    
+	DOMElement: document.getElementById('blueBotInnerTurret'),
+    x: 445,
+    y: 750    
 },{   
     name: 'blueBotOuterTurret',
     hp:100,
-	DOMElement: document.getElementById('blueBotOuterTurret') 
+	DOMElement: document.getElementById('blueBotOuterTurret'),
+    x: 610,
+    y: 780 
 }];
 
 //Given a team and a lane, return the next turret to be hit by the players. If the three turrets are down, hit the nexus turrets then the nexus
