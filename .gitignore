@@ -1,0 +1,12 @@
+*.swp
+.DS_Store
+node_modules/
+npm-debug.log
+/config.js
+/doc
+/reports
+
+/www/*
+!/www/.gitkeep
+/bower_components
+/.cover*
