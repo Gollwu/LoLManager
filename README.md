@@ -10,6 +10,13 @@ An awesome simuation for lol
 
 ### Installation
 
+Install bower and gulp if you have not did it yet.
+
+``` bash
+$ sudo npm install bower -g
+$ sudo npm install gulp -g
+```
+
 This module is installed via npm:
 
 ``` bash
@@ -17,8 +24,9 @@ $ npm install
 $ cp config.js.dist config.js
 ```
 
-Change the values in the config.js file to adapt it for your system. Of course, you have to install postgre.
+Change the values in the config.js file to adapt it for your system.
 
+Of course, you have to install postgre.
 
 ### launch the application :
 
@@ -35,7 +43,6 @@ $ gulp install-dev
 
 The following tools are available :
 ```
-$ gulp apidoc       # Create a documentation of the REST API in the doc/ folder
 $ gulp watch        # Watch for changes and rebuild the front app
 $ gulp serve        # Launch the application and reload it when a file change. Rebuild the front app too
 $ gulp test         # Run the unit tests. Please use it
