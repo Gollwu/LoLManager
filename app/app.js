@@ -14,15 +14,25 @@ if (process.env.NODE_ENV == 'DEV') {
 
 
 
-// This is where all the magic happens!
+// Initialize the template engine
 app.set('views', __dirname + '/../dist');
 app.engine('html', swig.renderFile);
 
 app.set('view engine', 'html');
-console.log( __dirname + '/../dist');
 
 app.set('view cache', (process.env.NODE_ENV == 'PROD'));
 swig.setDefaults({ cache: (process.env.NODE_ENV == 'PROD') });
+
+
+app.use(function(req, res, next){
+    console.log(req.path);
+    res.locals.req = {
+        path: req.path,
+        params: req.params
+    }
+    next();
+});
+
 
 
 /**
