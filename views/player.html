@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for player in players %}
+            <div class="col col-md-4">
+                <div class="thumbnail">
+                    <img src="" alt="{{ player.pseudo }} Avatar"/>
+
+                    <div class="caption">
+                        <h3>{{ player.pseudo }}</h3>
+                        <ul>
+                            <li>{{ player.firstName }} {{ player.lastName }}</li>
+                            <li>{{ player.birthdate|date('d/m/Y') }}</li>
+                            {% for key, val in player.dataValues %}
+                                {% if   key != 'firstName' && key != 'lastName' && key != 'pseudo' &&
+                                        key != 'updatedAt' && key != 'createdAt' && key != 'birthdate'
+                                %}
+                                    <li>{{ key }}: {{ val }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
