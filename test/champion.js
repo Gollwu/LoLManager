@@ -18,7 +18,6 @@ describe('player', function() {
 
     it('get players', function(done) {
         request(app).get('/player')
-        .expect('Content-Type', /json/)
         .expect(200)
         .end(done);
     });

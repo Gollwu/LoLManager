@@ -34,7 +34,7 @@ app.use(function(req, res, next){
     res.locals.req = {
         path: req.path,
         params: req.params
-    }
+    };
     next();
 });
 
