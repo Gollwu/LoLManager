@@ -36,7 +36,7 @@ app.param('id', function(req, res, next, id) {
  */
 app.get('/', function(req, res) {
     Player.findAll().then(function(players) {
-        res.json(players);
+        res.render('player.html', {players: players});
     });
 });
 
