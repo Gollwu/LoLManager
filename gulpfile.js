@@ -62,21 +62,6 @@ gulp.task('fixtures', function () {
 });
 
 
-// Load template
-gulp.task('scripts', function () {
-    gulp.src($.mainBowerFiles({filter: '**/*.js'}))
-        .pipe($.uglify())
-        .pipe($.concat('vendor.js'))
-        .pipe(gulp.dest(paths.dist+ 'scripts/'));
-
-    gulp.src(concat(paths.front + '**/*.js'))
-        .pipe($.uglify())
-        .pipe($.concat('vendor.js'))
-        .pipe(gulp.dest(paths.dist+ 'scripts/'));
-});
-
-
-
 // Compile js
 gulp.task('scripts', function () {
     gulp.src($.mainBowerFiles({filter: '**/*.js'}))
@@ -168,7 +153,7 @@ gulp.task('clean', function (done) {
 });
 
 // Watch for rebuild
-gulp.task('watch', ['build'], function(){
+gulp.task('watch', ['build-dev'], function(){
     gulp.watch(paths.images + '**/*', ['images']);
     gulp.watch(paths.fonts + '**/*', ['fonts']);
     gulp.watch(paths.front + '**/favicon.*', ['misc']);
@@ -186,5 +171,6 @@ gulp.task('watch-test', ['build'], function(){
 
 gulp.task('test', ['jshint', 'mocha']);
 gulp.task('build', ['images', 'fonts', 'misc', 'scripts', 'styles']);
-gulp.task('install-dev', ['build', 'fixtures', 'scripts-dev', 'styles']);
+gulp.task('build-dev', ['images', 'fonts', 'misc', 'scripts-dev', 'styles']);
+gulp.task('install-dev', ['build-dev', 'fixtures']);
 gulp.task('install', ['build', 'fixtures']);
