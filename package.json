@@ -20,13 +20,14 @@
     "url": "https://github.com/Gollwu/LoLManager"
   },
   "dependencies": {
-    "express": "~4.12.3",
-    "morgan": "~1.5.2",
-    "fs": "0.0.2",
-    "sequelize": "~2.0.5",
-    "pg-hstore": "~2.3.1",
-    "pg": "~4.3.0",
     "body-parser": "~1.12.2",
+    "express": "~4.12.3",
+    "fs": "0.0.2",
+    "morgan": "~1.5.2",
+    "pg": "~4.3.0",
+    "pg-hstore": "~2.3.1",
+    "sequelize": "~2.0.5",
+    "simulation": "file:shared/simulation",
     "swig": "~1.4.2"
   },
   "devDependencies": {

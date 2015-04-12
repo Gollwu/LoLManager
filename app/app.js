@@ -38,7 +38,7 @@ app.use(function(req, res, next){
     next();
 });
 
-
+require('simulation').launch();
 
 /**
  * Include all the moduler in controller/
