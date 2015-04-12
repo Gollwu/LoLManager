@@ -11,9 +11,7 @@ var AgentChampion = function (environment, team, player, id) {
 };
 
 // called in callback of onTurretAttack or later onChamp attack
-AgentChampion.prototype.receiveDamage = function(source){
-	console.log("Aaaaargh, je me meurs !");
-	console.log(this.__player.name+" a subi "+source.getDamage());
+AgentChampion.prototype.receiveDamage = function(source){	
 	players[this.__team][this.__id].hp -= source.getDamage();
 };
 

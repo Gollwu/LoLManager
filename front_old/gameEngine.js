@@ -111,8 +111,7 @@ function checkDead(player, killer, assists){
     if(player.hp<=15 && player.status=="laning"){
         var killed = Math.round(Math.random()*2-1);  //Need formula here 
        
-        if(!killed){  		
-            player.status="base";
+        if(!killed){
             goBackToBase(player);
         }else {           
             killer.gold+=400;
@@ -121,9 +120,7 @@ function checkDead(player, killer, assists){
 				      assists[i].assists++;
 				      assists[i].gold+=200;
 			      }
-            player.deaths++;   
-            player.hp=100;
-            player.status="dead";            
+            player.deaths++;                                  
             kill(player);            
         }
     }        
@@ -190,8 +187,7 @@ turretsAgents.push(new AgentTurret(eventEngine, "blue", turrets["blue"]["mid"][2
 champAgents.push(new AgentChampion(eventEngine, "red", players["red"][2], 2));// Qrthur
 
 eventEngine.addListener("onNewGameLoop",
-                        function(){
-                            console.log("New game loop");
+                        function(){                           
                             AgentTurret.prototype.checkDistChampTurret(turretsAgents);
                         });
 eventEngine.addListener("onAttack",
