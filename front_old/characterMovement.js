@@ -55,45 +55,40 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
             if(laneTo == 'base'){ 
 			  //How to display them on the lane depending on the amount of players already on the lane		
               switch (playersOnThisLane.length){               
-                  case 0:       
-                      //moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback);   
+                  case 0:  
                       player.DOMElement.style.marginLeft = laneCoords[0] + 'px';
                       player.DOMElement.style.marginTop = laneCoords[1] + 'px';
                       callback(player);
                       break;       
-                  case 1:
-                      //moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback);
+                  case 1:                      
                       player.DOMElement.style.marginLeft = laneCoords[0]-25 + 'px';
-                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
-                      callback(player);         
-                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null); 
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';                             
+                      moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25, null, null, null, null);
+					  callback(player);  
                       break;   
-                  case 2:     
-                      //moveElementToXY(player, laneCoords[0]-12, laneCoords[1]-25, 50, 50, 0, callback); 
+                  case 2:                         
                       player.DOMElement.style.marginLeft = laneCoords[0]-12 + 'px';
-                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
-                      callback(player);  
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';                     
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
-                      moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null); 
+                      moveElementToXY(playersOnThisLane[1], laneCoords[0], laneCoords[1]+25 ,null, null, null, null);
+					   callback(player);  		
                       break; 
-                  case 3:
-                      //moveElementToXY(player, laneCoords[0]-25, laneCoords[1]-25, 50, 50, 0, callback); 
+                  case 3:                   
                       player.DOMElement.style.marginLeft = laneCoords[0]-25 + 'px';
-                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';
-                      callback(player);  
+                      player.DOMElement.style.marginTop = laneCoords[1]-25 + 'px';                       
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]-25, laneCoords[1]+25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[1], laneCoords[0]+25, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[2], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
+					  callback(player); 
                       break;  
-                  case 4:
-                      //moveElementToXY(player, laneCoords[0], laneCoords[1], 50, 50, 0, callback); 
+                  case 4:                    
                       player.DOMElement.style.marginLeft = laneCoords[0] + 'px';
-                      player.DOMElement.style.marginTop = laneCoords[1] + 'px';
-                      callback(player);  
+                      player.DOMElement.style.marginTop = laneCoords[1] + 'px';                     
                       moveElementToXY(playersOnThisLane[0], laneCoords[0]-12, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[1], laneCoords[0]+12, laneCoords[1]-25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[2], laneCoords[0]-12, laneCoords[1]+25 ,null, null, null, null); 
                       moveElementToXY(playersOnThisLane[3], laneCoords[0]+12, laneCoords[1]+25 ,null, null, null, null); 
+					   callback(player);  
                       break;     
               }
             } else {
@@ -147,8 +142,7 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
                 case 0:
                     break;       
                 case 1:  
-                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1] ,null, null, null, null); 
-					          //console.log	(playersOnThisLane[0].name  + " " + laneCoords[0] + " " + laneCoords[1]);
+                    moveElementToXY(playersOnThisLane[0], laneCoords[0], laneCoords[1] ,null, null, null, null); 					          
                     break;   
                 case 2:  
                     moveElementToXY(playersOnThisLane[0], laneCoords[0]+25, laneCoords[1]+25 ,null, null, null, null); 
@@ -169,15 +163,11 @@ function sendPlayerToLane(player,laneFrom, laneTo, callback){
         }
     }
 	//Callback function
-    player.lane=laneTo;   
-    //if (typeof callback === "function") {   
-    //    callback(player);
-    //}
+    player.lane=laneTo;     
 }
 
 //Make the players move from 2px in one diretion every 0.250s when they are laning
 function moveLaningPlayers(){	
-
 	var colors = ['red', 'blue'];
 	for (var a in colors){
 		var color = colors[a];		
@@ -308,6 +298,7 @@ function moveJunglingPlayers(){
 
 //Function to call when a player is killed, make him dissapear, send him to base and make him respawn
 function kill(player){		   
+    player.status="dead"; 
     player.DOMElement.style.visibility  = "hidden";				
     sendPlayerToLane(player, player.lane, 'base', respawnPlayer);
 }
@@ -330,18 +321,19 @@ function respawnPlayer(player){
   }, 5000);
 }
 
-function makePlayerLane(player){
+function makePlayerLane(player){	
 	player.status = 'laning'; 	
 }
 
 
-//Send player to base and simulate backs in LoL
+//Send player to base and simulate back to lane
 function goBackToBase(player){	
+	player.status="base";
     if(!player.DOMElement.style.opacity) player.DOMElement.style.opacity = 1;
     if(player.DOMElement.style.opacity > 0){
       player.DOMElement.style.opacity -= 0.1;
       setTimeout(function() {goBackToBase(player);}, 300);
-    }else setTimeout(function() {sendPlayerToLane(player,player.lane,'base', respawnPlayer); player.DOMElement.style.opacity = 1;}, 1);
+    }else setTimeout(function() {sendPlayerToLane(player, player.lane, 'base', respawnPlayer); player.DOMElement.style.opacity = 1;}, 1);
 }
 
 //Start the movements of players

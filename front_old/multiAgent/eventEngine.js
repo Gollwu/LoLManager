@@ -19,7 +19,6 @@ EventEngine.prototype.addListener = function(eventName, callback) {
 // dispatch event (execute callback with param eventObj)
 EventEngine.prototype.dispatchEvent = function(eventName, eventObj, targetObj) {
 	for( var i in this.callBacks[eventName] ) {
-
 		var callback = this.callBacks[eventName][i];
 		callback(eventObj, targetObj);
 	}

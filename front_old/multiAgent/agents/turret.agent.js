@@ -32,12 +32,10 @@ AgentTurret.prototype.__checkRelativePosition = function(self){
 		positionPlayerY = parseInt(players[color][i].DOMElement.style.marginTop);
 
 		if(utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY) < configGE.turretRange){
-			console.log("champ under attack : "+players[color][i].name);
 			// attack this champion
 			// fire event onTurretAttack
 			this.__onTurretAttack(players[color][i]);
-		}else{
-			console.log(players[color][i].name+" is not in range : "+utils.calculateDistance(self.__positionTurretX,self.__positionTurretY,positionPlayerX,positionPlayerY));
+		}else{		
 		}
 	}
 };
