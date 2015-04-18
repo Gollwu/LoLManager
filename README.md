@@ -3,7 +3,7 @@
 An awesome simuation for lol
 
 
-![alt tag](https://raw.githubusercontent.com/Gollwu/LoLManager/master/assets/doge.jpg "Doge")
+![alt tag](https://raw.githubusercontent.com/Gollwu/LoLManager/master/front_old/assets/doge.jpg "Doge")
 
 
 ## Production environment
