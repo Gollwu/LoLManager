@@ -65,7 +65,6 @@ module.exports = app;
 
 
 // Just testing
-var Simulation = require('./shared/lolSimulation/main');
 var View = require('./shared/simulationCore/abstractViewEngine');
-var sim = new Simulation(View);
-sim.launch();
+var simulation = require('./shared/lolSimulation/main')(new View());
+simulation.launch();

@@ -3,7 +3,8 @@
     $(document).ready(function(){
         $.contextLoader.addContext($('body').data('filename'));
 
-        var simulation = SharedLibs.lolSimulation($.browserViewEngine);
+        $.browserViewEngine().test();
+        var simulation = SharedLibs.lolSimulation($.browserViewEngine());
         simulation.launch();
     });
 })(jQuery);

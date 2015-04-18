@@ -1,10 +1,13 @@
 var abstractViewEngine = require('./abstractViewEngine.js');
 
-var abstractSimulation = function(viewEngine) {
+var abstractSimulation = function() {
 
-    if (! viewEngine instanceof abstractViewEngine) {
-        throw new Error('view Engine must extend abstractViewEngine');
-    }
+    this.init = function(viewEngine) {
+        if (! (viewEngine instanceof abstractViewEngine)) {
+            throw new Error('view Engine must extend abstractViewEngine');
+        }
+    };
+
 
     this.launch = function() {
         console.log('launch base simulation');
