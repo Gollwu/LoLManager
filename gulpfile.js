@@ -5,10 +5,12 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')();
 $.mainBowerFiles = require('main-bower-files');
 $.del = require('del');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 
 var globalConf = require('./config');
-
 
 var paths = {
     app: 'app/',
@@ -19,7 +21,9 @@ var paths = {
     fixtures: 'fixtures/',
     upload_fixtures: 'fixtures/upload/',
     dist: 'www/',
-    views_dist: 'views'
+    views_dist: 'views',
+    sharedFile: 'shared/frontExpose',
+    sharedName: 'SharedLibs'
 };
 
 // compress image and copy its
@@ -61,7 +65,6 @@ gulp.task('fixtures', function () {
    });
 });
 
-
 // Compile js
 gulp.task('scripts', function () {
     gulp.src($.mainBowerFiles({filter: '**/*.js'}))
@@ -73,8 +76,17 @@ gulp.task('scripts', function () {
         .pipe($.uglify())
         .pipe($.concat('app.js'))
         .pipe(gulp.dest(paths.dist+ 'scripts/'));
-});
 
+    browserify({
+            entries:['./' + paths.sharedFile],
+            standalone: paths.sharedName
+    })
+        .bundle()
+        .pipe(source('shared.js'))
+        .pipe(buffer())
+        .pipe($.uglify())
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+});
 
 // Compile js
 gulp.task('scripts-dev', function () {
@@ -84,6 +96,15 @@ gulp.task('scripts-dev', function () {
 
     gulp.src(paths.front + '**/*.js')
         .pipe($.concat('app.js'))
+        .pipe(gulp.dest(paths.dist+ 'scripts/'));
+
+
+    browserify({
+            entries:['./' + paths.sharedFile],
+            standalone: paths.sharedName
+    })
+        .bundle()
+        .pipe(source('shared.js'))
         .pipe(gulp.dest(paths.dist+ 'scripts/'));
 });
 
@@ -158,6 +179,7 @@ gulp.task('watch', ['build-dev'], function(){
     gulp.watch(paths.fonts + '**/*', ['fonts']);
     gulp.watch(paths.front + '**/favicon.*', ['misc']);
     gulp.watch(paths.front + '**/*.js', ['scripts-dev']);
+    gulp.watch(paths.shared + '**/*.js', ['scripts-dev']);
     gulp.watch('bower_components/**/*.js', ['scripts-dev']);
     gulp.watch(paths.front + '**/*css', ['styles']);
     gulp.watch('bower_components/**/*scss', ['styles']);

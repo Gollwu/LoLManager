@@ -2,6 +2,8 @@
 
     $(document).ready(function(){
         $.contextLoader.addContext($('body').data('filename'));
-        $.simulationEngine.launch();
+
+        var simulation = SharedLibs.lolSimulation($.browserViewEngine);
+        simulation.launch();
     });
 })(jQuery);

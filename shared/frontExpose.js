@@ -1,0 +1,10 @@
+
+/**
+ * This object is accessible in the front js
+ * With th ename SharedLibs
+ */
+module.exports = {
+    lolSimulation: require('./lolSimulation/main.js'),
+    abstractSimulation: require('./simulationCore/abstractSimulation.js'),
+    abstractViewEngine: require('./simulationCore/abstractViewEngine.js')
+};
