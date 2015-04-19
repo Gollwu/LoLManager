@@ -1,5 +1,5 @@
 var abstractViewEngine = require('./abstractViewEngine.js');
-var jquery = require('jquery');
+var q = require('q');
 
 /**
  * Base class of a simulation
@@ -7,7 +7,7 @@ var jquery = require('jquery');
  */
 var abstractSimulation = function() {
 
-    var mainDeferrer = jquery.Deferred();
+    var mainDeferrer = q.defer();
     var viewEngine = null;
 
     /**
@@ -17,7 +17,7 @@ var abstractSimulation = function() {
      */
     this.init = function(newViewEngine) {
         if (! (viewEngine instanceof abstractViewEngine)) {
-            throw new Error('view Engine must extend abstractViewEngine');
+//            throw new Error('view Engine must extend abstractViewEngine.');
         }
         viewEngine = newViewEngine;
         return viewEngine.init();
@@ -30,7 +30,7 @@ var abstractSimulation = function() {
     this.launch = function() {
         mainDeferrer.resolve({});
         viewEngine.end({});
-        return mainDeferrer;
+        return mainDeferrer.promise;
     };
 
     /**

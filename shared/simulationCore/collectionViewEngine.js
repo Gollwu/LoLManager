@@ -1,4 +1,4 @@
-var jquery = require('jquery');
+var q = require('q');
 var base = require('./abstractViewEngine');
 
 /**
@@ -18,7 +18,7 @@ var collectionViewEngine = function(engines) {
      */
     this.init = function() {
         var finished = 0;
-        var deferred = jquery.Deferred();
+        var deferred = q.defer();
 
         var success = function () {
             if (finished < 0) {
@@ -43,24 +43,24 @@ var collectionViewEngine = function(engines) {
         for (var i in engines) {
             engines[i].init().then(success, fail);
         }
-        return deferred;
+        return deferred.promise;
     };
 
     /**
      * {@inheritdoc}
      */
-    this.end = function(info) {
+    this.end = function(info, time) {
         for (var i in engines) {
-            engines[i].end(info);
+            engines[i].end(info, time);
         }
     };
 
     /**
      * {@inheritdoc}
      */
-    this.createEntity = function(entity) {
+    this.createEntity = function(entity, time) {
         for (var i in engines) {
-            engines[i].createEntity(entity);
+            engines[i].createEntity(entity, time);
         }
     };
 

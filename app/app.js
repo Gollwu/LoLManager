@@ -61,10 +61,3 @@ if (process.env.NODE_ENV == 'DEV') {
 }
 
 module.exports = app;
-
-
-
-// Just testing
-var View = require('./shared/simulationCore/abstractViewEngine');
-var simulation = require('./shared/lolSimulation/main')(new View());
-simulation.launch();
