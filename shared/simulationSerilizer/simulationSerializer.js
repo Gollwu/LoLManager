@@ -7,7 +7,7 @@ var abstractViewEngine = require('../simulationCore/abstractViewEngine');
 var simulationSerializer = function() {
 };
 
-LoLSimulation.prototype = new abstractViewEngine();
+simulationSerializer.prototype = new abstractViewEngine();
 
 
 
