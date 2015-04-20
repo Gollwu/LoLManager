@@ -6,5 +6,7 @@
 module.exports = {
     lolSimulation: require('./lolSimulation/main.js'),
     abstractSimulation: require('./simulationCore/abstractSimulation.js'),
-    abstractViewEngine: require('./simulationCore/abstractViewEngine.js')
+    abstractViewEngine: require('./simulationCore/abstractViewEngine.js'),
+    simulationSerializer: require('./simulationSerializer/simulationSerializer.js'),
+    simulationDeserializer: require('./simulationSerializer/simulationDeserializer.js')
 };

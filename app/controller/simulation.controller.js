@@ -12,7 +12,11 @@ app.get('/', function(req, res) {
 
     var defer = q.defer();
     var view = serializerView(defer);
-    simulation(view).launch();
+    var sim = simulation();
+    sim.init(view).then(function(){
+        sim.launch();
+    });
+
 
     defer.promise.then(function(data){
         res.json(data);

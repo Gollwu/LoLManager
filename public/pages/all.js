@@ -3,8 +3,11 @@
     $(document).ready(function(){
         $.contextLoader.addContext($('body').data('filename'));
 
-        $.browserViewEngine().test();
-        var simulation = SharedLibs.lolSimulation($.browserViewEngine());
-        simulation.launch();
+        var simulation = SharedLibs.simulationDeserializer({
+            serializedContent: 'http://localhost:3000/simulation'
+        });
+        simulation.init($.browserViewEngine()).then( function() {
+            simulation.launch();
+        });
     });
 })(jQuery);

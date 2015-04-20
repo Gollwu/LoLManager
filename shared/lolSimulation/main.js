@@ -4,10 +4,14 @@ var q = require('q');
  * Main class of the League of legend simualtion engine
  * extend of abstractSImulation
  */
-var LoLSimulation = function(viewEngine) {
+var LoLSimulation = function() {
     var simulation = this;
+    var viewEngine = null;
 
-    this.init(viewEngine);
+    this.init = function(newViewEngine) {
+        viewEngine = newViewEngine;
+        return this.parent.init(viewEngine);
+    };
 
     this.launch = function() {
         var deferrer = q.defer();
@@ -44,6 +48,6 @@ LoLSimulation.prototype = abstract;
 LoLSimulation.prototype.parent = abstract;
 
 // Export a factory
-module.exports = function(viewEngine) {
-    return new LoLSimulation(viewEngine);
+module.exports = function() {
+    return new LoLSimulation();
 };

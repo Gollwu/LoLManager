@@ -19,6 +19,7 @@ var paths = {
     fixtures: 'fixtures/',
     upload_fixtures: 'fixtures/upload/',
     dist: 'www/',
+    shared:'shared/',
     sharedFile: 'shared/frontExpose',
     sharedName: 'SharedLibs'
 };
@@ -101,13 +102,11 @@ gulp.task('scripts-dev', ['bower-scripts-dev', 'src-scripts-dev', 'browserify-de
 
 gulp.task('bower-scripts-dev', function() {
     gulp.src(mainBowerFiles({filter: '**/*.js'}))
-        .pipe($.uglify())
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.dist+ 'scripts/'));
 });
 gulp.task('src-scripts-dev', function() {
     gulp.src(paths.front + '**/*.js')
-        .pipe($.uglify())
         .pipe($.concat('app.js'))
         .pipe(gulp.dest(paths.dist+ 'scripts/'));
 });
@@ -120,7 +119,6 @@ gulp.task('browserify-dev', function() {
         .bundle()
         .pipe(source('shared.js'))
         .pipe(buffer())
-        .pipe($.uglify())
         .pipe(gulp.dest(paths.dist+ 'scripts/'));
 });
 

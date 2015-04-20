@@ -16,8 +16,8 @@ var abstractSimulation = function() {
      * @return Deferred Rsolved when initialized
      */
     this.init = function(newViewEngine) {
-        if (! (viewEngine instanceof abstractViewEngine)) {
-//            throw new Error('view Engine must extend abstractViewEngine.');
+        if (! (newViewEngine instanceof abstractViewEngine)) {
+            throw new Error('view Engine must extend abstractViewEngine.');
         }
         viewEngine = newViewEngine;
         return viewEngine.init();
