@@ -18,6 +18,12 @@
             <ul class="nav navbar-nav">
                 <li {% if req.path == '/' %} class="active" {% endif %}><a href="/"> Home </a></li>
                 <li {% if req.path == '/player' %} class="active" {% endif %}><a href="/player"> Players </a></li>
+                <li {% if req.path == '/simulation/server_side' %} class="active" {% endif %}>
+                    <a href="/simulation/server_side"> Server Side Simulation </a>
+                </li>
+                <li {% if req.path == '/simulation/client_side' %} class="active" {% endif %}>
+                    <a href="/simulation/client_side"> Client Side Simulation </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Subscribe</a></li>

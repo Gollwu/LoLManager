@@ -1,5 +1,5 @@
 var express = require('express'),
-    serializerView = require('../shared/simulationSerilizer/simulationSerializer'),
+    serializerView = require('../shared/simulationSerializer/simulationSerializer'),
     simulation = require('../shared/lolSimulation/main'),
     q = require('q')
 ;
@@ -19,9 +19,25 @@ app.get('/', function(req, res) {
 
 
     defer.promise.then(function(data){
+        for (var i in data)
         res.json(data);
     });
 });
+
+
+/**
+ * Demo pages
+ */
+app.get('/server_side', function(req, res) {
+    res.render('simulationServerSide.html');
+
+});
+
+app.get('/client_side', function(req, res) {
+    res.render('simulationClientSide.html');
+});
+
+
 
 
 

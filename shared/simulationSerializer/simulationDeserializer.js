@@ -1,6 +1,5 @@
 var abstractSimulation = require('../simulationCore/abstractSimulation');
 var extend = require('extend');
-var request = require('request');
 var q = require('q');
 
 /**
@@ -38,22 +37,22 @@ var simulationDeserializer = function(options) {
 
         if (! options.serializedContent) {
             deferrer.reject('No content do deserialize');
-        } else  if (typeof options.serializedContent === 'string') {
+        } else if (typeof options.serializedContent === 'string') {
+            if (typeof $ !== 'undefined') {
 
-            request.get(options.serializedContent)
-            .on('response', function(response) {
-                response.on('data', function(data){
-                    content = JSON.parse(data);
+                $.get(options.serializedContent)
+                .done(function(data) {
+                    content = data;
                     parentPromise.then(function(){
-                        deferrer.resolve(response);
+                        deferrer.resolve(content);
                     }, function(error) {
                         deferrer.reject(error);
                     });
+                })
+                .fail(function(error) {
+                    deferrer.reject(error);
                 });
-            })
-            .on('error', function(error) {
-                deferrer.reject(error);
-            });
+            }
 
         } else {
             content = options.serializedContent;

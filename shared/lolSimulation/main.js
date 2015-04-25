@@ -26,6 +26,7 @@ var LoLSimulation = function() {
 
             viewEngine.createEntity(entity, 0);
             for (var i = 1; i < 10; i++) {
+                entity.position = entity.position + i*42;
                 viewEngine.updateEntity(entity, i);
             }
 

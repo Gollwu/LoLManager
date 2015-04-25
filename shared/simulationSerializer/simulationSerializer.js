@@ -1,5 +1,5 @@
 var abstractViewEngine = require('../simulationCore/abstractViewEngine');
-
+var extend = require('extend');
 
 /**
  * A view engine which serilise the content instead of displaying it
@@ -14,7 +14,7 @@ var simulationSerializer = function(deferrer) {
         var step = {
             method: method,
             time: time,
-            param: param
+            param: extend({}, param)
         };
 
         if ( typeof serializedContent[time] !== 'undefined') {
