@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer');
 
-var globalConf = require('./config');
+var globalConf = require('./app/config');
 
 var paths = {
     app: 'app/',

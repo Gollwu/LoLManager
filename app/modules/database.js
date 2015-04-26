@@ -3,7 +3,7 @@
  * @author Nicolas
  * @module database
  */
-var config = require('../../config.js'),
+var config = require('../config.js'),
     Sequelize = require('sequelize');
 
 module.exports = {
