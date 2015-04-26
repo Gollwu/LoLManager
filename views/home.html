@@ -2,9 +2,64 @@
 
 {% block body %}
 
-	<div class="jumbotron text-center">
-		<h1>Create your own pro league of legend team</h1>
-		<a class="btn btn-primary btn-lg" href="#">Signup now</a>
-	</div>
+    <div class="jumbotron" id="main-jumbotron" data-stellar-background-ratio="0.4">
+        <div class="wrapper va-container">
+			<div class="va-center">
+				<div class="row">
+					<div class="col col-md-8">
+						<div class="title-wrapper">
+				        	<h1>Create your own pro league of legend team</h1>
+							<a class="btn btn-primary btn-lg visible-xs visible-sm" href="#">Signup now</a>
+					    </div>
+					</div>
+					<div class="col col-md-4 hidden-xs hidden-sm">
+						{% include 'Components/home/signupForm.html' %}
+					</div>
+				</div>
+				<div class="anchor-arrow">
+					<a href="#lets-start" class="scroll"><i class="fa fa-angle-double-down"></i></a>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <section class="container" id="lets-start">
+        <div class="row">
+            <div class="col col-md-3">
+				{% include 'Components/home/iconPrez.html' with {
+					title: 'A team management',
+					content: 'Come to manage your own pro team, buy and sell players, and train you future LCS champions.',
+					icon: 'users'
+				} %}
+            </div>
+
+            <div class="col col-md-3">
+                <div class="icon-prez">
+                    {% include 'Components/home/iconPrez.html' with {
+						title: 'A big tournament',
+						content: 'Defy your friends and win the LoL manager tournament.',
+						icon: 'trophy'
+					} %}
+                </div>
+            </div>
+
+            <div class="col col-md-3">
+                {% include 'Components/home/iconPrez.html' with {
+					title: 'A smart simulation',
+					content: 'Watch for really reallisitic game simulation with our powerful engine.',
+					icon: 'cog'
+				} %}
+            </div>
+
+            <div class="col col-md-3">
+                {% include 'Components/home/iconPrez.html' with {
+					title: 'Free and open',
+					content: 'The Game is 100% free and open source. You can watch the code and help to improve it.',
+					icon: 'github'
+				} %}
+            </div>
+
+        </div>
+    </section>
 
 {% endblock %}

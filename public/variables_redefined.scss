@@ -9,13 +9,14 @@ $bootstrap-sass-asset-helper: false !default;
 //## Gray and brand colors for use across Bootstrap.
 
 $gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33%); // #555
+$gray-light:             lighten($gray-base, 70%); // #777
+$gray-lighter:           lighten($gray-base, 80%); // #eee
+$gray-ultralight:        lighten($gray-base, 94%); // #eee
 
-$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$brand-primary:         #ED9D24; // #337ab7
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
@@ -27,7 +28,7 @@ $brand-danger:          #d9534f !default;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff !default;
+$body-bg:               $gray-ultralight;
 //** Global text color on `<body>`.
 $text-color:            $gray-dark !default;
 
@@ -96,7 +97,7 @@ $padding-base-vertical:     6px !default;
 $padding-base-horizontal:   12px !default;
 
 $padding-large-vertical:    10px !default;
-$padding-large-horizontal:  16px !default;
+$padding-large-horizontal:  30px;
 
 $padding-small-vertical:    5px !default;
 $padding-small-horizontal:  10px !default;
