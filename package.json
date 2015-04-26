@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "test": "node_modules/.bin/grunt ci",
-    "postinstall": "bower install && gulp install"
+    "postinstall": "./node_modules/bower/bin/bower install && node ./node_modules/gulp/bin/gulp.js install"
   },
   "repository": {
     "type": "git",
@@ -28,16 +28,7 @@
     "pg": "~4.3.0",
     "body-parser": "~1.12.2",
     "swig": "~1.4.2",
-<<<<<<< HEAD
-    "bower": "~1.4.1"
-  },
-  "devDependencies": {
-    "autoprefixer-core": "^4.0.2",
-    "browser-sync": "^1.8.2",
-    "del": "^1.1.1",
-=======
-
->>>>>>> 635434f... Clean gulp and dependency
+    "bower": "~1.4.1",
     "gulp": "^3.6.0",
     "gulp-imagemin": "~2.2.1",
     "gulp-load-plugins": "^0.8.0",
@@ -45,15 +36,10 @@
     "gulp-uglify": "^1.0.1",
     "main-bower-files": "~2.6.2",
     "gulp-flatten": "0.0.4",
-<<<<<<< HEAD
-    "gulp-rev": "~3.0.1",
-    "gulp-concat": "~2.5.2"
-=======
     "gulp-concat": "~2.5.2",
     "browserify": "~9.0.8",
     "vinyl-source-stream": "~1.1.0",
     "vinyl-buffer": "~1.0.0"
->>>>>>> 635434f... Clean gulp and dependency
   },
   "devDependencies": {
     "autoprefixer-core": "^4.0.2",
