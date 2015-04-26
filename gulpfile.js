@@ -7,8 +7,6 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer');
-$.mainBowerFiles = require('main-bower-files');
-$.del = require('del');
 
 var globalConf = require('./config');
 
@@ -23,7 +21,7 @@ var paths = {
     dist: 'www/',
     sharedFile: 'shared/frontExpose',
     sharedName: 'SharedLibs',
- views_dist: 'views'
+    views_dist: 'views'
 };
 
 // compress image and copy its
@@ -36,7 +34,7 @@ gulp.task('images', function () {
 // Copy fonts
 gulp.task('fonts', function () {
   return gulp.src(
-      $.mainBowerFiles({filter: '**/*.{eot,svg,ttf,woff}'})
+      mainBowerFiles({filter: '**/*.{eot,svg,ttf,woff}'})
       .concat(paths.fonts)
     )
     .pipe($.flatten())
@@ -66,7 +64,7 @@ gulp.task('fixtures', function () {
 });
 
 // Compile js
-gulp.task('scripts', ['bower-scripts', 'src-scripts', 'browserify']);
+gulp.task('scripts', ['bower-scripts', 'src-scripts']);
 
 gulp.task('bower-scripts', function() {
     gulp.src(mainBowerFiles({filter: '**/*.js'}))
@@ -96,7 +94,7 @@ gulp.task('browserify', function() {
 
 
 // Compile js for dev
-gulp.task('scripts-dev', ['bower-scripts-dev', 'src-scripts-dev', 'browserify-dev']);
+gulp.task('scripts-dev', ['bower-scripts-dev', 'src-scripts-dev']);
 
 gulp.task('bower-scripts-dev', function() {
     gulp.src(mainBowerFiles({filter: '**/*.js'}))
