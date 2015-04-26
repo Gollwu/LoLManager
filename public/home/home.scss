@@ -23,7 +23,7 @@
                 color: white;
                 font-size: 4em;
                 margin: auto;
-                padding-bottom: 60px;
+                padding-bottom: 30px;
             }
         }
         form {
@@ -66,32 +66,26 @@
             }
         }
 
+        .btn.btn-signup {
+            width: 100%;
+        }
     }
 
 
 }
 
 @media (max-width: $screen-sm-max) {
-    #main-jumbotron .wrapper {
-        height: 300px;
-        padding-top: 120px;
-        h1 {
-            font-size: 2.5em;
-            padding-bottom: 30px;
-        }
+    #main-jumbotron .wrapper .title-wrapper  h1 {
+        font-size: 3.5em;
     }
 }
 
 @media (max-width: $screen-xs-max) {
-    #main-jumbotron  {
-
-        .wrapper {
-            padding-top: 60px;
-        }
-
-        .anchor-arrow {
-            display: none;
-        }
+    #main-jumbotron .wrapper .title-wrapper  h1 {
+        font-size: 2.5em;
+    }
+    #main-jumbotron  .anchor-arrow {
+        display: none;
     }
 }
 
