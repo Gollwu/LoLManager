@@ -2,7 +2,7 @@ var express = require('express'),
     logger = require('morgan'),
     fs = require('fs'),
     bodyParser = require('body-parser'),
-    config = require('../config.js'),
+    config = require('./config.js'),
     swig = require('swig');
 
 var app = express();
@@ -26,7 +26,7 @@ app.engine('html', function (filePath, options, callback) {
 
 app.set('view engine', 'html');
 app.set('view cache', (process.env.NODE_ENV == 'PROD'));
-swig.setDefaults({ cache: (process.env.NODE_ENV == 'PROD') });
+swig.setDefaults({ cache: (process.env.NODE_ENV == 'PROD' ? 'memory' : false) });
 
 
 // Expose some parts of the request object to the template

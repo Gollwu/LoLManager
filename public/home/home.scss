@@ -1,0 +1,99 @@
+#main-jumbotron {
+    background-image: url("//euw.leagueoflegends.com/sites/default/files/upload/art/team_graves_3.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+
+    margin: 0;
+    padding: 0;
+
+    & > * {
+        background-color: rgba(0,0,0,0.2);
+    }
+
+    .wrapper {
+        height: 100%;
+        position: relative;
+        padding: 50px;
+
+        .title-wrapper {
+            height: 70%;
+            text-align: center;
+            h1 {
+                font-family: "Source Sans Pro", serif;
+                color: white;
+                font-size: 4em;
+                margin: auto;
+                padding-bottom: 30px;
+            }
+        }
+        form {
+            h2 {
+                text-align: center;
+                color: white;
+            }
+            background-color: fadout(black, 70%);
+            .form-control {
+                font-size: $font-size-large;
+                padding-top: $padding-large-vertical;
+                padding-bottom: $padding-large-vertical;
+                height: auto;
+                line-height: $line-height-large;
+            }
+            input[type="checkbox"] {
+                background-color: white;
+                height: (2*$padding-large-vertical);
+                width: (2*$padding-large-vertical);
+            }
+
+            label {
+                color: white;
+            }
+
+        }
+
+        .anchor-arrow {
+            text-align: center;
+            font-size: 50pt;
+            color: white;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            a {
+                color: white;
+                &:hover, &:active {
+                    color: $gray-lighter;
+                }
+            }
+        }
+
+        .btn.btn-signup {
+            width: 100%;
+        }
+    }
+
+
+}
+
+@media (max-width: $screen-sm-max) {
+    #main-jumbotron .wrapper .title-wrapper  h1 {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    #main-jumbotron .wrapper .title-wrapper  h1 {
+        font-size: 2.5em;
+    }
+    #main-jumbotron  .anchor-arrow {
+        display: none;
+    }
+}
+
+
+.icon-prez {
+    text-align: center;
+    .big-icon {
+        font-size : 40px;
+        color: $brand-primary;
+    }
+}

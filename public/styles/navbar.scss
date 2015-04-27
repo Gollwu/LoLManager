@@ -1,0 +1,35 @@
+
+.navbar {
+    z-index: 200;
+}
+
+@media (max-width: $screen-xs-max) {
+    .navbar.navbar-transparent {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .navbar.navbar-transparent {
+
+        position: absolute;
+        background: none;
+        border: none;
+        width: 100%;
+
+        .navbar-nav a,
+        .navbar-brand:hover {
+            color : $gray-lighter;
+        }
+
+        .navbar-nav > .active > a,
+        .navbar-nav > .active > a:hover,
+        .navbar-nav > .active > a:focus,
+        .navbar-nav a:hover,
+        .navbar-nav a:focus,
+        .navbar-brand {
+            background-color: transparent;
+            color: white;
+        }
+    }
+}
