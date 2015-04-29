@@ -8,6 +8,7 @@ var abstractViewEngine = function() {
 
     /**
      * Init the display
+     * Care that init can be called more than once (to restart the display)
      * @return Deferred Promise resolved when the Engine is initialised
      */
     this.init = function() {
@@ -28,9 +29,17 @@ var abstractViewEngine = function() {
      * Create a new entity to be displayed
      * NOTE : An entity always have an id {@see http://en.wikipedia.org/wiki/Domain-driven_design#Building_blocks_of_DDD}
      * @param Object entity New Entiy. The content of the entity depends of the simulation
-     * @param integer time Wen the entity is created (no special unit)
+     * @param integer time When the entity is created (no special unit)
      */
     this.createEntity = function(entity, time) {
+    };
+
+    /**
+     * Destroy an entity. Basicly just hide it and free memory
+     * @param Object entity Entity to destroy
+     * @param integer time When the entity is destroyed (no special unit)
+     */
+    this.destroyEntity = function(entity, time) {
     };
 
     /**

@@ -67,6 +67,15 @@ var collectionViewEngine = function(engines) {
     /**
      * {@inheritdoc}
      */
+    this.destroyEntity = function(entity, time) {
+        for (var i in engines) {
+            engines[i].destroyEntity(entity, time);
+        }
+    };
+
+    /**
+     * {@inheritdoc}
+     */
      this.updateEntity = function(entity, time) {
          for (var i in engines) {
              engines[i].updateEntity(entity, time);

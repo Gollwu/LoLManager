@@ -29,6 +29,7 @@ var simulationSerializer = function(deferrer) {
      * {@inheritdoc}
      */
     this.init = function() {
+        serializedContent = {};
         return this.parent.init();
     };
 
@@ -53,6 +54,13 @@ var simulationSerializer = function(deferrer) {
      this.updateEntity = function(entity, time) {
          addContent('updateEntity', entity, time);
      };
+
+     /**
+      * {@inheritdoc}
+      */
+      this.destroyEntity = function(entity, time) {
+          addContent('destroyEntity', entity, time);
+      };
 };
 
 // Extends
