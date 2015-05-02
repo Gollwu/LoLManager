@@ -2,7 +2,7 @@
 
     var launchSimulation = function() {
 
-        var simulation = SharedLibs.simulationDeserializer({
+        var simulation = SharedLibs.timedDeserializerEngine({
             serializedContent: 'http://localhost:3000/simulation'
         });
         simulation.init($.testViewEngine()).then( function() {

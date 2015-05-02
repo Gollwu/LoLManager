@@ -16,8 +16,12 @@ var simulationDeserializer = function(options) {
          */
         serializedContent: null
     };
-    options = extend({}, defaults, options);
+    var config = defaults;
 
+    this.setOptions = function(newOptions) {
+        config = extend({}, defaults, newOptions);
+    };
+    this.setOptions(options);
 
     var viewEngine = null;
     var mainDeferrer = q.defer();
@@ -35,12 +39,12 @@ var simulationDeserializer = function(options) {
         var parentPromise = this.parent.init(viewEngine);
         var deferrer = q.defer();
 
-        if (! options.serializedContent) {
+        if (! config.serializedContent) {
             deferrer.reject('No content do deserialize');
-        } else if (typeof options.serializedContent === 'string') {
+        } else if (typeof config.serializedContent === 'string') {
             if (typeof $ !== 'undefined') {
 
-                $.get(options.serializedContent)
+                $.get(config.serializedContent)
                 .done(function(data) {
                     content = data;
                     parentPromise.then(function(){
@@ -55,7 +59,7 @@ var simulationDeserializer = function(options) {
             }
 
         } else {
-            content = options.serializedContent;
+            content = config.serializedContent;
             return parentPromise;
         }
         return deferrer.promise;
@@ -73,14 +77,9 @@ var simulationDeserializer = function(options) {
                 if (stop) {
                     break;
                 }
-                for (var j in content[i]) {
-                    var step = content[i][j];
-                    viewEngine[step.method](step.param, step.time);
-                }
+                this.deserializeTime(i);
             }
         }, 0);
-
-
         return mainDeferrer.promise;
     };
 
@@ -92,6 +91,26 @@ var simulationDeserializer = function(options) {
         mainDeferrer.reject();
         viewEngine.end({});
     };
+
+
+    /**
+     * Deserialize one Step
+     * @param integer time Time to deserialize
+     */
+    this.deserializeTime = function(time) {
+        for (var j in content[time]) {
+            var step = content[time][j];
+            viewEngine[step.method](step.param, step.time);
+        }
+    };
+
+
+    this.getEnd = function() {
+        var max = 0;
+        for(max in content);
+        return max;
+    };
+
 };
 
 // Extends

@@ -9,5 +9,6 @@ module.exports = {
     abstractSimulation: require('./simulationCore/abstractSimulation.js'),
     abstractViewEngine: require('./simulationCore/abstractViewEngine.js'),
     simulationSerializer: require('./simulationSerializer/simulationSerializer.js'),
-    simulationDeserializer: require('./simulationSerializer/simulationDeserializer.js')
+    simulationDeserializer: require('./simulationSerializer/simulationDeserializer.js'),
+    timedDeserializerEngine: require('./simulationSerializer/timedDeserializerEngine.js')
 };
